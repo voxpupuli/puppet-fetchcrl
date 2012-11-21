@@ -1,3 +1,16 @@
+#== Class: fetchcrl
+#
+#Installs a fetch-crl and CA packages from IGTF.
+#
+#=== Parameters
+#
+#None
+#
+#=== Examples
+#
+#class {'fetchcrl':}
+#
+#
 class fetchcrl () inherits fetchcrl::params {
 
 

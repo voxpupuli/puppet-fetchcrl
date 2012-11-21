@@ -1,11 +1,10 @@
-#
+# 
 #
 #
 class fetchcrl::install (
     $pkgname   = $fetchcrl::params::pkgname,
     $capkgs    = $fetchcrl::params::capkgs,
     $carepo    = $fetchcrl::params::carepo,
-    $cagpgkey  = $fetchcrl::params::cagpgkey
 ) inherits fetchcrl::params {
 
      # The fetch-crl or fetch-crl3 package.
@@ -18,12 +17,22 @@ class fetchcrl::install (
         ensure  => latest,
         require => Yumrepo['carepo']
      }
-     yumrepo{'carepo':
+     osrepos::ai121yumrepo{'carepo':
         descr    => 'IGTF CA Repository',
         enabled  => 1,
         baseurl  => $carepo,
         gpgcheck => 1,
-        gpgkey   => $cagpgkey,
+        gpgkey   => "file:///etc/pki/rpm-gpg/GPG-KEY-EUGridPMA-RPM-3",
+        require  => File['/etc/pki/rpm-gpg/GPG-KEY-EUGridPMA-RPM-3']
+     }
+
+     file{'/etc/pki/rpm-gpg/GPG-KEY-EUGridPMA-RPM-3':
+        ensure  => file,
+        source  => 'puppet:///fetchcrl/GPG-KEY-EUGridPMA-RPM-3',
+        replace => false,
+        owner   => root,
+        group   => root,
+        mode    => '0644'
      }
 
 
