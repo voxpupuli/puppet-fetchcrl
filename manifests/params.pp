@@ -22,7 +22,7 @@ class fetchcrl::params {
 
    $capkgs         = hiera('fetchcrl_capkgs',['lcg-CA'])
    $carepo         = hiera('fetchcrl_carepo','http://repository.egi.eu/sw/production/cas/1/current/')
-
+   $capkgs_version = hiera('fetchcrl_capkgs_version','present')
 }
 
 

@@ -5,11 +5,12 @@ class fetchcrl::install (
     $pkgname   = $fetchcrl::params::pkgname,
     $capkgs    = $fetchcrl::params::capkgs,
     $carepo    = $fetchcrl::params::carepo,
+    $capkgs_version = $fetchcrl::params::capkgs_version
 ) inherits fetchcrl::params {
 
      # The fetch-crl or fetch-crl3 package.
      package{$pkgname:
-        ensure => present
+        ensure => $capkgs_version
      }
 
      # The CA meta package.
