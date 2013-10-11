@@ -16,7 +16,7 @@ class fetchcrl::install (
     ensure  => latest,
     require => Yumrepo['carepo']
   }
-  osrepos::ai121yumrepo{'carepo':
+  yumrepo{'carepo':
     descr    => 'IGTF CA Repository',
     enabled  => 1,
     baseurl  => $carepo,
