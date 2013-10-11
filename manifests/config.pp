@@ -20,4 +20,15 @@ class fetchcrl::config (
     group   => root
   }
 
+  # Keep the directory based configuration empty.
+  file{"/etc/${pkgname}.d":
+    ensure  => directory,
+    owner   => root,
+    group   => root,
+    mode    => '0755',
+    purge   => true,
+    force   => true,
+    recurse => true
+  }
+
 }

@@ -7,11 +7,9 @@ ever it can.
 
     class{'fetchcrl':}
 
-### Todo
-Support per CA configurations. e.g.
-
-     fetchcrl::ca{'EDG-Tutorial-CA': agingtolerance => 168}
-
+    fetchcrl::ca{'EDG-Tutorial-CA':
+         agingtolerance => 168
+    }
 
 ### License
 ASL 2.0
