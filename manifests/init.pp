@@ -1,24 +1,10 @@
-#== Class: fetchcrl
-#
-#Installs a fetch-crl and CA packages from IGTF.
-#
-#=== Parameters
-#
-#None
-#
-#=== Examples
-#
-#class {'fetchcrl':}
-#
-#
+#Class: fetchcrl
 class fetchcrl () inherits fetchcrl::params {
 
+  Class['fetchcrl::install'] -> Class['fetchcrl::config'] -> Class['fetchcrl::service']
 
-     Class['fetchcrl::install'] -> Class['fetchcrl::config'] -> Class['fetchcrl::service']
-
-     class{'fetchcrl::install':}
-     class{'fetchcrl::config':}
-     class{'fetchcrl::service':}
-
+  class{'fetchcrl::install':}
+  class{'fetchcrl::config':}
+  class{'fetchcrl::service':}
 
 }
