@@ -27,7 +27,7 @@ class fetchcrl::install (
 
   file{'/etc/pki/rpm-gpg/GPG-KEY-EUGridPMA-RPM-3':
     ensure  => file,
-    source  => 'puppet:///fetchcrl/GPG-KEY-EUGridPMA-RPM-3',
+    source  => 'puppet:///modules/fetchcrl/GPG-KEY-EUGridPMA-RPM-3',
     replace => false,
     owner   => root,
     group   => root,
