@@ -3,17 +3,18 @@ class fetchcrl::install (
   $pkgname   = $fetchcrl::params::pkgname,
   $capkgs    = $fetchcrl::params::capkgs,
   $carepo    = $fetchcrl::params::carepo,
-  $capkgs_version = $fetchcrl::params::capkgs_version
+  $capkgs_version = $fetchcrl::params::capkgs_version,
+  $pkg_version = $fetchcrl::params::pkg_version
 ) inherits fetchcrl::params {
 
   # The fetch-crl or fetch-crl3 package.
   package{$pkgname:
-    ensure => $capkgs_version
+    ensure => $pkg_version
   }
 
   # The CA meta package.
   package{$capkgs:
-    ensure  => latest,
+    ensure  => $capkgs_version,
     require => Yumrepo['carepo']
   }
   yumrepo{'carepo':

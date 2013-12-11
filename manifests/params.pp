@@ -6,6 +6,7 @@ class fetchcrl::params {
   } else {
     $pkgname = fetch-crl
   }
+  $pkg_version = hiera('fetchcrl_pkg_version','present')
 
   $runboot = false
   $runcron = true
