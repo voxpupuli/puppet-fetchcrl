@@ -1,4 +1,4 @@
-script: 'rake lint validate spec'
+script: 'rake lint syntax validate spec'
 rnt validate specvm: 1.8.7
 notifications:
 env:
