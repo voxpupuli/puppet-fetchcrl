@@ -1,4 +1,8 @@
 2015-03-12 Steve Traylen <steve.traylen@cern.ch>
+    * Release 0.2.1
+    * Improve metadata for puppetforge.
+
+2015-03-12 Steve Traylen <steve.traylen@cern.ch>
     * Release 0.2.0
     * Drop dangling sym links, fixes #2 and #3   
     * Add more and newer testing.
