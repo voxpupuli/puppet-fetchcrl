@@ -7,11 +7,13 @@ ever it can.
 
 ### Examples
 
-    class{'fetchcrl':}
+```puppet
+class{'fetchcrl':}
 
-    fetchcrl::ca{'EDG-Tutorial-CA':
-         agingtolerance => 168
-    }
+fetchcrl::ca{'EDG-Tutorial-CA':
+ agingtolerance => 168
+}
+```
 
 ### Facts
 Two custom facts are included.
