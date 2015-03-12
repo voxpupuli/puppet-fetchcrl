@@ -1,7 +1,4 @@
 {
-  "types": [
-
-  ],
   "project_page": "http://github.com/cernops/puppet-fetchcrl",
   "license": "Apache-2.0",
   "source": "http://github.com/cernops",
