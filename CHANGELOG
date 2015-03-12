@@ -1,3 +1,8 @@
+2015-03-12 Steve Traylen <steve.traylen@cern.ch>
+    * Release 0.2.0
+    * Drop dangling sym links, fixes #2 and #3   
+    * Add more and newer testing.
+
 2013-12-11  Steve Traylen  <steve.traylen@cern.ch>
     * Release 0.1.0
       New facts certissuer and trustedcas.

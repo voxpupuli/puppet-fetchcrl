@@ -3,7 +3,7 @@
   "license": "Apache-2.0",
   "source": "http://github.com/cernops",
   "description": "Install and configure fetch-crl",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "summary": "Intalls and configure fetch-crl",
   "name": "CERNOps-fetchcrl",
   "author": "Steve Traylen",
