@@ -2,34 +2,19 @@
   "types": [
 
   ],
-  "project_page": "http://github.com/cernops",
-  "license": "Apache License, Version 2.0",
+  "project_page": "http://github.com/cernops/puppet-fetchcrl",
+  "license": "Apache-2.0",
   "source": "http://github.com/cernops",
-  "checksums": {
-    "Modulefile": "4123f4c51873f35d2a199d8fb778829c",
-    "templates/fetch-crl.conf.erb": "c5f2a2b9054bde5f8aa9d813544a6469",
-    "lib/facter/trustedcas.rb": "4332ae3fae8e4a632417806b1e4a8a92",
-    "files/GPG-KEY-EUGridPMA-RPM-3": "3cef52496793a9ae3f8de1b319e319fb",
-    "lib/facter/certissuer.rb": "b70c760e9e14a335905771789439793d",
-    "CHANGELOG": "d49616593db3c0dddee4bca409bd89a2",
-    "manifests/params.pp": "69e242c1facdf1a7e6c9d335df912a38",
-    "manifests/ca.pp": "c6d38ecc1fd118c26cb2e16f4408569c",
-    "Gemfile": "e07d680dcd49f233e785cdc806ba04fa",
-    "manifests/service.pp": "41c17fb2476aeaa70a68ab44297e011e",
-    "manifests/config.pp": "e15c019cf4351f83c1cb7e074c985d17",
-    "spec/spec_helper.rb": "3011a30b013ba2e44f7bf8615fdf2b8a",
-    "README.md": "0fa0dede54dd7440141e76ed5a06a82a",
-    "Rakefile": "ea715fe0328d4fb4bc6de3aae2d67b11",
-    "manifests/install.pp": "ce1af2bae9204ce68f504ac968495ce8",
-    "manifests/init.pp": "8f2f5035778ac99d8f813e89d2b2a6e2",
-    "templates/fetch-crl-anchor.conf.erb": "76fb4a215a71dc8f2b895037a94c9d87"
-  },
   "description": "Install and configure fetch-crl",
   "version": "0.1.0",
   "summary": "Intalls and configure fetch-crl",
   "name": "CERNOps-fetchcrl",
-  "author": "CERNOps",
-  "dependencies": [
-
+  "author": "Steve Traylen",
+  "tags": ["grid","crl","x509"],
+  "dependencies": [ ],
+  "operating_system": [
+    { "operatingsystem": "RedHat",
+      "operatingsystemrelease": [ "5", "6", "7" ]
+    }
   ]
 }
