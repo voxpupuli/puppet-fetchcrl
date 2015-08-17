@@ -1,3 +1,9 @@
+2015-07-17 Steve Traylen <steve.traylen@cern.ch>
+    * Release 0.3.0
+    * New structured fact trustedca. 
+    * The existing non structured fact trustedcas is now deprecated
+      and will be removed next release.
+
 2015-03-12 Steve Traylen <steve.traylen@cern.ch>
     * Release 0.2.2
     * Empty release for tag mistake.
