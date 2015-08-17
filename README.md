@@ -1,5 +1,6 @@
 ## cernops-fetchcrl puppet module
 
+[![Puppet Forge](http://img.shields.io/puppetforge/v/CERNOps/fetchcrl.svg)](https://forge.puppetlabs.com/CERNOps/fetchcrl)
 [![Build Status](https://travis-ci.org/cernops/puppet-fetchcrl.svg?branch=master)](https://travis-ci.org/cernops/puppet-fetchcrl)
 
 This is the fetchcrl module it configures fetch-crl version 3 where
