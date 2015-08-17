@@ -1,16 +1,30 @@
-script: "bundle exec rake validate && bundle exec rake lint && bundle exec rake spec SPEC_OPTS='--format documentation'"
+script: bundle exec rake validate && bundle exec rake lint && bundle exec rake spec
+  SPEC_OPTS='--format documentation'
 rnt validate specvm: 1.8.7
-notifications:
+notifications: 
 matrix:
   fast_finish: true
   include:
   - rvm: 1.8.7
-    env: PUPPET_GEM_VERSION="~> 2.7.0" FACTER_GEM_VERSION="~> 1.6.0"
-  - rvm: 1.8.7
-    env: PUPPET_GEM_VERSION="~> 2.7.0" FACTER_GEM_VERSION="~> 1.7.0"
+    env: PUPPET_GEM_VERSION="~> 3.0"
   - rvm: 1.9.3
     env: PUPPET_GEM_VERSION="~> 3.0"
   - rvm: 2.0.0
     env: PUPPET_GEM_VERSION="~> 3.0"
   - rvm: 2.0.0
     env: PUPPET_GEM_VERSION="~> 4.0"
+  - rvm: 2.1.5
+    env: PUPPET_GEM_VERSION="~> 3.0" FUTURE_PARSER="yes"
+  - rvm: 2.1.6
+    env: PUPPET_GEM_VERSION="~> 4.0" STRICT_VARIABLES="yes"
+deploy:
+  provider: puppetforge
+  user: CERNOps
+  password:
+    secure: ni/Jf3l9777GHv0FzJUk3TLkcAaUC/tjQw2bFr7bji6V5Nh8xXhih/byIssyZwnfqNq9pf2/8jafuFpcQfyy0XsLlS4dr60QVz4AN/eEhDoO5YWH6uErUpxV7Hz4ck+ZCGwd1GpzhAPDr9tSamKY5y/Cq9GeHGGkOyLBjKIavEc=
+  on:
+    tags: true
+    all_branches: true
+    rvm: 2.1.5
+    condition: "$FUTURE_PARSER = yes"
+
