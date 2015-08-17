@@ -1,4 +1,17 @@
 2015-07-17 Steve Traylen <steve.traylen@cern.ch>
+    * Release 0.4.0
+    * Hiera variables 
+      `fetchcrl_pkg_version`,
+      `fetchcrl_proxy`
+      `fetchcrl_capkgs`
+      `fetchcrl_carepo`
+      `fetchcrl_capkgs_version`
+      are now deprecated and will print a puppet warning if
+      used. They still work today but support will be removed
+      at a future date.
+      Use hiera binding instead, e.g fetchcrk::proxy.
+
+2015-07-17 Steve Traylen <steve.traylen@cern.ch>
     * Release 0.3.0
     * New structured fact trustedca. 
     * The existing non structured fact trustedcas is now deprecated
