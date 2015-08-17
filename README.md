@@ -8,7 +8,10 @@ ever it can.
 ### Examples
 
 ```puppet
-class{'fetchcrl':}
+class{'fetchcrl':
+  proxy => 'http:://squid.example.org:8000',
+  carepo => 'http://yum.example.org/yumrepo',
+}
 
 fetchcrl::ca{'EDG-Tutorial-CA':
  agingtolerance => 168

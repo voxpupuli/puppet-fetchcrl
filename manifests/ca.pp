@@ -8,9 +8,9 @@ define fetchcrl::ca(
   $crl_url        = []
 ) {
 
-  include 'fetchcrl::params'
+  include 'fetchcrl'
 
-  file{"/etc/${::fetchcrl::params::pkgname}.d/${anchorname}.conf":
+  file{"/etc/${::fetchcrl::pkgname}.d/${anchorname}.conf":
     ensure  => file,
     mode    => '0644',
     owner   => root,
