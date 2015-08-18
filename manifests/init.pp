@@ -4,7 +4,6 @@
 # Version of fetch-crl, defaults to present.
 
 class fetchcrl (
-  $proxy = $fetchcrl::params::proxy,
   $capkgs = $fetchcrl::params::capkgs,
   $carepo = $fetchcrl::params::carepo,
   $capkgs_version = $fetchcrl::params::capkgs_version,
