@@ -23,7 +23,7 @@ fetchcrl::ca{'EDG-Tutorial-CA':
 Two custom facts are included.
 
 *certissuer* returns the issuer of a grid certificate located at /etc/grid-security/hostcert.pem if it exists.
-*trustedcas* returns a list of all the certificate authoriry subjects located at /etc/grid-security/*.pem
+*trustedca*  returns an array of all the certificate authoriry subjects located at /etc/grid-security/*.pem
 
 ### License
 ASL 2.0
