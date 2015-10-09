@@ -1,5 +1,7 @@
-## 2015-07-17  Release 0.4.0
+## 2015-10-09  Release 1.0.0
+- Drop trustedcas fact - use trustedca instead.
 
+## 2015-07-17  Release 0.4.0
 - Hiera variables 
    `fetchcrl_pkg_version`, `fetchcrl_proxy` `fetchcrl_capkgs` `fetchcrl_carepo`
    `fetchcrl_capkgs_version` are now deprecated and will print a puppet warning if
