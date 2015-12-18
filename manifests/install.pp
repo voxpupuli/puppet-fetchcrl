@@ -9,13 +9,13 @@ class fetchcrl::install (
 
   # The fetch-crl or fetch-crl3 package.
   package{$pkgname:
-    ensure => $pkg_version
+    ensure => $pkg_version,
   }
 
   # The CA meta package.
   package{$capkgs:
     ensure  => $capkgs_version,
-    require => Yumrepo['carepo']
+    require => Yumrepo['carepo'],
   }
   yumrepo{'carepo':
     descr    => 'IGTF CA Repository',
@@ -23,7 +23,7 @@ class fetchcrl::install (
     baseurl  => $carepo,
     gpgcheck => 1,
     gpgkey   => 'file:///etc/pki/rpm-gpg/GPG-KEY-EUGridPMA-RPM-3',
-    require  => File['/etc/pki/rpm-gpg/GPG-KEY-EUGridPMA-RPM-3']
+    require  => File['/etc/pki/rpm-gpg/GPG-KEY-EUGridPMA-RPM-3'],
   }
 
   file{'/etc/pki/rpm-gpg/GPG-KEY-EUGridPMA-RPM-3':
@@ -32,6 +32,6 @@ class fetchcrl::install (
     replace => false,
     owner   => root,
     group   => root,
-    mode    => '0644'
+    mode    => '0644',
   }
 }

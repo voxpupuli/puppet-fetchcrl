@@ -17,7 +17,7 @@ class fetchcrl::config (
     content => template('fetchcrl/fetch-crl.conf.erb'),
     mode    => '0644',
     owner   => root,
-    group   => root
+    group   => root,
   }
 
   # Keep the directory based configuration empty.
@@ -28,7 +28,7 @@ class fetchcrl::config (
     mode    => '0755',
     purge   => true,
     force   => true,
-    recurse => true
+    recurse => true,
   }
 
 }

@@ -23,8 +23,8 @@ class fetchcrl (
 
   Class['fetchcrl::install'] -> Class['fetchcrl::config'] -> Class['fetchcrl::service']
 
-  class{'fetchcrl::install':}
-  class{'fetchcrl::config':}
-  class{'fetchcrl::service':}
+  class{'::fetchcrl::install':}
+  class{'::fetchcrl::config':}
+  class{'::fetchcrl::service':}
 
 }

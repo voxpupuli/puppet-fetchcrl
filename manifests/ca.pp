@@ -8,14 +8,14 @@ define fetchcrl::ca(
   $crl_url        = []
 ) {
 
-  include 'fetchcrl'
+  include '::fetchcrl'
 
   file{"/etc/${::fetchcrl::pkgname}.d/${anchorname}.conf":
     ensure  => file,
     mode    => '0644',
     owner   => root,
     group   => root,
-    content => template('fetchcrl/fetch-crl-anchor.conf.erb')
+    content => template('fetchcrl/fetch-crl-anchor.conf.erb'),
   }
 }
 
