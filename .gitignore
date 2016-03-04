@@ -1,5 +1,7 @@
 spec/fixtures
+bundle
 Gemfile.lock
+files
 pkg/
 log/
 bundle/
