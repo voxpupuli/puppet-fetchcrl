@@ -6,6 +6,7 @@
 class fetchcrl (
   $capkgs = $fetchcrl::params::capkgs,
   $carepo = $fetchcrl::params::carepo,
+  $manage_carepo = $fetchcrl::params::manage_carepo,
   $capkgs_version = $fetchcrl::params::capkgs_version,
   $pkg_version = $fetchcrl::params::pkg_version,
   $agingtolerance = $fetchcrl::params::agingtolerance,

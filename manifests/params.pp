@@ -46,6 +46,7 @@ class fetchcrl::params {
   } else {
     $carepo         = 'http://repository.egi.eu/sw/production/cas/1/current/'
   }
+  $manage_carepo = true
   $_capkgs_version  =hiera('fetchcrl_capkgs_version',false)
   if $_capkgs_version {
     warning('fetchcrl - fetchcrl_capkgs_version is deprecated, use fetchcrl::capkgs_version instead')
