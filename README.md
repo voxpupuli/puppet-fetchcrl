@@ -10,8 +10,9 @@ ever it can.
 
 ```puppet
 class{'fetchcrl':
-  http_proxy => 'http:://squid.example.org:8000',
-  carepo     => 'http://yum.example.org/yumrepo',
+  http_proxy            => 'http:://squid.example.org:8000',
+  carepo                => 'http://yum.example.org/yumrepo',
+  cache_control_request => '3600',
 }
 
 fetchcrl::ca{'EDG-Tutorial-CA':

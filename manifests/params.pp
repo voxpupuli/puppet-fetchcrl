@@ -52,6 +52,9 @@ class fetchcrl::params {
   } else {
     $capkgs_version = 'present'
   }
+
+  $cache_control_request = undef
+
 }
 
 

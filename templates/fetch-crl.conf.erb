@@ -21,5 +21,8 @@ parallelism = <%= @parallelism %>
 <% if @logmode -%>
 logmode = <%= @logmode %>
 <% end -%>
+<% if @cache_control_request -%>
+cache_control_request = <%= @cache_control_request %>
+<% end -%>
 
 # end of fetch-crl3.conf  managed by puppet.

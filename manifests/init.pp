@@ -18,6 +18,7 @@ class fetchcrl (
   $pkgname = $fetchcrl::params::pkgname,
   $runboot = $fetchcrl::params::runboot,
   $runcron = $fetchcrl::params::runcron,
+  $cache_control_request = $fetchcrl::params::cache_control_request,
 
 ) inherits fetchcrl::params {
 

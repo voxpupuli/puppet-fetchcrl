@@ -2,14 +2,15 @@
 #
 #
 class fetchcrl::config (
-  $agingtolerance = $fetchcrl::agingtolerance,
-  $nosymlinks     = $fetchcrl::nosymlinks,
-  $nowarnings     = $fetchcrl::nowarnings,
-  $http_proxy     = $fetchcrl::http_proxy,
-  $httptimeout    = $fetchcrl::httptimeout,
-  $parallelism    = $fetchcrl::parallelism,
-  $logmode        = $fetchcrl::logmode,
-  $pkgname        = $fetchcrl::pkgname
+  $agingtolerance        = $fetchcrl::agingtolerance,
+  $nosymlinks            = $fetchcrl::nosymlinks,
+  $nowarnings            = $fetchcrl::nowarnings,
+  $http_proxy            = $fetchcrl::http_proxy,
+  $httptimeout           = $fetchcrl::httptimeout,
+  $parallelism           = $fetchcrl::parallelism,
+  $logmode               = $fetchcrl::logmode,
+  $pkgname               = $fetchcrl::pkgname,
+  $cache_control_request = $fetchcrl::cache_control_request,
 ) inherits fetchcrl {
 
   file{"/etc/${pkgname}.conf":
