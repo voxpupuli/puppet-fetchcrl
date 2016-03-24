@@ -1,3 +1,6 @@
+## 2016-03-24  Release 1.1.0
+- New optional parameter `cache_control_request`.
+
 ## 2015-10-09  Release 1.0.0
 - Drop trustedcas fact - use trustedca instead.
 
