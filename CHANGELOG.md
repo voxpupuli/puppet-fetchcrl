@@ -10,7 +10,7 @@
    `fetchcrl_capkgs_version` are now deprecated and will print a puppet warning if
     used. They still work today but support will be removed
     at a future date.
-    Use hiera binding instead, e.g fetchcrk::proxy.
+    Use hiera binding instead, e.g fetchcrl::proxy.
 
 ## 2015-07-17 - Release 0.3.0
 - New structured fact trustedca. 
