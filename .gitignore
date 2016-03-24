@@ -2,3 +2,5 @@ spec/fixtures
 Gemfile.lock
 pkg/
 log/
+bundle/
+.bundle/
