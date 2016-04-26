@@ -6,3 +6,4 @@ pkg/
 log/
 bundle/
 .bundle/
+.rvm/
