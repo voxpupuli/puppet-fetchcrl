@@ -32,7 +32,7 @@ Two custom facts are included.
 *trustedca*  returns an array of all the certificate authoriry subjects located at /etc/grid-security/*.pem
 
 ### License
-ASL 2.0
+Apache-2.0
 
 ### Copyright
 Steve Traylen, steve.traylen@cern.ch>, CERN, 2016.
