@@ -1,10 +1,15 @@
-## cernops-fetchcrl puppet module
+## puppet-fetchcrl puppet module
 
-[![Puppet Forge](http://img.shields.io/puppetforge/v/CERNOps/fetchcrl.svg)](https://forge.puppetlabs.com/CERNOps/fetchcrl)
-[![Build Status](https://travis-ci.org/cernops/puppet-fetchcrl.svg?branch=master)](https://travis-ci.org/cernops/puppet-fetchcrl)
+[![Puppet Forge](http://img.shields.io/puppetforge/v/puppet/fetchcrl.svg)](https://forge.puppetlabs.com/puppet/fetchcrl)
+[![Build Status](https://travis-ci.org/voxpupuli/puppet-fetchcrl.svg?branch=master)](https://travis-ci.org/voxpupuli/puppet-fetchcrl)
 
 This is the fetchcrl module it configures fetch-crl version 3 where
 ever it can.
+
+[Fetchcrl ](http://wiki.nikhef.nl/grid/FetchCRL3) utility will retrieve certificate revocation lists (CRLs) for 
+a set of installed trust anchors, based on crl_url files or IGTF-style info files.
+
+This module obsoletes [CernOps-fetchcrl-1.1.0](https://forge.puppet.com/CERNOps/fetchcrl)
 
 ### Examples
 
@@ -28,6 +33,9 @@ Two custom facts are included.
 
 ### License
 ASL 2.0
+
+### Copyright
+Steve Traylen, steve.traylen@cern.ch>, CERN, 2016.
 
 ### Contact
 Steve Traylen <steve.traylen@cern.ch>
