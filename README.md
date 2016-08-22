@@ -35,7 +35,7 @@ Two custom facts are included.
 Apache-2.0
 
 ### Copyright
-Steve Traylen, steve.traylen@cern.ch>, CERN, 2016.
+Steve Traylen, steve.traylen@cern.ch, CERN, 2016.
 
 ### Contact
 Steve Traylen <steve.traylen@cern.ch>
