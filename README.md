@@ -41,4 +41,4 @@ Steve Traylen, steve.traylen@cern.ch>, CERN, 2016.
 Steve Traylen <steve.traylen@cern.ch>
 
 ## Support
-Please log tickets and issues at our [cernops site](http://github.ch/cernops)
+Please log tickets and issues at http://github.ch/voxpupuli/puppet-fetchcrl
