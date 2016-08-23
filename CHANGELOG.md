@@ -1,3 +1,6 @@
+## 2016-08-23  Release 1.1.1
+- Upstream from CERNOps-fetchcrl to voxpupuli-fetchcrl.
+
 ## 2016-03-24  Release 1.1.0
 - New optional parameter `cache_control_request`.
 
