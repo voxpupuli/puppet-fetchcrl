@@ -3,7 +3,7 @@ describe 'fetchcrl', type: 'class' do
   context 'with defaults for all parameters' do
     let(:facts) do
       { osfamily: 'RedHat',
-        operatingsystemrelease: '6' }
+        operatingsystemmajrelease: '6' }
     end
     it { should contain_class('fetchcrl') }
     it { should contain_class('fetchcrl::install') }
@@ -15,7 +15,7 @@ describe 'fetchcrl', type: 'class' do
   context 'with all parameters set' do
     let(:facts) do
       { osfamily: 'RedHat',
-        operatingsystemrelease: '6' }
+        operatingsystemmajrelease: '6' }
     end
     let(:params) { { cache_control_request: '1234' } }
     it { should contain_file('/etc/fetch-crl.conf').with_content(%r{^cache_control_request = 1234$}) }

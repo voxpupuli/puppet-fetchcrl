@@ -1,7 +1,7 @@
 #Class: fetchcrl::params
 class fetchcrl::params {
 
-  if $::osfamily == 'RedHat' and $::operatingsystemrelease =~ /^5\..*/ {
+  if $::osfamily == 'RedHat' and $::operatingsystemmajrelease == '5' {
     $pkgname = fetch-crl3
   } else {
     $pkgname = fetch-crl
