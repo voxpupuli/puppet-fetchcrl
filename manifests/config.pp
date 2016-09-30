@@ -1,19 +1,35 @@
 #
-# Copyright (c) IN2P3 Computing Centre, IN2P3, CNRS
 #
-# Contributor(s) : ccin2p3
 #
+class fetchcrl::config (
+  $agingtolerance        = $fetchcrl::agingtolerance,
+  $nosymlinks            = $fetchcrl::nosymlinks,
+  $nowarnings            = $fetchcrl::nowarnings,
+  $http_proxy            = $fetchcrl::http_proxy,
+  $httptimeout           = $fetchcrl::httptimeout,
+  $parallelism           = $fetchcrl::parallelism,
+  $logmode               = $fetchcrl::logmode,
+  $pkgname               = $fetchcrl::pkgname,
+  $cache_control_request = $fetchcrl::cache_control_request,
+) inherits fetchcrl {
 
-# == Class fetchcrl::config
-#
-# This class is called from fetchcrl
-# It should include common resource classes
-#  e.g. configuration Files
-#
-class fetchcrl::config {
-  file { "/etc/fetchcrl.conf":
+  file{"/etc/${pkgname}.conf":
     ensure  => present,
-    content => template('fetchcrl/conf.erb'),
+    content => template('fetchcrl/fetch-crl.conf.erb'),
+    mode    => '0644',
+    owner   => root,
+    group   => root,
   }
+
+  # Keep the directory based configuration empty.
+  file{"/etc/${pkgname}.d":
+    ensure  => directory,
+    owner   => root,
+    group   => root,
+    mode    => '0755',
+    purge   => true,
+    force   => true,
+    recurse => true,
+  }
+
 }
-# vim: ft=puppet

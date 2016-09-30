@@ -1,35 +1,61 @@
-#
-# Copyright (c) IN2P3 Computing Centre, IN2P3, CNRS
-#
-# Contributor(s) : ccin2p3
-#
-
-# == Class fetchcrl::params
-#
-# This class is called from fetchcrl
-# It sets platform specific defaults
-#
+#Class: fetchcrl::params
 class fetchcrl::params {
-  case $::osfamily {
-    'Debian': {
-      $package_name = 'fetchcrl'
-      $service_name = 'fetchcrl'
-    }
-    'RedHat', 'Amazon': {
-      case $::operatingsystemmajrelease {
-        '6', '7': {
-          $package_name = 'fetchcrl'
-          $service_name = 'fetchcrl'
-        }
-        default: {
-          fail("operatingsystemmajrelease `${::operatingsystemmajrelease}` not supported")
-        }
-      }
-    }
-    default: {
-      fail("osfamily `${::osfamily}` not supported")
-    }
+
+  if $::osfamily == 'RedHat' and $::operatingsystemmajrelease == '5' {
+    $pkgname = fetch-crl3
+  } else {
+    $pkgname = fetch-crl
   }
+  # Deprecate fetchcrl_pkg_version/
+  $_pkg_version = hiera('fetchcrl_pkg_version',false)
+  if $_pkg_version {
+    warning('fetchcrl - Hiera variable fetchcrl_pkg_version is deprecated, use fetchcrl::pkg_version')
+    $pkg_version = $_pkg_version
+  } else {
+    $pkg_version = 'present'
+  }
+
+  $runboot = false
+  $runcron = true
+
+  $agingtolerance = 24
+  $nosymlinks     = true
+  $nowarnings     = true
+  $_http_proxy    = hiera('fetchcrl_proxy',false)
+  if $_http_proxy {
+    warning('fetchcrl - hiera var fetchcrl_proxy is deprecated, use fetchcrl::proxy instead')
+    $http_proxy = $_http_proxy
+  } else {
+    $http_proxy = undef
+  }
+  $httptimeout    = 30
+  $parallelism    = 4
+  $logmode        = 'syslog'
+
+  $_capkgs        = hiera('fetchcrl_capkgs', false)
+  if $_capkgs {
+    warning('fetchcrl - fetchcrl_capkgs is deprecated, use fetchcrl::capkgs instead')
+    $capkgs = $_capkgs
+  } else {
+    $capkgs =   ['lcg-CA']
+  }
+  $_carepo        = hiera('fetchcrl_carepo',false)
+  if $_carepo {
+    warning('fetchcrl = fetchcrl_carepo is deprecated, use fetchcrl::carepo istead')
+    $carepo = $_carepo
+  } else {
+    $carepo         = 'http://repository.egi.eu/sw/production/cas/1/current/'
+  }
+  $manage_carepo = true
+  $_capkgs_version  =hiera('fetchcrl_capkgs_version',false)
+  if $_capkgs_version {
+    warning('fetchcrl - fetchcrl_capkgs_version is deprecated, use fetchcrl::capkgs_version instead')
+  } else {
+    $capkgs_version = 'present'
+  }
+
+  $cache_control_request = undef
+
 }
 
-# vim: ft=puppet
+

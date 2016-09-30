@@ -1,14 +1,29 @@
 {
-  "name": "ccin2p3-fetchcrl",
-  "version": "0.1.0",
-  "source": "",
-  "author": "ccin2p3",
-  "license": "CECILL-B",
-  "summary": "",
-  "project_page": "",
+  "project_page": "http://github.com/voxpupuli/puppet-fetchcrl",
+  "license": "Apache-2.0",
+  "source": "https://github.com/voxpupuli/puppet-fetchcrl",
+  "issues": "https://github.com/voxpupuli/puppet-fetchcrl/issues",
+  "description": "Install and configure fetch-crl",
+  "version": "1.1.2-rc0",
+  "summary": "Intalls and configure fetch-crl",
+  "name": "puppet-fetchcrl",
+  "author": "Steve Traylen",
+  "tags": [
+    "grid",
+    "crl",
+    "x509"
+  ],
   "dependencies": [
+
+  ],
+  "operatingsystem_support": [
     {
-      "name": "puppetlabs/stdlib"
+      "operatingsystem": "RedHat",
+      "operatingsystemrelease": [
+        "5.0",
+        "6.0",
+        "7.0"
+      ]
     }
   ]
 }

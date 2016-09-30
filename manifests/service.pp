@@ -1,21 +1,21 @@
-#
-# Copyright (c) IN2P3 Computing Centre, IN2P3, CNRS
-#
-# Contributor(s) : ccin2p3
-#
+#Class: fetchcrl::service
+class fetchcrl::service (
+  $pkgname = $fetchcrl::pkgname,
+  $runboot = $fetchcrl::runboot,
+  $runcron = $fetchcrl::runcron,
+) inherits fetchcrl {
 
-# == Class fetchcrl::service
-#
-# This class is called from fetchcrl
-# It ensures the service is running
-#
-class fetchcrl::service {
-
-  service { $fetchcrl::service_name:
-    ensure     => running,
-    enable     => true,
+  service { "${pkgname}-boot":
+    ensure     => $runboot,
+    enable     => $runboot,
     hasstatus  => true,
     hasrestart => true,
   }
+  service { "${pkgname}-cron":
+    ensure     => $runcron,
+    enable     => $runcron,
+    hasstatus  => true,
+    hasrestart => true,
+    require    => Class['fetchcrl::install'];
+  }
 }
-# vim: ft=puppet
