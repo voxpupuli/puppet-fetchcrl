@@ -1,0 +1,14 @@
+{
+  "name": "ccin2p3-fetchcrl",
+  "version": "0.1.0",
+  "source": "",
+  "author": "ccin2p3",
+  "license": "CECILL-B",
+  "summary": "",
+  "project_page": "",
+  "dependencies": [
+    {
+      "name": "puppetlabs/stdlib"
+    }
+  ]
+}
