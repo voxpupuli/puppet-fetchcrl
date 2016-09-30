@@ -25,7 +25,7 @@ If your module has a range of functionality (installation, configuration, manage
 
 ## Setup
 
-### What fetchcrl affects
+### What fetchcrl affects Grid
 
 * A list of files, packages, services, or operations that the module will alter, impact, or execute on the system it's installed on.
 * This is a great place to stick any warnings.
