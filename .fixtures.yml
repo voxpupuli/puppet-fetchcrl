@@ -1,5 +1,3 @@
 fixtures:
-  repositories:
-    stdlib: "git://github.com/puppetlabs/puppetlabs-stdlib.git"
   symlinks:
-    fetchcrl: "#{source_dir}"
+   "fetchcrl": "#{source_dir}"

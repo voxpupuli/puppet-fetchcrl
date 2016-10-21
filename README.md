@@ -1,98 +1,44 @@
-# Puppet Module fetchcrl
-#### Table of Contents
+## puppet-fetchcrl puppet module
 
-1. [Overview](#overview)
-2. [Module Description - What the module does and why it is useful](#module-description)
-3. [Setup - The basics of getting started with fetchcrl](#setup)
-    * [What fetchcrl affects](#what-fetchcrl-affects)
-    * [Setup requirements](#setup-requirements)
-    * [Beginning with fetchcrl](#beginning-with-fetchcrl)
-4. [Usage - Configuration options and additional functionality](#usage)
-5. [Reference - An under-the-hood peek at what the module is doing and how](#reference)
-5. [Limitations - OS compatibility, etc.](#limitations)
-6. [Development - Guide for contributing to the module](#development)
+[![Puppet Forge](http://img.shields.io/puppetforge/v/puppet/fetchcrl.svg)](https://forge.puppetlabs.com/puppet/fetchcrl)
+[![Build Status](https://travis-ci.org/voxpupuli/puppet-fetchcrl.svg?branch=master)](https://travis-ci.org/voxpupuli/puppet-fetchcrl)
 
-## Overview
+This is the fetchcrl module it configures fetch-crl version 3 where
+ever it can.
 
-This is a *technology` class, as opposed to a *site* class.
-A one-maybe-two sentence summary of what the module does/what problem it solves. This is your 30 second elevator pitch for your module. Consider including OS/Puppet version it works with.       
+[Fetchcrl ](http://wiki.nikhef.nl/grid/FetchCRL3) utility will retrieve certificate revocation lists (CRLs) for 
+a set of installed trust anchors, based on crl_url files or IGTF-style info files.
 
-## Module Description
+This module obsoletes [CernOps-fetchcrl-1.1.0](https://forge.puppet.com/CERNOps/fetchcrl)
 
-If applicable, this section should have a brief description of the technology the module integrates with and what that integration enables. This section should answer the questions: "What does this module *do*?" and "Why would I use it?"
+### Examples
 
-If your module has a range of functionality (installation, configuration, management, etc.) this is the time to mention it.
+```puppet
+class{'fetchcrl':
+  http_proxy            => 'http:://squid.example.org:8000',
+  carepo                => 'http://yum.example.org/yumrepo',
+  cache_control_request => '3600',
+}
 
-## Setup
-
-### What fetchcrl affects
-
-* A list of files, packages, services, or operations that the module will alter, impact, or execute on the system it's installed on.
-* This is a great place to stick any warnings.
-* Can be in list or paragraph form. 
-
-### Setup Requirements **OPTIONAL**
-
-If your module requires anything extra before setting up (pluginsync enabled, etc.), mention it here. 
-
-### Beginning with fetchcrl
-
-The very basic steps needed for a user to get the module up and running. 
-
-If your most recent release breaks compatibility or requires particular steps for upgrading, you may wish to include an additional section here: Upgrading (For an example, see http://forge.puppetlabs.com/puppetlabs/firewall).
-
-## Usage
-
-Put the classes, types, and resources for customizing, configuring, and doing the fancy stuff with your module here. 
-
-## Reference
-
-Here, list the classes, types, providers, facts, etc contained in your module. This section should include all of the under-the-hood workings of your module so people know what the module is touching on their system but don't need to mess with things. (We are working on automating this section!)
-
-### Class fetchcrl
-
-#### Parameters
-
-* `package_name` string containing the name of the Package to install. Defaults to OS specific value (see `params.pp`)
-* `service_name` string containing the name of the Service to manage. Defaults to OS specific value (see `params.pp`)
-
-### Class fetchcrl::foo
-
-#### Parameters
-
-* `package_name` string or array containing list of packages to install. Defaults to OS specific value (see `params.pp`)
-* `service` string or array containing list of services to run. Defaults to OS specific value (see `params.pp`)
-
-### Define fetchcrl::mytype
-
-#### Parameters
-
-* `my_param` string
-
-## Limitations
-
-This is where you list OS compatibility, version compatibility, etc.
-
-## Development
-
-Since your module is awesome, other users will want to play with it. Let them know what the ground rules for contributing are.
-
-### Testing
-
-```
-bundle install --path vendor/bundle
-bundle exec rake spec
+fetchcrl::ca{'EDG-Tutorial-CA':
+ agingtolerance => 168
+}
 ```
 
-### Issues
+### Facts
+Two custom facts are included.
 
-https://gitlab.in2p3.fr/cc-in2p3-puppet-service/fetchcrl
+*certissuer* returns the issuer of a grid certificate located at /etc/grid-security/hostcert.pem if it exists.
+*trustedca*  returns an array of all the certificate authoriry subjects located at /etc/grid-security/*.pem
 
+### License
+Apache-2.0
 
-## Release Notes/Contributors/Etc **Optional**
+### Copyright
+Steve Traylen, steve.traylen@cern.ch, CERN, 2016.
 
-If you aren't using changelog, put your release notes here (though you should consider using changelog). You may also add any additional sections you feel are necessary or important to include here. Please use the `## ` header. 
+### Contact
+Steve Traylen <steve.traylen@cern.ch>
 
-<!--
-# vim: ft=markdown
--->
+## Support
+Please log tickets and issues at http://github.ch/voxpupuli/puppet-fetchcrl
