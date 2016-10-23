@@ -1,7 +1,11 @@
 # FetchCRL module for Puppet
 
-[![Puppet Forge](http://img.shields.io/puppetforge/v/puppet/fetchcrl.svg)](https://forge.puppetlabs.com/puppet/fetchcrl)
-[![Build Status](https://travis-ci.org/voxpupuli/puppet-fetchcrl.svg?branch=master)](https://travis-ci.org/voxpupuli/puppet-fetchcrl)
+[![Build Status](https://travis-ci.org/voxpupuli/puppet-fetchcrl.png?branch=master)](https://travis-ci.org/voxpupuli/puppet-fetchcrl)
+[![Code Coverage](https://coveralls.io/repos/github/voxpupuli/puppet-fetchcrl/badge.svg?branch=master)](https://coveralls.io/github/voxpupuli/puppet-fetchcrl)
+[![Puppet Forge](https://img.shields.io/puppetforge/v/puppet/fetchcrl.svg)](https://forge.puppetlabs.com/puppet/fetchcrl)
+[![Puppet Forge - downloads](https://img.shields.io/puppetforge/dt/puppet/fetchcrl.svg)](https://forge.puppetlabs.com/puppet/fetchcrl)
+[![Puppet Forge - endorsement](https://img.shields.io/puppetforge/e/puppet/fetchcrl.svg)](https://forge.puppetlabs.com/puppet/fetchcrl)
+[![Puppet Forge - scores](https://img.shields.io/puppetforge/f/puppet/fetchcrl.svg)](https://forge.puppetlabs.com/puppet/fetchcrl)
 
 This is the fetchcrl module it configures fetch-crl version 3 where
 ever it can.
