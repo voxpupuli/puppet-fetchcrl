@@ -1,4 +1,4 @@
-## puppet-fetchcrl puppet module
+# FetchCRL module for Puppet
 
 [![Puppet Forge](http://img.shields.io/puppetforge/v/puppet/fetchcrl.svg)](https://forge.puppetlabs.com/puppet/fetchcrl)
 [![Build Status](https://travis-ci.org/voxpupuli/puppet-fetchcrl.svg?branch=master)](https://travis-ci.org/voxpupuli/puppet-fetchcrl)
@@ -6,12 +6,13 @@
 This is the fetchcrl module it configures fetch-crl version 3 where
 ever it can.
 
-[Fetchcrl ](http://wiki.nikhef.nl/grid/FetchCRL3) utility will retrieve certificate revocation lists (CRLs) for 
-a set of installed trust anchors, based on crl_url files or IGTF-style info files.
+[Fetchcrl](http://wiki.nikhef.nl/grid/FetchCRL3) utility will retrieve certificate
+revocation lists (CRLs) for a set of installed trust anchors, based on crl_url files
+or IGTF-style info files.
 
 This module obsoletes [CernOps-fetchcrl-1.1.0](https://forge.puppet.com/CERNOps/fetchcrl)
 
-### Examples
+## Examples
 
 ```puppet
 class{'fetchcrl':
@@ -25,20 +26,27 @@ fetchcrl::ca{'EDG-Tutorial-CA':
 }
 ```
 
-### Facts
+## Facts
+
 Two custom facts are included.
 
-*certissuer* returns the issuer of a grid certificate located at /etc/grid-security/hostcert.pem if it exists.
-*trustedca*  returns an array of all the certificate authoriry subjects located at /etc/grid-security/*.pem
+*certissuer* returns the issuer of a grid certificate located at
+/etc/grid-security/hostcert.pem if it exists.
+*trustedca*  returns an array of all the certificate authoriry subjects located
+at /etc/grid-security/*.pem
 
-### License
+## License
+
 Apache-2.0
 
-### Copyright
+## Copyright
+
 Steve Traylen, steve.traylen@cern.ch, CERN, 2016.
 
-### Contact
+## Contact
+
 Steve Traylen <steve.traylen@cern.ch>
 
 ## Support
-Please log tickets and issues at http://github.ch/voxpupuli/puppet-fetchcrl
+
+Please log tickets and issues at `http://github.ch/voxpupuli/puppet-fetchcrl`
