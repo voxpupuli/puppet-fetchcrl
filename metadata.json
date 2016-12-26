@@ -7,7 +7,7 @@
   "version": "1.1.2-rc0",
   "summary": "Intalls and configure fetch-crl",
   "name": "puppet-fetchcrl",
-  "author": "Steve Traylen",
+  "author": "Vox Pupuli",
   "tags": [
     "grid",
     "crl",
@@ -15,6 +15,12 @@
   ],
   "dependencies": [
 
+  ],
+  "requirements": [
+    {
+      "name": "puppet",
+      "version_requirement": ">= 3.8.7 < 5.0.0"
+    }
   ],
   "operatingsystem_support": [
     {
