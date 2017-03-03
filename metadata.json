@@ -4,10 +4,10 @@
   "source": "https://github.com/voxpupuli/puppet-fetchcrl",
   "issues": "https://github.com/voxpupuli/puppet-fetchcrl/issues",
   "description": "Install and configure fetch-crl",
-  "version": "1.1.2-rc0",
+  "version": "2.0.0-rc0",
   "summary": "Intalls and configure fetch-crl",
   "name": "puppet-fetchcrl",
-  "author": "Steve Traylen",
+  "author": "Vox Pupuli",
   "tags": [
     "grid",
     "crl",
@@ -16,11 +16,16 @@
   "dependencies": [
 
   ],
+  "requirements": [
+    {
+      "name": "puppet",
+      "version_requirement": ">= 4.6.1 < 5.0.0"
+    }
+  ],
   "operatingsystem_support": [
     {
       "operatingsystem": "RedHat",
       "operatingsystemrelease": [
-        "5.0",
         "6.0",
         "7.0"
       ]

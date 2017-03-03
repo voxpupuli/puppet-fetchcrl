@@ -1,3 +1,13 @@
+# Changelog
+
+## 2017-02-11 Release 1.2.0
+
+This is the last release with Puppet3 support!
+* Use operatingsystemmajrelease fact instead of operatingsystemrelease + regex
+* Fix several markdown issues
+* Add missing badges
+* Add minimum version_requirement for Puppet
+
 ## 2016-08-23  Release 1.1.1
 - Upstream from CERNOps-fetchcrl to voxpupuli-fetchcrl.
 
@@ -35,4 +45,5 @@
 - The capkgs_version and pkg_version parameters are now correctly used.
 
 ## 2012-11-21 - Second Release 0.0.2
+
 
