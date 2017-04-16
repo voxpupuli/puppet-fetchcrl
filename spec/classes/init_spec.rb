@@ -5,6 +5,7 @@ describe 'fetchcrl', type: 'class' do
       { osfamily: 'RedHat',
         operatingsystemmajrelease: '6' }
     end
+
     it { is_expected.to contain_class('fetchcrl') }
     it { is_expected.to contain_class('fetchcrl::install') }
     it { is_expected.to contain_class('fetchcrl::config') }
@@ -18,6 +19,7 @@ describe 'fetchcrl', type: 'class' do
         operatingsystemmajrelease: '6' }
     end
     let(:params) { { cache_control_request: '1234' } }
+
     it { is_expected.to contain_file('/etc/fetch-crl.conf').with_content(%r{^cache_control_request = 1234$}) }
   end
 end
