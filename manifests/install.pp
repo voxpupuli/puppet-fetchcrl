@@ -8,7 +8,7 @@ class fetchcrl::install (
   $pkg_version = $fetchcrl::pkg_version
 ) inherits fetchcrl {
 
-  # The fetch-crl or fetch-crl3 package.
+  # The fetch-crl package.
   package{$pkgname:
     ensure => $pkg_version,
   }

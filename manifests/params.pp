@@ -1,11 +1,8 @@
 #Class: fetchcrl::params
 class fetchcrl::params {
 
-  if $::osfamily == 'RedHat' and $::operatingsystemmajrelease == '5' {
-    $pkgname = fetch-crl3
-  } else {
-    $pkgname = fetch-crl
-  }
+  $pkgname = 'fetch-crl'
+
   # Deprecate fetchcrl_pkg_version/
   $_pkg_version = hiera('fetchcrl_pkg_version',false)
   if $_pkg_version {
