@@ -4,7 +4,7 @@
   "source": "https://github.com/voxpupuli/puppet-fetchcrl",
   "issues": "https://github.com/voxpupuli/puppet-fetchcrl/issues",
   "description": "Install and configure fetch-crl",
-  "version": "2.0.2-rc0",
+  "version": "2.1.0",
   "summary": "Intalls and configure fetch-crl",
   "name": "puppet-fetchcrl",
   "author": "Vox Pupuli",
