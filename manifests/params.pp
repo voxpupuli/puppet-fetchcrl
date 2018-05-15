@@ -37,7 +37,7 @@ class fetchcrl::params {
     warning('fetchcrl - fetchcrl_capkgs is deprecated, use fetchcrl::capkgs instead')
     $capkgs = $_capkgs
   } else {
-    $capkgs =   ['lcg-CA']
+    $capkgs =   ['ca-policy-egi-core']
   }
   $_carepo        = hiera('fetchcrl_carepo',false)
   if $_carepo {
