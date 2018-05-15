@@ -1,7 +1,7 @@
 #Class: fetchcrl::params
 class fetchcrl::params {
 
-  $pkgname = fetch-crl
+  $pkgname = 'fetch-crl'
 
   # Deprecate fetchcrl_pkg_version/
   $_pkg_version = hiera('fetchcrl_pkg_version',false)
