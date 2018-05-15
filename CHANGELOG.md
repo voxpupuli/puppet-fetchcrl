@@ -4,6 +4,14 @@ All notable changes to this project will be documented in this file.
 Each new release typically also includes the latest modulesync defaults.
 These should not affect the functionality of the module.
 
+## [v2.1.0](https://github.com/voxpupuli/puppet-fetchcrl/tree/v2.1.0) (2018-05-15)
+
+[Full Changelog](https://github.com/voxpupuli/puppet-fetchcrl/compare/v2.0.1...v2.1.0)
+
+**Merged pull requests:**
+
+- lcg-CA obsoleted by ca-policy-egi-core [\#32](https://github.com/voxpupuli/puppet-fetchcrl/pull/32) ([traylenator](https://github.com/traylenator))
+
 ## [v2.0.1](https://github.com/voxpupuli/puppet-fetchcrl/tree/v2.0.1) (2018-03-30)
 
 [Full Changelog](https://github.com/voxpupuli/puppet-fetchcrl/compare/v2.0.0...v2.0.1)
