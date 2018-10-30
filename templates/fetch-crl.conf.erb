@@ -9,6 +9,9 @@ nosymlinks
 <% if @nowarnings -%>
 nowarnings
 <% end -%>
+<% if @noerrors -%>
+noerrors
+<% end -%>
 <% if @http_proxy -%>
 http_proxy = <%= @http_proxy %>
 <% end -%>

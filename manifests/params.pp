@@ -18,6 +18,7 @@ class fetchcrl::params {
   $agingtolerance = 24
   $nosymlinks     = true
   $nowarnings     = true
+  $noerrors       = true
   $_http_proxy    = hiera('fetchcrl_proxy',false)
   if $_http_proxy {
     warning('fetchcrl - hiera var fetchcrl_proxy is deprecated, use fetchcrl::proxy instead')

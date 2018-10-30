@@ -5,6 +5,7 @@ class fetchcrl::config (
   $agingtolerance        = $fetchcrl::agingtolerance,
   $nosymlinks            = $fetchcrl::nosymlinks,
   $nowarnings            = $fetchcrl::nowarnings,
+  $noerrors              = $fetchcrl::noerrors,
   $http_proxy            = $fetchcrl::http_proxy,
   $httptimeout           = $fetchcrl::httptimeout,
   $parallelism           = $fetchcrl::parallelism,
