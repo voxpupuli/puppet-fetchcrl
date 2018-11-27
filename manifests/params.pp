@@ -4,7 +4,7 @@ class fetchcrl::params {
   $pkgname = 'fetch-crl'
 
   # Deprecate fetchcrl_pkg_version/
-  $_pkg_version = hiera('fetchcrl_pkg_version',false)
+  $_pkg_version = lookup({'name' => 'fetchcrl_pkg_version', 'default_value' => false})
   if $_pkg_version {
     warning('fetchcrl - Hiera variable fetchcrl_pkg_version is deprecated, use fetchcrl::pkg_version')
     $pkg_version = $_pkg_version
@@ -18,7 +18,7 @@ class fetchcrl::params {
   $agingtolerance = 24
   $nosymlinks     = true
   $nowarnings     = true
-  $_http_proxy    = hiera('fetchcrl_proxy',false)
+  $_http_proxy    = lookup({'name' => 'fetchcrl_proxy', 'default_value' => false})
   if $_http_proxy {
     warning('fetchcrl - hiera var fetchcrl_proxy is deprecated, use fetchcrl::proxy instead')
     $http_proxy = $_http_proxy
@@ -29,14 +29,14 @@ class fetchcrl::params {
   $parallelism    = 4
   $logmode        = 'syslog'
 
-  $_capkgs        = hiera('fetchcrl_capkgs', false)
+  $_capkgs        = lookup({'name' => 'fetchcrl_capkgs', 'default_value' =>  false})
   if $_capkgs {
     warning('fetchcrl - fetchcrl_capkgs is deprecated, use fetchcrl::capkgs instead')
     $capkgs = $_capkgs
   } else {
     $capkgs =   ['ca-policy-egi-core']
   }
-  $_carepo        = hiera('fetchcrl_carepo',false)
+  $_carepo        = lookup({'name' => 'fetchcrl_carepo', 'default_value' => false})
   if $_carepo {
     warning('fetchcrl = fetchcrl_carepo is deprecated, use fetchcrl::carepo istead')
     $carepo = $_carepo
@@ -44,7 +44,7 @@ class fetchcrl::params {
     $carepo         = 'http://repository.egi.eu/sw/production/cas/1/current/'
   }
   $manage_carepo = true
-  $_capkgs_version  =hiera('fetchcrl_capkgs_version',false)
+  $_capkgs_version  =lookup({'name' => 'fetchcrl_capkgs_version', 'default_value' => false})
   if $_capkgs_version {
     warning('fetchcrl - fetchcrl_capkgs_version is deprecated, use fetchcrl::capkgs_version instead')
   } else {
