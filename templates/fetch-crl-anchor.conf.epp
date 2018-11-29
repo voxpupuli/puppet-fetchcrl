@@ -1,9 +1,9 @@
 <% |
   String[1] $anchorname,
-  Optional[Integer] $agingtolerance = undef,
+  Variant[Undef,Integer] $agingtolerance = undef,
   Boolean $nowarnings,
   Boolean $noerrors,
-  Optional[Integer] $httptimeout = undef,
+  Variant[Undef,Integer] $httptimeout = undef,
   Array[Stdlib::Httpurl] $crl_url,
 | -%>
 # <%= $anchorname -%>.conf file installed with puppet.

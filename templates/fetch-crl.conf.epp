@@ -3,11 +3,11 @@
   Boolean $nosymlinks,
   Boolean $nowarnings,
   Boolean $noerrors,
-  Optional[Stdlib::Httpurl] $http_proxy = undef,
+  Variant[Undef,Stdlib::Httpurl] $http_proxy = undef,
   Integer $httptimeout,
   Integer $parallelism,
   Enum['direct','qualified','cache','syslog'] $logmode,
-  Optional[Integer] $cache_control_request = undef, 
+  Variant[Undef,Integer] $cache_control_request = undef,
 | %>
 # fetch-crl.conf file installed with puppet.
 #
