@@ -1,11 +1,11 @@
 #
 define fetchcrl::ca(
-  $anchorname     = $title,
-  $nowarnings     = true,
-  $noerrors       = true,
-  $httptimeout    = undef,
-  $agingtolerance = undef,
-  $crl_url        = []
+  String[1] $anchorname = $title,
+  Optional[Boolean] $nowarnings = undef,
+  Optional[Boolean] $noerrors = undef,
+  Optional[Integer] $httptimeout = undef,
+  Optional[Integer] $agingtolerance = undef,
+  Optional[Array[Stdlib::Httpurl]] $crl_url = [],
 ) {
 
   include '::fetchcrl'

@@ -20,7 +20,7 @@ describe 'fetchcrl', type: 'class' do
     end
     let(:params) do
       {
-        cache_control_request: '1234',
+        cache_control_request: 1234,
         capkgs: %w[abc def]
       }
     end
