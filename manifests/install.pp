@@ -1,11 +1,11 @@
 #Class fetchcrl::install
 class fetchcrl::install (
-  $pkgname   = $fetchcrl::pkgname,
-  $capkgs    = $fetchcrl::capkgs,
-  $carepo    = $fetchcrl::carepo,
-  $manage_carepo = $fetchcrl::manage_carepo,
+  $pkgname        = $fetchcrl::pkgname,
+  $capkgs         = $fetchcrl::capkgs,
+  $carepo         = $fetchcrl::carepo,
+  $manage_carepo  = $fetchcrl::manage_carepo,
   $capkgs_version = $fetchcrl::capkgs_version,
-  $pkg_version = $fetchcrl::pkg_version
+  $pkg_version    = $fetchcrl::pkg_version
 ) {
 
   # The fetch-crl package.
