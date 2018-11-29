@@ -1,8 +1,8 @@
 #
 define fetchcrl::ca(
   String[1] $anchorname = $title,
-  Optional[Boolean] $nowarnings             = undef,
-  Optional[Boolean] $noerrors               = undef,
+  Boolean $nowarnings                       = false,
+  Boolean $noerrors                         = false,
   Optional[Integer] $httptimeout            = undef,
   Optional[Integer] $agingtolerance         = undef,
   Optional[Array[Stdlib::Httpurl]] $crl_url = [],
