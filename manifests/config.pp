@@ -13,6 +13,8 @@ class fetchcrl::config (
   $cache_control_request = $fetchcrl::cache_control_request,
 ) {
 
+  assert_private()
+
   file{"/etc/${pkgname}.conf":
     ensure  => present,
     content => epp('fetchcrl/fetch-crl.conf.epp',{

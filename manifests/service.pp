@@ -5,6 +5,8 @@ class fetchcrl::service (
   $runcron = $fetchcrl::runcron,
 ) {
 
+  assert_private()
+
   service { "${pkgname}-boot":
     ensure     => $runboot,
     enable     => $runboot,

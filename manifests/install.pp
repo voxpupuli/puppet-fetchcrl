@@ -8,6 +8,8 @@ class fetchcrl::install (
   $pkg_version    = $fetchcrl::pkg_version
 ) {
 
+  assert_private()
+
   # The fetch-crl package.
   package{$pkgname:
     ensure => $pkg_version,
