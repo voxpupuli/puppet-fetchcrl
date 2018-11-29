@@ -15,7 +15,14 @@ define fetchcrl::ca(
     mode    => '0644',
     owner   => root,
     group   => root,
-    content => template('fetchcrl/fetch-crl-anchor.conf.erb'),
+    content => epp('fetchcrl/fetch-crl-anchor.conf.epp',{
+      'anchorname'     => $anchorname,
+      'agingtolerance' => $agingtolerance,
+      'nowarnings'     => $nowarnings,
+      'noerrors'       => $noerrors,
+      'httptimeout'    => $httptimeout,
+      'crl_url'        => $crl_url,
+      }),
   }
 }
 

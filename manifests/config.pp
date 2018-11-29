@@ -15,7 +15,16 @@ class fetchcrl::config (
 
   file{"/etc/${pkgname}.conf":
     ensure  => present,
-    content => template('fetchcrl/fetch-crl.conf.erb'),
+    content => epp('fetchcrl/fetch-crl.conf.epp',{
+      'agingtolerance'        => $agingtolerance,
+      'nosymlinks'            => $nosymlinks,
+      'nowarnings'            => $nowarnings,
+      'http_proxy'            => $http_proxy,
+      'httptimeout'           => $httptimeout,
+      'parallelism'           => $parallelism,
+      'logmode'               => $logmode,
+      'cache_control_request' => $cache_control_request,
+    }),
     mode    => '0644',
     owner   => root,
     group   => root,
