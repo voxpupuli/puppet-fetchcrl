@@ -1,4 +1,8 @@
-#Class: fetchcrl::service
+# @summary
+#  Controls fetch-crl cron and startup
+#
+# @api private
+#
 class fetchcrl::service (
   $pkgname = $fetchcrl::pkgname,
   $runboot = $fetchcrl::runboot,

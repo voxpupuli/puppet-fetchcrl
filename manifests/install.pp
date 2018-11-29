@@ -1,4 +1,8 @@
-#Class fetchcrl::install
+# @summary
+#  Installs fetch-crl
+#
+# @api private
+#
 class fetchcrl::install (
   $pkgname        = $fetchcrl::pkgname,
   $capkgs         = $fetchcrl::capkgs,

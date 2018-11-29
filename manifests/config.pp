@@ -1,5 +1,6 @@
+#  Configures fetch-crl
 #
-#
+# @api private
 #
 class fetchcrl::config (
   $agingtolerance        = $fetchcrl::agingtolerance,
