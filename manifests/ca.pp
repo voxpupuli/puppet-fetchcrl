@@ -36,7 +36,7 @@ define fetchcrl::ca(
   Array[Stdlib::Httpurl] $crl_url                = [],
 ) {
 
-  include '::fetchcrl'
+  include 'fetchcrl'
 
   file{"/etc/${::fetchcrl::pkgname}.d/${anchorname}.conf":
     ensure  => file,

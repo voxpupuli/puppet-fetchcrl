@@ -83,11 +83,9 @@ class fetchcrl (
   Variant[Undef,Integer] $cache_control_request = undef,
 ) {
 
-
-
-  contain '::fetchcrl::install'
-  contain '::fetchcrl::config'
-  contain '::fetchcrl::service'
+  contain 'fetchcrl::install'
+  contain 'fetchcrl::config'
+  contain 'fetchcrl::service'
 
   Class['fetchcrl::install']
   -> Class['fetchcrl::config']
