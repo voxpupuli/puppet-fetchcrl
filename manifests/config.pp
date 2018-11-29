@@ -11,7 +11,7 @@ class fetchcrl::config (
   $logmode               = $fetchcrl::logmode,
   $pkgname               = $fetchcrl::pkgname,
   $cache_control_request = $fetchcrl::cache_control_request,
-) inherits fetchcrl {
+) {
 
   file{"/etc/${pkgname}.conf":
     ensure  => present,

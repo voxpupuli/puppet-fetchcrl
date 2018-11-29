@@ -6,7 +6,7 @@ class fetchcrl::install (
   $manage_carepo = $fetchcrl::manage_carepo,
   $capkgs_version = $fetchcrl::capkgs_version,
   $pkg_version = $fetchcrl::pkg_version
-) inherits fetchcrl {
+) {
 
   # The fetch-crl package.
   package{$pkgname:

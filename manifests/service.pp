@@ -3,7 +3,7 @@ class fetchcrl::service (
   $pkgname = $fetchcrl::pkgname,
   $runboot = $fetchcrl::runboot,
   $runcron = $fetchcrl::runcron,
-) inherits fetchcrl {
+) {
 
   service { "${pkgname}-boot":
     ensure     => $runboot,
