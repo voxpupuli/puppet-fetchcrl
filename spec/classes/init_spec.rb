@@ -12,6 +12,7 @@ describe 'fetchcrl', type: 'class' do
     it { is_expected.to contain_class('fetchcrl::service') }
     it { is_expected.to contain_package('fetch-crl') }
     it { is_expected.to contain_file('/etc/fetch-crl.conf').without_content(%r{cache_control_request}) }
+    it { is_expected.to contain_file('/etc/fetch-crl.conf').without_content(%r{noerrors}) }
   end
   context 'with all parameters set' do
     let(:facts) do
@@ -28,5 +29,18 @@ describe 'fetchcrl', type: 'class' do
     it { is_expected.to contain_file('/etc/fetch-crl.conf').with_content(%r{^cache_control_request = 1234$}) }
     it { is_expected.to contain_package('abc').with_ensure('present') }
     it { is_expected.to contain_package('def').with_ensure('present') }
+  end
+  context 'with noerrors parameters set' do
+    let(:facts) do
+      { osfamily: 'RedHat',
+        operatingsystemmajrelease: '6' }
+    end
+    let(:params) do
+      {
+        noerrors: true
+      }
+    end
+
+    it { is_expected.to contain_file('/etc/fetch-crl.conf').with_content(%r{^noerrors$}) }
   end
 end

@@ -2,6 +2,7 @@
   Integer $agingtolerance,
   Boolean $nosymlinks,
   Boolean $nowarnings,
+  Boolean $noerrors,
   Optional[Stdlib::Httpurl] $http_proxy = undef,
   Integer $httptimeout,
   Integer $parallelism,
@@ -18,6 +19,9 @@ nosymlinks
 <% } -%>
 <% if $nowarnings { -%>
 nowarnings
+<% } -%>
+<% if $noerrors { -%>
+noerrors
 <% } -%>
 <% if $http_proxy { -%>
 http_proxy = <%= $http_proxy %>

@@ -32,6 +32,9 @@
 # @param nosymlinks
 #  do not create serial number symlinks.
 #
+# @param noerrors
+#  do not produce errors.
+#
 # @param nowarnings
 #  do not produce warnings.
 #
@@ -68,6 +71,7 @@ class fetchcrl (
   Integer $agingtolerance                  = 24,
   Boolean $nosymlinks                      = true,
   Boolean $nowarnings                      = true,
+  Boolean $noerrors                        = false,
   Optional[Stdlib::Httpurl] $http_proxy    = undef,
   Integer $httptimeout                     = 30,
   Integer $parallelism                     = 4,
