@@ -23,10 +23,14 @@ class fetchcrl (
   Optional[Integer] $cache_control_request = undef,
 ) {
 
-  Class['fetchcrl::install'] -> Class['fetchcrl::config'] -> Class['fetchcrl::service']
 
-  class{'::fetchcrl::install':}
-  class{'::fetchcrl::config':}
-  class{'::fetchcrl::service':}
+
+  contain '::fetchcrl::install'
+  contain '::fetchcrl::config'
+  contain '::fetchcrl::service'
+
+  Class['fetchcrl::install']
+  -> Class['fetchcrl::config']
+  ~> Class['fetchcrl::service']
 
 }
