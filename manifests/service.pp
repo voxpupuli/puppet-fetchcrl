@@ -1,9 +1,15 @@
-#Class: fetchcrl::service
+# @summary
+#  Controls fetch-crl cron and startup
+#
+# @api private
+#
 class fetchcrl::service (
   $pkgname = $fetchcrl::pkgname,
   $runboot = $fetchcrl::runboot,
   $runcron = $fetchcrl::runcron,
-) inherits fetchcrl {
+) {
+
+  assert_private()
 
   service { "${pkgname}-boot":
     ensure     => $runboot,
@@ -16,6 +22,5 @@ class fetchcrl::service (
     enable     => $runcron,
     hasstatus  => true,
     hasrestart => true,
-    require    => Class['fetchcrl::install'];
   }
 }

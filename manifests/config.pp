@@ -1,21 +1,35 @@
+#  Configures fetch-crl
 #
-#
+# @api private
 #
 class fetchcrl::config (
   $agingtolerance        = $fetchcrl::agingtolerance,
   $nosymlinks            = $fetchcrl::nosymlinks,
   $nowarnings            = $fetchcrl::nowarnings,
+  $noerrors              = $fetchcrl::noerrors,
   $http_proxy            = $fetchcrl::http_proxy,
   $httptimeout           = $fetchcrl::httptimeout,
   $parallelism           = $fetchcrl::parallelism,
   $logmode               = $fetchcrl::logmode,
   $pkgname               = $fetchcrl::pkgname,
   $cache_control_request = $fetchcrl::cache_control_request,
-) inherits fetchcrl {
+) {
+
+  assert_private()
 
   file{"/etc/${pkgname}.conf":
     ensure  => present,
-    content => template('fetchcrl/fetch-crl.conf.erb'),
+    content => epp('fetchcrl/fetch-crl.conf.epp',{
+      'agingtolerance'        => $agingtolerance,
+      'nosymlinks'            => $nosymlinks,
+      'nowarnings'            => $nowarnings,
+      'noerrors'              => $noerrors,
+      'http_proxy'            => $http_proxy,
+      'httptimeout'           => $httptimeout,
+      'parallelism'           => $parallelism,
+      'logmode'               => $logmode,
+      'cache_control_request' => $cache_control_request,
+    }),
     mode    => '0644',
     owner   => root,
     group   => root,

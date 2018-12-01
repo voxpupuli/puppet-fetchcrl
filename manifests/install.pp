@@ -1,12 +1,18 @@
-#Class fetchcrl::install
+# @summary
+#  Installs fetch-crl
+#
+# @api private
+#
 class fetchcrl::install (
-  $pkgname   = $fetchcrl::pkgname,
-  $capkgs    = $fetchcrl::capkgs,
-  $carepo    = $fetchcrl::carepo,
-  $manage_carepo = $fetchcrl::manage_carepo,
+  $pkgname        = $fetchcrl::pkgname,
+  $capkgs         = $fetchcrl::capkgs,
+  $carepo         = $fetchcrl::carepo,
+  $manage_carepo  = $fetchcrl::manage_carepo,
   $capkgs_version = $fetchcrl::capkgs_version,
-  $pkg_version = $fetchcrl::pkg_version
-) inherits fetchcrl {
+  $pkg_version    = $fetchcrl::pkg_version
+) {
+
+  assert_private()
 
   # The fetch-crl package.
   package{$pkgname:

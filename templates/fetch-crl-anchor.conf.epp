@@ -1,0 +1,28 @@
+<% |
+  String[1] $anchorname,
+  Optional[Integer] $agingtolerance = undef,
+  Boolean $nowarnings,
+  Boolean $noerrors,
+  Optional[Integer] $httptimeout = undef,
+  Array[Stdlib::Httpurl] $crl_url,
+| -%>
+# <%= $anchorname -%>.conf file installed with puppet.
+
+[<%= $anchorname -%>]
+<% if $agingtolerance { -%>
+agingtolerance = <%= $agingtolerance %>
+<% } -%>
+<% if $nowarnings { -%>
+nowarnings
+<% } -%>
+<% if $noerrors { -%>
+noerrors
+<% } -%>
+<% if $httptimeout { -%>
+httptimeout = <%= $httptimeout %>
+<% } -%>
+<% if $crl_url.length >= 1 { -%>
+crl_url.1 = <%= $crl_url.join(';') %>
+<% } -%>
+
+# end of <%= $anchorname -%>.conf  managed by puppet.
