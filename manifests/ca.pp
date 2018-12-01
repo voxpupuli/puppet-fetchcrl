@@ -38,7 +38,7 @@ define fetchcrl::ca(
 
   include 'fetchcrl'
 
-  file{"/etc/${::fetchcrl::pkgname}.d/${anchorname}.conf":
+  file{"/etc/${fetchcrl::pkgname}.d/${anchorname}.conf":
     ensure  => file,
     mode    => '0644',
     owner   => root,
