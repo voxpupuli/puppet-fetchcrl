@@ -14,6 +14,8 @@ describe 'fetchcrl', type: 'class' do
         it { is_expected.to contain_package('fetch-crl') }
         it { is_expected.to contain_file('/etc/fetch-crl.conf').without_content(%r{cache_control_request}) }
         it { is_expected.to contain_file('/etc/fetch-crl.conf').without_content(%r{noerrors}) }
+        it { is_expected.to contain_augeas('randomise_cron').with_incl('/etc/cron.d/fetch-crl') }
+        it { is_expected.to contain_augeas('randomise_cron').with_changes([%r{set minute ([0-9]|[1-5][0-9])}, %r{set hour [0-5]-23/6}]) }
       end
       context 'with all parameters set' do
         let(:params) do
@@ -27,14 +29,28 @@ describe 'fetchcrl', type: 'class' do
         it { is_expected.to contain_package('abc').with_ensure('present') }
         it { is_expected.to contain_package('def').with_ensure('present') }
       end
-      context 'with noerrors parameters set' do
+      context 'with boolean params parameters set true' do
         let(:params) do
           {
-            noerrors: true
+            noerrors: true,
+            randomcron: true
           }
         end
 
         it { is_expected.to contain_file('/etc/fetch-crl.conf').with_content(%r{^noerrors$}) }
+        it { is_expected.to contain_augeas('randomise_cron').with_incl('/etc/cron.d/fetch-crl') }
+        it { is_expected.to contain_augeas('randomise_cron').with_changes([%r{set minute ([0-9]|[1-5][0-9])}, %r{set hour [0-5]-23/6}]) }
+      end
+      context 'with boolean params parameters set false' do
+        let(:params) do
+          {
+            noerrors: false,
+            randomcron: false
+          }
+        end
+
+        it { is_expected.to contain_file('/etc/fetch-crl.conf').without_content(%r{^noerrors$}) }
+        it { is_expected.not_to contain_augeas('randomise_cron') }
       end
     end
   end

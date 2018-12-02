@@ -59,6 +59,9 @@
 # @param runcron
 #  Should fetch-crl be run as a cron job.
 #
+# @param randomcron
+#  Should the every 6 hour cron be configured with a random offset.
+#
 # @param cache_control_request
 #  sends a cache-control max-age hint in seconds towards the server in the HTTP request.
 #
@@ -72,6 +75,7 @@ class fetchcrl (
   Boolean $nosymlinks                      = true,
   Boolean $nowarnings                      = true,
   Boolean $noerrors                        = false,
+  Boolean $randomcron                      = true,
   Optional[Stdlib::Httpurl] $http_proxy    = undef,
   Integer $httptimeout                     = 30,
   Integer $parallelism                     = 4,
