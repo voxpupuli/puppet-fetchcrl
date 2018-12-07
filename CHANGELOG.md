@@ -4,6 +4,22 @@ All notable changes to this project will be documented in this file.
 Each new release typically also includes the latest modulesync defaults.
 These should not affect the functionality of the module.
 
+## [v3.0.0](https://github.com/voxpupuli/puppet-fetchcrl/tree/v3.0.0) (2018-12-07)
+
+[Full Changelog](https://github.com/voxpupuli/puppet-fetchcrl/compare/v2.1.1...v3.0.0)
+
+**Breaking changes:**
+
+- General code modernisation - assorted bugfixes. [\#46](https://github.com/voxpupuli/puppet-fetchcrl/pull/46) ([traylenator](https://github.com/traylenator))
+
+**Implemented enhancements:**
+
+- New randomcron parameter, random offset of cron [\#47](https://github.com/voxpupuli/puppet-fetchcrl/pull/47) ([traylenator](https://github.com/traylenator))
+
+**Closed issues:**
+
+- noerrors is not included in template [\#43](https://github.com/voxpupuli/puppet-fetchcrl/issues/43)
+
 ## [v2.1.1](https://github.com/voxpupuli/puppet-fetchcrl/tree/v2.1.1) (2018-10-14)
 
 [Full Changelog](https://github.com/voxpupuli/puppet-fetchcrl/compare/v2.1.0...v2.1.1)
