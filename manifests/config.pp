@@ -10,6 +10,7 @@ class fetchcrl::config (
   $http_proxy            = $fetchcrl::http_proxy,
   $httptimeout           = $fetchcrl::httptimeout,
   $parallelism           = $fetchcrl::parallelism,
+  $randomcron            = $fetchcrl::randomcron,
   $logmode               = $fetchcrl::logmode,
   $pkgname               = $fetchcrl::pkgname,
   $cache_control_request = $fetchcrl::cache_control_request,
@@ -46,4 +47,18 @@ class fetchcrl::config (
     recurse => true,
   }
 
+  # Set 6 hour interval cron to have a random offset.
+  if $randomcron {
+    $_hour = "${fqdn_rand(6,'fetchcrl')}-23/6"
+    $_minute  = fqdn_rand(60,'fetchcrl')
+    augeas{'randomise_cron':
+      incl    => '/etc/cron.d/fetch-crl',
+      lens    => 'Cron.lns',
+      context => '/files/etc/cron.d/fetch-crl/entry/time',
+      changes => [
+        "set minute ${_minute}",
+        "set hour ${_hour}",
+      ],
+    }
+  }
 }
