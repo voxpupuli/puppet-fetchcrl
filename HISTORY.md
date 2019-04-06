@@ -16,7 +16,7 @@ This is the last release with Puppet3 support!
 - Drop trustedcas fact - use trustedca instead.
 
 ## 2015-07-17  Release 0.4.0
-- Hiera variables 
+- Hiera variables
    `fetchcrl_pkg_version`, `fetchcrl_proxy` `fetchcrl_capkgs` `fetchcrl_carepo`
    `fetchcrl_capkgs_version` are now deprecated and will print a puppet warning if
     used. They still work today but support will be removed
@@ -24,7 +24,7 @@ This is the last release with Puppet3 support!
     Use hiera binding instead, e.g fetchcrl::proxy.
 
 ## 2015-07-17 - Release 0.3.0
-- New structured fact trustedca. 
+- New structured fact trustedca.
 - The existing non structured fact trustedcas is now deprecated
   and will be removed next release.
 
@@ -35,7 +35,7 @@ This is the last release with Puppet3 support!
 - Improve metadata for puppetforge.
 
 ## 2015-03-12 - Release 0.2.0
-- Drop dangling sym links, fixes #2 and #3   
+- Drop dangling sym links, fixes #2 and #3
 - Add more and newer testing.
 
 ## 2013-12-11 - Release 0.1.0
