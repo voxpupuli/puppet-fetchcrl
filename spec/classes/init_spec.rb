@@ -14,8 +14,22 @@ describe 'fetchcrl', type: 'class' do
         it { is_expected.to contain_package('fetch-crl') }
         it { is_expected.to contain_file('/etc/fetch-crl.conf').without_content(%r{cache_control_request}) }
         it { is_expected.to contain_file('/etc/fetch-crl.conf').without_content(%r{noerrors}) }
-        it { is_expected.to contain_augeas('randomise_cron').with_incl('/etc/cron.d/fetch-crl') }
-        it { is_expected.to contain_augeas('randomise_cron').with_changes([%r{set minute ([0-9]|[1-5][0-9])}, %r{set hour [0-5]-23/6}]) }
+        case facts[:os]['release']['major']
+        when '6', '7'
+          it { is_expected.to contain_augeas('randomise_cron').with_incl('/etc/cron.d/fetch-crl') }
+          it { is_expected.to contain_augeas('randomise_cron').with_changes([%r{set minute ([0-9]|[1-5][0-9])}, %r{set hour [0-5]-23/6}]) }
+          it { is_expected.to contain_service('fetch-crl-boot').with_ensure(false) }
+          it { is_expected.to contain_service('fetch-crl-boot').with_enable(false) }
+          it { is_expected.to contain_service('fetch-crl-cron').with_ensure(true) }
+          it { is_expected.to contain_service('fetch-crl-cron').with_enable(true) }
+          it { is_expected.to have_systemd__dropin_resource_count(0) }
+        else
+          it { is_expected.not_to contain_augeas('randomise_cron') }
+          it { is_expected.not_to contain_service('fetch-crl-boot') }
+          it { is_expected.not_to contain_service('fetch-crl-cron') }
+          it { is_expected.to contain_service('fetch-crl.timer').with_ensure(true) }
+          it { is_expected.to contain_service('fetch-crl.timer').with_enable(true) }
+        end
       end
       context 'with all parameters set' do
         let(:params) do
@@ -33,24 +47,49 @@ describe 'fetchcrl', type: 'class' do
         let(:params) do
           {
             noerrors: true,
-            randomcron: true
+            randomcron: true,
+            runcron: true,
+            runboot: true
           }
         end
 
         it { is_expected.to contain_file('/etc/fetch-crl.conf').with_content(%r{^noerrors$}) }
-        it { is_expected.to contain_augeas('randomise_cron').with_incl('/etc/cron.d/fetch-crl') }
-        it { is_expected.to contain_augeas('randomise_cron').with_changes([%r{set minute ([0-9]|[1-5][0-9])}, %r{set hour [0-5]-23/6}]) }
+        case facts[:os]['release']['major']
+        when '6', '7'
+          it { is_expected.to contain_augeas('randomise_cron').with_incl('/etc/cron.d/fetch-crl') }
+          it { is_expected.to contain_augeas('randomise_cron').with_changes([%r{set minute ([0-9]|[1-5][0-9])}, %r{set hour [0-5]-23/6}]) }
+          it { is_expected.to contain_service('fetch-crl-boot').with_ensure(true) }
+          it { is_expected.to contain_service('fetch-crl-boot').with_enable(true) }
+          it { is_expected.to contain_service('fetch-crl-cron').with_ensure(true) }
+          it { is_expected.to contain_service('fetch-crl-cron').with_enable(true) }
+          it { is_expected.to have_systemd__dropin_resource_count(0) }
+          it { is_expected.not_to contain_service('fetch-crl.timer') }
+        else
+          it { is_expected.not_to contain_augeas('randomise_cron') }
+          it { is_expected.to contain_service('fetch-crl.timer').with_ensure(true) }
+          it { is_expected.to contain_service('fetch-crl.timer').with_enable(true) }
+        end
       end
       context 'with boolean params parameters set false' do
         let(:params) do
           {
             noerrors: false,
-            randomcron: false
+            randomcron: false,
+            runcron: false,
+            runboot: false
           }
         end
 
         it { is_expected.to contain_file('/etc/fetch-crl.conf').without_content(%r{^noerrors$}) }
         it { is_expected.not_to contain_augeas('randomise_cron') }
+        case facts[:os]['release']['major']
+        when '6', '7'
+          it { is_expected.to have_systemd__dropin_resource_count(0) }
+          it { is_expected.not_to contain_service('fetch-crl.timer') }
+        else
+          it { is_expected.to contain_service('fetch-crl.timer').with_ensure(false) }
+          it { is_expected.to contain_service('fetch-crl.timer').with_enable(false) }
+        end
       end
     end
   end

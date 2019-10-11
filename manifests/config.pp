@@ -48,7 +48,7 @@ class fetchcrl::config (
   }
 
   # Set 6 hour interval cron to have a random offset.
-  if $randomcron {
+  if $fetchcrl::periodic_method == 'cron' and $randomcron {
     $_hour = "${fqdn_rand(6,'fetchcrl')}-23/6"
     $_minute  = fqdn_rand(60,'fetchcrl')
     augeas{'randomise_cron':
