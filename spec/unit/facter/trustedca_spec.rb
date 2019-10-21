@@ -33,7 +33,7 @@ describe 'trustedca' do
     it { expect(Facter.fact(:trustedca).value).to eq [] }
   end
 
-  context 'with a value and an invalid pem files installed' do
+  context 'with a valid and an invalid pem files installed' do
     before do
       arc = File.read(fixtures('certs', 'ARC-TestCA-6a8cca22-key.pem'))
       cern = File.read(fixtures('certs', 'CERN-GridCA.pem'))
