@@ -22,7 +22,6 @@ describe 'fetchcrl', type: 'class' do
           it { is_expected.to contain_service('fetch-crl-boot').with_enable(false) }
           it { is_expected.to contain_service('fetch-crl-cron').with_ensure(true) }
           it { is_expected.to contain_service('fetch-crl-cron').with_enable(true) }
-          it { is_expected.to have_systemd__dropin_resource_count(0) }
         else
           it { is_expected.not_to contain_augeas('randomise_cron') }
           it { is_expected.not_to contain_service('fetch-crl-boot') }
@@ -62,7 +61,6 @@ describe 'fetchcrl', type: 'class' do
           it { is_expected.to contain_service('fetch-crl-boot').with_enable(true) }
           it { is_expected.to contain_service('fetch-crl-cron').with_ensure(true) }
           it { is_expected.to contain_service('fetch-crl-cron').with_enable(true) }
-          it { is_expected.to have_systemd__dropin_resource_count(0) }
           it { is_expected.not_to contain_service('fetch-crl.timer') }
         else
           it { is_expected.not_to contain_augeas('randomise_cron') }
@@ -84,7 +82,6 @@ describe 'fetchcrl', type: 'class' do
         it { is_expected.not_to contain_augeas('randomise_cron') }
         case facts[:os]['release']['major']
         when '6', '7'
-          it { is_expected.to have_systemd__dropin_resource_count(0) }
           it { is_expected.not_to contain_service('fetch-crl.timer') }
         else
           it { is_expected.to contain_service('fetch-crl.timer').with_ensure(false) }
