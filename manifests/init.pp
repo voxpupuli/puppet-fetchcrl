@@ -4,7 +4,7 @@
 #  Main class, installs fetch-crl and configured it.
 #  https://wiki.nikhef.nl/grid/FetchCRL3
 #
-# @example
+# @example Simple Example
 #  class{'fetchcrl':
 #    http_proxy            => 'http:://squid.example.org:8000',
 #    carepo                => 'http://yum.example.org/yumrepo',
