@@ -4,7 +4,32 @@ All notable changes to this project will be documented in this file.
 Each new release typically also includes the latest modulesync defaults.
 These should not affect the functionality of the module.
 
-## [v3.0.0](https://github.com/voxpupuli/puppet-fetchcrl/tree/v3.0.0) (2018-12-07)
+## [v4.0.0](https://github.com/voxpupuli/puppet-fetchcrl/tree/v4.0.0) (2019-12-05)
+
+[Full Changelog](https://github.com/voxpupuli/puppet-fetchcrl/compare/v3.0.0...v4.0.0)
+
+**Breaking changes:**
+
+- modulesync 2.7.0 and drop puppet 4 [\#52](https://github.com/voxpupuli/puppet-fetchcrl/pull/52) ([bastelfreak](https://github.com/bastelfreak))
+
+**Implemented enhancements:**
+
+- Fact trustedcas to skip over invalid .pem files [\#54](https://github.com/voxpupuli/puppet-fetchcrl/pull/54) ([traylenator](https://github.com/traylenator))
+
+**Fixed bugs:**
+
+- Correction of typo [\#55](https://github.com/voxpupuli/puppet-fetchcrl/pull/55) ([traylenator](https://github.com/traylenator))
+
+**Closed issues:**
+
+- new installs only : puppet error on trustedca fact [\#51](https://github.com/voxpupuli/puppet-fetchcrl/issues/51)
+
+**Merged pull requests:**
+
+- Remove fictitious runatboot from docs [\#57](https://github.com/voxpupuli/puppet-fetchcrl/pull/57) ([traylenator](https://github.com/traylenator))
+- Addition of RedHat 8 support [\#56](https://github.com/voxpupuli/puppet-fetchcrl/pull/56) ([traylenator](https://github.com/traylenator))
+
+## [v3.0.0](https://github.com/voxpupuli/puppet-fetchcrl/tree/v3.0.0) (2018-12-15)
 
 [Full Changelog](https://github.com/voxpupuli/puppet-fetchcrl/compare/v2.1.1...v3.0.0)
 
