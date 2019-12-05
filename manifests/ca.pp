@@ -1,7 +1,7 @@
 # @summary
 #  Creates per CA configuration files.
 #
-# @example
+# @example Simple Example
 #  fetchcrl::ca{'EDG-Tutorial-CA':
 #    agingtolerance => 168
 #  }
