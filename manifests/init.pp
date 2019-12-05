@@ -53,9 +53,6 @@
 # @param pkgname
 #  Name of fetch-crl package.
 #
-# @param runatboot
-#  Should fetch-crl be ran at boot time.
-#
 # @param runcron
 #  Should fetch-crl be run as a cron job.
 #
