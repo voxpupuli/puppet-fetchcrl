@@ -13,7 +13,12 @@ describe 'fetchcrl' do
       shell('ls /etc/grid-security/certificates/*.r0', acceptable_exit_codes: 0)
     end
     describe file('/etc/cron.d/fetch-crl') do
-      its(:content) { is_expected.to match %r{^([0-9]|[1-5][0-9]) [0-5]-23/6 \* \* \*.*$} }
+      case fact('operatingsystemmajrelease')
+      when '6', '7'
+        its(:content) { is_expected.to match %r{^([0-9]|[1-5][0-9]) [0-5]-23/6 \* \* \*.*$} }
+      else
+        it { is_expected.not_to exist }
+      end
     end
   end
 end
