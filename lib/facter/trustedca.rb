@@ -6,8 +6,12 @@ require 'openssl'
 Facter.add('trustedca') do
   setcode do
     arr = []
-    Dir.glob('/etc/grid-security/certificates/*.pem') do |pem|
-      cert = OpenSSL::X509::Certificate.new(File.read(pem))
+    Dir.glob('/etc/grid-security/certificates/*.pem').each do |pem|
+      begin
+        cert = OpenSSL::X509::Certificate.new(File.read(pem))
+      rescue
+        next
+      end
       subject = cert.subject.to_a
       # Array of arrays [CN,France,19] , last thing is type, hopefully we
       # can ignore that? I'm sure there must be a method in Certificate
