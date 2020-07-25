@@ -27,7 +27,7 @@
 # @param crl_url
 #  A list of URLs to download CAs from
 #
-define fetchcrl::ca(
+define fetchcrl::ca (
   String[1] $anchorname             = $title,
   Boolean $nowarnings               = false,
   Boolean $noerrors                 = false,
@@ -35,22 +35,20 @@ define fetchcrl::ca(
   Optional[Integer] $agingtolerance = undef,
   Array[Stdlib::Httpurl] $crl_url   = [],
 ) {
-
   include 'fetchcrl'
 
-  file{"/etc/${fetchcrl::pkgname}.d/${anchorname}.conf":
+  file { "/etc/${fetchcrl::pkgname}.d/${anchorname}.conf":
     ensure  => file,
     mode    => '0644',
     owner   => root,
     group   => root,
     content => epp('fetchcrl/fetch-crl-anchor.conf.epp',{
-      'anchorname'     => $anchorname,
-      'agingtolerance' => $agingtolerance,
-      'nowarnings'     => $nowarnings,
-      'noerrors'       => $noerrors,
-      'httptimeout'    => $httptimeout,
-      'crl_url'        => $crl_url,
-      }),
+        'anchorname'     => $anchorname,
+        'agingtolerance' => $agingtolerance,
+        'nowarnings'     => $nowarnings,
+        'noerrors'       => $noerrors,
+        'httptimeout'    => $httptimeout,
+        'crl_url'        => $crl_url,
+    }),
   }
 }
-
