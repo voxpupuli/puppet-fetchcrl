@@ -11,16 +11,15 @@ class fetchcrl::install (
   $capkgs_version = $fetchcrl::capkgs_version,
   $pkg_version    = $fetchcrl::pkg_version
 ) {
-
   assert_private()
 
   # The fetch-crl package.
-  package{$pkgname:
+  package { $pkgname:
     ensure => $pkg_version,
   }
 
   if $manage_carepo {
-    file{'/etc/pki/rpm-gpg/GPG-KEY-EUGridPMA-RPM-3':
+    file { '/etc/pki/rpm-gpg/GPG-KEY-EUGridPMA-RPM-3':
       ensure  => file,
       source  => 'puppet:///modules/fetchcrl/GPG-KEY-EUGridPMA-RPM-3',
       replace => false,
@@ -29,7 +28,7 @@ class fetchcrl::install (
       mode    => '0644',
     }
 
-    yumrepo{'carepo':
+    yumrepo { 'carepo':
       descr    => 'IGTF CA Repository',
       enabled  => 1,
       baseurl  => $carepo,
@@ -43,7 +42,7 @@ class fetchcrl::install (
     $capkgs_require = undef
   }
   # The CA meta package.
-  package{$capkgs:
+  package { $capkgs:
     ensure  => $capkgs_version,
     require => $capkgs_require,
   }
