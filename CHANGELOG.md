@@ -4,6 +4,20 @@ All notable changes to this project will be documented in this file.
 Each new release typically also includes the latest modulesync defaults.
 These should not affect the functionality of the module.
 
+## [v4.1.0](https://github.com/voxpupuli/puppet-fetchcrl/tree/v4.1.0) (2020-09-14)
+
+[Full Changelog](https://github.com/voxpupuli/puppet-fetchcrl/compare/v4.0.0...v4.1.0)
+
+**Implemented enhancements:**
+
+- Enable acceptance tests for CentOS 8 [\#63](https://github.com/voxpupuli/puppet-fetchcrl/pull/63) ([traylenator](https://github.com/traylenator))
+- Allow puppetlabs/stdlib 6.x [\#62](https://github.com/voxpupuli/puppet-fetchcrl/pull/62) ([dhoppe](https://github.com/dhoppe))
+
+**Merged pull requests:**
+
+- modulesync 3.0.0 & puppet-lint updates [\#66](https://github.com/voxpupuli/puppet-fetchcrl/pull/66) ([bastelfreak](https://github.com/bastelfreak))
+- Use voxpupuli-acceptance [\#65](https://github.com/voxpupuli/puppet-fetchcrl/pull/65) ([ekohl](https://github.com/ekohl))
+
 ## [v4.0.0](https://github.com/voxpupuli/puppet-fetchcrl/tree/v4.0.0) (2019-12-05)
 
 [Full Changelog](https://github.com/voxpupuli/puppet-fetchcrl/compare/v3.0.0...v4.0.0)
@@ -26,6 +40,7 @@ These should not affect the functionality of the module.
 
 **Merged pull requests:**
 
+- Give examples headings [\#59](https://github.com/voxpupuli/puppet-fetchcrl/pull/59) ([traylenator](https://github.com/traylenator))
 - Remove fictitious runatboot from docs [\#57](https://github.com/voxpupuli/puppet-fetchcrl/pull/57) ([traylenator](https://github.com/traylenator))
 - Addition of RedHat 8 support [\#56](https://github.com/voxpupuli/puppet-fetchcrl/pull/56) ([traylenator](https://github.com/traylenator))
 
