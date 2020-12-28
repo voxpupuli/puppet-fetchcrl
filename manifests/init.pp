@@ -83,14 +83,12 @@ class fetchcrl (
   Optional[Stdlib::Httpurl] $http_proxy    = undef,
   Integer $httptimeout                     = 30,
   Integer $parallelism                     = 4,
-  Enum['direct','qualified',
-        'cache','syslog'] $logmode         = 'syslog',
+  Enum['direct','qualified', 'cache','syslog'] $logmode = 'syslog',
   String[1] $pkgname                       = 'fetch-crl',
   Boolean $runboot                         = false,
   Boolean $runcron                         = true,
   Optional[Integer] $cache_control_request = undef,
 ) {
-
   # Is the package cron or systemd.timer based?
   $periodic_method = $facts['os']['release']['major'] ? {
     '6' => 'cron',
@@ -105,5 +103,4 @@ class fetchcrl (
   Class['fetchcrl::install']
   -> Class['fetchcrl::config']
   ~> Class['fetchcrl::service']
-
 }

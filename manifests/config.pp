@@ -15,21 +15,20 @@ class fetchcrl::config (
   $pkgname               = $fetchcrl::pkgname,
   $cache_control_request = $fetchcrl::cache_control_request,
 ) {
-
   assert_private()
 
-  file{"/etc/${pkgname}.conf":
-    ensure  => present,
+  file { "/etc/${pkgname}.conf":
+    ensure  => file,
     content => epp('fetchcrl/fetch-crl.conf.epp',{
-      'agingtolerance'        => $agingtolerance,
-      'nosymlinks'            => $nosymlinks,
-      'nowarnings'            => $nowarnings,
-      'noerrors'              => $noerrors,
-      'http_proxy'            => $http_proxy,
-      'httptimeout'           => $httptimeout,
-      'parallelism'           => $parallelism,
-      'logmode'               => $logmode,
-      'cache_control_request' => $cache_control_request,
+        'agingtolerance'        => $agingtolerance,
+        'nosymlinks'            => $nosymlinks,
+        'nowarnings'            => $nowarnings,
+        'noerrors'              => $noerrors,
+        'http_proxy'            => $http_proxy,
+        'httptimeout'           => $httptimeout,
+        'parallelism'           => $parallelism,
+        'logmode'               => $logmode,
+        'cache_control_request' => $cache_control_request,
     }),
     mode    => '0644',
     owner   => root,
@@ -37,7 +36,7 @@ class fetchcrl::config (
   }
 
   # Keep the directory based configuration empty.
-  file{"/etc/${pkgname}.d":
+  file { "/etc/${pkgname}.d":
     ensure  => directory,
     owner   => root,
     group   => root,
@@ -51,7 +50,7 @@ class fetchcrl::config (
   if $fetchcrl::periodic_method == 'cron' and $randomcron {
     $_hour = "${fqdn_rand(6,'fetchcrl')}-23/6"
     $_minute  = fqdn_rand(60,'fetchcrl')
-    augeas{'randomise_cron':
+    augeas { 'randomise_cron':
       incl    => '/etc/cron.d/fetch-crl',
       lens    => 'Cron.lns',
       context => '/files/etc/cron.d/fetch-crl/entry/time',

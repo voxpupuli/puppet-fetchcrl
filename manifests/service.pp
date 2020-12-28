@@ -8,7 +8,6 @@ class fetchcrl::service (
   $runboot = $fetchcrl::runboot,
   $runcron = $fetchcrl::runcron,
 ) {
-
   assert_private()
 
   case $fetchcrl::periodic_method {
@@ -27,7 +26,7 @@ class fetchcrl::service (
       }
     }
     'timer': {
-      service{"${pkgname}.timer":
+      service { "${pkgname}.timer":
         ensure => $runcron,
         enable => $runcron,
       }
