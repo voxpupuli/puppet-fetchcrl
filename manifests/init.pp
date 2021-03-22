@@ -17,6 +17,9 @@
 # @param carepo
 #  Repository URL of CA packages.
 #
+# @param carepo_gpgkey
+#  Repository URL of GPG key for CA packages.
+
 # @param manage_carepo
 #  Should package repository be configured.
 #
@@ -72,6 +75,7 @@
 class fetchcrl (
   Array[String[1]] $capkgs                 = ['ca-policy-egi-core'],
   Stdlib::Httpurl $carepo                  = 'https://repository.egi.eu/sw/production/cas/1/current/',
+  Stdlib::Httpurl $carepo_gpgkey           = 'https://dist.eugridpma.info/distribution/igtf/current/GPG-KEY-EUGridPMA-RPM-3',
   Boolean $manage_carepo                   = true,
   String $capkgs_version                   = 'present',
   String $pkg_version                      = 'present',

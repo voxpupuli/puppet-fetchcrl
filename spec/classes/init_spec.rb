@@ -14,6 +14,11 @@ describe 'fetchcrl', type: 'class' do
         it { is_expected.to contain_package('fetch-crl') }
         it { is_expected.to contain_file('/etc/fetch-crl.conf').without_content(%r{cache_control_request}) }
         it { is_expected.to contain_file('/etc/fetch-crl.conf').without_content(%r{noerrors}) }
+        it {
+          is_expected.to contain_yumrepo('carepo').with({
+                                                          baseurl: 'https://repository.egi.eu/sw/production/cas/1/current/',
+                                                          gpgkey: 'https://dist.eugridpma.info/distribution/igtf/current/GPG-KEY-EUGridPMA-RPM-3',
+                                                        })}
         case facts[:os]['release']['major']
         when '7'
           it { is_expected.to contain_augeas('randomise_cron').with_incl('/etc/cron.d/fetch-crl') }
@@ -34,13 +39,20 @@ describe 'fetchcrl', type: 'class' do
         let(:params) do
           {
             cache_control_request: 1234,
-            capkgs: %w[abc def]
+            capkgs: %w[abc def],
+            carepo: 'https://example.org/foo',
+            carepo_gpgkey: 'https://example.org/foo.gpg',
           }
         end
 
         it { is_expected.to contain_file('/etc/fetch-crl.conf').with_content(%r{^cache_control_request = 1234$}) }
         it { is_expected.to contain_package('abc').with_ensure('present') }
         it { is_expected.to contain_package('def').with_ensure('present') }
+        it {
+          is_expected.to contain_yumrepo('carepo').with({
+                                                          baseurl: 'https://example.org/foo',
+                                                          gpgkey: 'https://example.org/foo.gpg',
+                                                        })}
       end
       context 'with boolean params parameters set true' do
         let(:params) do
@@ -48,10 +60,12 @@ describe 'fetchcrl', type: 'class' do
             noerrors: true,
             randomcron: true,
             runcron: true,
-            runboot: true
+            runboot: true,
+            manage_carepo: true,
           }
         end
 
+        it { is_expected.to contain_yumrepo('carepo') }
         it { is_expected.to contain_file('/etc/fetch-crl.conf').with_content(%r{^noerrors$}) }
         case facts[:os]['release']['major']
         when '7'
@@ -74,10 +88,12 @@ describe 'fetchcrl', type: 'class' do
             noerrors: false,
             randomcron: false,
             runcron: false,
-            runboot: false
+            runboot: false,
+            manage_carepo: false,
           }
         end
 
+        it { is_expected.not_to contain_yumrepo('carepo') }
         it { is_expected.to contain_file('/etc/fetch-crl.conf').without_content(%r{^noerrors$}) }
         it { is_expected.not_to contain_augeas('randomise_cron') }
         case facts[:os]['release']['major']
