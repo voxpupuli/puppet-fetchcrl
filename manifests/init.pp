@@ -91,7 +91,6 @@ class fetchcrl (
 ) {
   # Is the package cron or systemd.timer based?
   $periodic_method = $facts['os']['release']['major'] ? {
-    '6' => 'cron',
     '7' => 'cron',
     default => 'timer',
   }
