@@ -35,6 +35,9 @@
 # @param nosymlinks
 #  do not create serial number symlinks.
 #
+# @param inet6glue
+#  use Net::INET6Glue
+#
 # @param noerrors
 #  do not produce errors.
 #
@@ -81,6 +84,7 @@ class fetchcrl (
   String $pkg_version                      = 'present',
   Integer $agingtolerance                  = 24,
   Boolean $nosymlinks                      = true,
+  Boolean $inet6glue                       = false,
   Boolean $nowarnings                      = true,
   Boolean $noerrors                        = false,
   Boolean $randomcron                      = true,

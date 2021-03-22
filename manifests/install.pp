@@ -10,11 +10,24 @@ class fetchcrl::install (
   $carepo_gpgkey  = $fetchcrl::carepo_gpgkey,
   $manage_carepo  = $fetchcrl::manage_carepo,
   $capkgs_version = $fetchcrl::capkgs_version,
-  $pkg_version    = $fetchcrl::pkg_version
+  $pkg_version    = $fetchcrl::pkg_version,
+  $inet6glue      = $fetchcrl::inet6glue
 ) {
   assert_private()
 
   # The fetch-crl package.
+  if $inet6glue {
+    $inet6glue_pkg = $facts['os']['family'] ? {
+      'Debian' => 'libnet-inet6glue-perl',
+      'RedHat' => 'perl-Net-INET6Glue',
+    }
+
+    package { $inet6glue_pkg:
+      ensure => 'present',
+      before => Package[$pkgname],
+    }
+  }
+
   package { $pkgname:
     ensure => $pkg_version,
   }

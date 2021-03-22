@@ -21,4 +21,14 @@ describe 'fetchcrl' do
       end
     end
   end
+  context 'with fetchcrl and ipv6' do
+    let(:pp) { 'class{"fetchcrl": inet6glue => true }' }
+
+    it 'configures and work with no errors' do
+      apply_manifest(pp, catch_failures: true)
+      apply_manifest(pp, catch_changes: true)
+      shell('fetch-crl', acceptable_exit_codes: [0, 1])
+      shell('ls /etc/grid-security/certificates/*.r0', acceptable_exit_codes: 0)
+    end
+  end
 end
