@@ -14,6 +14,7 @@ describe 'fetchcrl', type: 'class' do
         it { is_expected.to contain_package('fetch-crl') }
         it { is_expected.to contain_file('/etc/fetch-crl.conf').without_content(%r{cache_control_request}) }
         it { is_expected.to contain_file('/etc/fetch-crl.conf').without_content(%r{noerrors}) }
+        it { is_expected.to contain_file('/etc/fetch-crl.conf').without_content(%r{inet6glue}) }
         case facts[:os]['family']
         when 'Debian'
           it {
@@ -94,16 +95,20 @@ describe 'fetchcrl', type: 'class' do
             runcron: true,
             runboot: true,
             manage_carepo: true,
+            inet6glue: true,
           }
         end
 
         case facts[:os]['family']
         when 'Debian'
           it { is_expected.to contain_apt__source('carepo') }
+          it { is_expected.to contain_package('libnet-inet6glue-perl').with_ensure('present')}
         else
           it { is_expected.to contain_yumrepo('carepo') }
+          it { is_expected.to contain_package('perl-Net-INET6Glue').with_ensure('present')}
         end
         it { is_expected.to contain_file('/etc/fetch-crl.conf').with_content(%r{^noerrors$}) }
+        it { is_expected.to contain_file('/etc/fetch-crl.conf').with_content(%r{^inet6glue$}) }
         case [facts[:os]['name'], facts[:os]['release']['major']]
         when %w[RedHat 7], %w[CentOS 7], %w[Debian 10], ['Ubuntu', '18.04']
           it { is_expected.to contain_augeas('randomise_cron').with_incl('/etc/cron.d/fetch-crl') }

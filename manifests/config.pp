@@ -5,6 +5,7 @@
 class fetchcrl::config (
   $agingtolerance        = $fetchcrl::agingtolerance,
   $nosymlinks            = $fetchcrl::nosymlinks,
+  $inet6glue             = $fetchcrl::inet6glue,
   $nowarnings            = $fetchcrl::nowarnings,
   $noerrors              = $fetchcrl::noerrors,
   $http_proxy            = $fetchcrl::http_proxy,
@@ -22,6 +23,7 @@ class fetchcrl::config (
     content => epp('fetchcrl/fetch-crl.conf.epp',{
         'agingtolerance'        => $agingtolerance,
         'nosymlinks'            => $nosymlinks,
+        'inet6glue'             => $inet6glue,
         'nowarnings'            => $nowarnings,
         'noerrors'              => $noerrors,
         'http_proxy'            => $http_proxy,

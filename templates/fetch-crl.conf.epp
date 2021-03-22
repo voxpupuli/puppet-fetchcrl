@@ -1,6 +1,7 @@
 <% |
   Integer $agingtolerance,
   Boolean $nosymlinks,
+  Boolean $inet6glue,
   Boolean $nowarnings,
   Boolean $noerrors,
   Optional[Stdlib::Httpurl] $http_proxy = undef,
@@ -16,6 +17,9 @@ agingtolerance = <%= $agingtolerance %>
 <% } -%>
 <% if $nosymlinks { -%>
 nosymlinks
+<% } -%>
+<% if $inet6glue { -%>
+inet6glue
 <% } -%>
 <% if $nowarnings { -%>
 nowarnings
