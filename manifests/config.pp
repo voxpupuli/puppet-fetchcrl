@@ -1,4 +1,4 @@
-#  Configures fetch-crl
+# @summary  Configures fetch-crl
 #
 # @api private
 #

@@ -1,5 +1,5 @@
 # @summary
-#  Controls fetch-crl cron and startup
+#  Controls fetch-crl cron or timer.
 #
 # @api private
 #
