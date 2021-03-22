@@ -94,9 +94,12 @@ class fetchcrl (
   Optional[Integer] $cache_control_request = undef,
 ) {
   # Is the package cron or systemd.timer based?
-  $periodic_method = $facts['os']['release']['major'] ? {
-    '7' => 'cron',
-    default => 'timer',
+  if ($facts['os']['name'] == 'Ubuntu' and versioncmp($facts['os']['release']['major'],'18.04') <= 0 ) or
+  ($facts['os']['name'] == 'Debian' and versioncmp($facts['os']['release']['major'],'10') <= 0 ) or
+  ($facts['os']['family'] == 'RedHat' and versioncmp($facts['os']['release']['major'],'7') <= 0 ) {
+    $periodic_method = 'cron'
+  } else {
+    $periodic_method = 'timer'
   }
 
   contain 'fetchcrl::install'

@@ -20,15 +20,37 @@ class fetchcrl::install (
   }
 
   if $manage_carepo {
-    yumrepo { 'carepo':
-      descr    => 'IGTF CA Repository',
-      enabled  => 1,
-      baseurl  => $carepo,
-      gpgcheck => 1,
-      gpgkey   => $carepo_gpgkey,
+    case $facts['os']['family'] {
+      'RedHat': {
+        yumrepo { 'carepo':
+          descr    => 'IGTF CA Repository',
+          enabled  => 1,
+          baseurl  => $carepo,
+          gpgcheck => 1,
+          gpgkey   => $carepo_gpgkey,
+        }
+        $capkgs_require = Yumrepo['carepo']
+      }
+      'Debian': {
+        apt::source { 'carepo':
+          ensure        => 'present',
+          comment       => 'IGTF CA Repository',
+          location      => $carepo,
+          key           => {
+            ensure => refreshed,
+            id     => 'D12E922822BE64D50146188BC32D99C83CDBBC71',
+            source => $carepo_gpgkey,
+          },
+          release       => 'egi-igtf',
+          repos         => 'core',
+          notify_update => true,
+        }
+        $capkgs_require = Apt::Source['carepo']
+      }
+      default: {
+        fail('Yum or Apt repositories can be configured on family Debian or RedHat only')
+      }
     }
-
-    $capkgs_require = Yumrepo['carepo']
   } else {
     $capkgs_require = undef
   }
