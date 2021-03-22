@@ -8,8 +8,7 @@
 
 #### Public Classes
 
-* [`fetchcrl`](#fetchcrl): Main class, installs fetch-crl and configured it.
-https://wiki.nikhef.nl/grid/FetchCRL3
+* [`fetchcrl`](#fetchcrl)
 
 #### Private Classes
 
@@ -23,43 +22,35 @@ https://wiki.nikhef.nl/grid/FetchCRL3
 
 ## Classes
 
-### `fetchcrl`
+### <a name="fetchcrl"></a>`fetchcrl`
 
-fetchcrl
-
-#### Examples
-
-##### Simple Example
-
-```puppet
-class{'fetchcrl':
-  http_proxy            => 'http:://squid.example.org:8000',
-  carepo                => 'http://yum.example.org/yumrepo',
-  cache_control_request => '3600',
-}
-```
+The fetchcrl class.
 
 #### Parameters
 
-The following parameters are available in the `fetchcrl` class.
+The following parameters are available in the `fetchcrl` class:
 
-##### `capkgs`
+* [`manage_carepo`](#manage_carepo)
+* [`capkgs_version`](#capkgs_version)
+* [`pkg_version`](#pkg_version)
+* [`agingtolerance`](#agingtolerance)
+* [`nosymlinks`](#nosymlinks)
+* [`noerrors`](#noerrors)
+* [`nowarnings`](#nowarnings)
+* [`http_proxy`](#http_proxy)
+* [`httptimeout`](#httptimeout)
+* [`parallelism`](#parallelism)
+* [`logmode`](#logmode)
+* [`pkgname`](#pkgname)
+* [`runcron`](#runcron)
+* [`runboot`](#runboot)
+* [`randomcron`](#randomcron)
+* [`cache_control_request`](#cache_control_request)
+* [`capkgs`](#capkgs)
+* [`carepo`](#carepo)
+* [`carepo_gpgkey`](#carepo_gpgkey)
 
-Data type: `Array[String[1]]`
-
-CA policy packages to install.
-
-Default value: `['ca-policy-egi-core']`
-
-##### `carepo`
-
-Data type: `Stdlib::Httpurl`
-
-Repository URL of CA packages.
-
-Default value: `'http://repository.egi.eu/sw/production/cas/1/current/'`
-
-##### `manage_carepo`
+##### <a name="manage_carepo"></a>`manage_carepo`
 
 Data type: `Boolean`
 
@@ -67,7 +58,7 @@ Should package repository be configured.
 
 Default value: ``true``
 
-##### `capkgs_version`
+##### <a name="capkgs_version"></a>`capkgs_version`
 
 Data type: `String`
 
@@ -75,7 +66,7 @@ Version of CA packages.
 
 Default value: `'present'`
 
-##### `pkg_version`
+##### <a name="pkg_version"></a>`pkg_version`
 
 Data type: `String`
 
@@ -83,7 +74,7 @@ Version of fetch-crl package.
 
 Default value: `'present'`
 
-##### `agingtolerance`
+##### <a name="agingtolerance"></a>`agingtolerance`
 
 Data type: `Integer`
 
@@ -91,7 +82,7 @@ Number of hours delay time before errors are generated in case downloads consist
 
 Default value: `24`
 
-##### `nosymlinks`
+##### <a name="nosymlinks"></a>`nosymlinks`
 
 Data type: `Boolean`
 
@@ -99,7 +90,7 @@ do not create serial number symlinks.
 
 Default value: ``true``
 
-##### `noerrors`
+##### <a name="noerrors"></a>`noerrors`
 
 Data type: `Boolean`
 
@@ -107,7 +98,7 @@ do not produce errors.
 
 Default value: ``false``
 
-##### `nowarnings`
+##### <a name="nowarnings"></a>`nowarnings`
 
 Data type: `Boolean`
 
@@ -115,7 +106,7 @@ do not produce warnings.
 
 Default value: ``true``
 
-##### `http_proxy`
+##### <a name="http_proxy"></a>`http_proxy`
 
 Data type: `Optional[Stdlib::Httpurl]`
 
@@ -123,7 +114,7 @@ List of http proxy URLs.
 
 Default value: ``undef``
 
-##### `httptimeout`
+##### <a name="httptimeout"></a>`httptimeout`
 
 Data type: `Integer`
 
@@ -131,7 +122,7 @@ Time out for http.
 
 Default value: `30`
 
-##### `parallelism`
+##### <a name="parallelism"></a>`parallelism`
 
 Data type: `Integer`
 
@@ -139,7 +130,7 @@ Number of fetchs to run concurrently.
 
 Default value: `4`
 
-##### `logmode`
+##### <a name="logmode"></a>`logmode`
 
 Data type: `Enum['direct','qualified', 'cache','syslog']`
 
@@ -147,7 +138,7 @@ Specify how logging is done.
 
 Default value: `'syslog'`
 
-##### `pkgname`
+##### <a name="pkgname"></a>`pkgname`
 
 Data type: `String[1]`
 
@@ -155,7 +146,7 @@ Name of fetch-crl package.
 
 Default value: `'fetch-crl'`
 
-##### `runcron`
+##### <a name="runcron"></a>`runcron`
 
 Data type: `Boolean`
 
@@ -163,7 +154,7 @@ Should fetch-crl be run as a cron job.
 
 Default value: ``true``
 
-##### `runboot`
+##### <a name="runboot"></a>`runboot`
 
 Data type: `Boolean`
 
@@ -173,7 +164,7 @@ that do not use a cron based package and not a systemd timer.
 
 Default value: ``false``
 
-##### `randomcron`
+##### <a name="randomcron"></a>`randomcron`
 
 Data type: `Boolean`
 
@@ -183,7 +174,7 @@ The systemd timer for fetch-crl is already very random.
 
 Default value: ``true``
 
-##### `cache_control_request`
+##### <a name="cache_control_request"></a>`cache_control_request`
 
 Data type: `Optional[Integer]`
 
@@ -191,9 +182,33 @@ sends a cache-control max-age hint in seconds towards the server in the HTTP req
 
 Default value: ``undef``
 
+##### <a name="capkgs"></a>`capkgs`
+
+Data type: `Array[String[1]]`
+
+
+
+Default value: `['ca-policy-egi-core']`
+
+##### <a name="carepo"></a>`carepo`
+
+Data type: `Stdlib::Httpurl`
+
+
+
+Default value: `'http://repository.egi.eu/sw/production/cas/1/current/'`
+
+##### <a name="carepo_gpgkey"></a>`carepo_gpgkey`
+
+Data type: `Stdlib::Httpurl`
+
+
+
+Default value: `'https://dist.eugridpma.info/distribution/igtf/current/GPG-KEY-EUGridPMA-RPM-3'`
+
 ## Defined types
 
-### `fetchcrl::ca`
+### <a name="fetchcrlca"></a>`fetchcrl::ca`
 
 Creates per CA configuration files.
 
@@ -209,13 +224,21 @@ fetchcrl::ca{'EDG-Tutorial-CA':
 
 #### Parameters
 
-The following parameters are available in the `fetchcrl::ca` defined type.
+The following parameters are available in the `fetchcrl::ca` defined type:
 
-##### `name`
+* [`name`](#name)
+* [`anchorname`](#anchorname)
+* [`nowarnings`](#nowarnings)
+* [`noerrors`](#noerrors)
+* [`httptimeout`](#httptimeout)
+* [`agingtolerance`](#agingtolerance)
+* [`crl_url`](#crl_url)
+
+##### <a name="name"></a>`name`
 
 The name of the CA to manage a configuration for.
 
-##### `anchorname`
+##### <a name="anchorname"></a>`anchorname`
 
 Data type: `String[1]`
 
@@ -223,7 +246,7 @@ The name of the CA to manage a configuration for.
 
 Default value: `$title`
 
-##### `nowarnings`
+##### <a name="nowarnings"></a>`nowarnings`
 
 Data type: `Boolean`
 
@@ -231,7 +254,7 @@ Should warnings be supressed for this CA.
 
 Default value: ``false``
 
-##### `noerrors`
+##### <a name="noerrors"></a>`noerrors`
 
 Data type: `Boolean`
 
@@ -239,7 +262,7 @@ Should errors be supressed for this CA.
 
 Default value: ``false``
 
-##### `httptimeout`
+##### <a name="httptimeout"></a>`httptimeout`
 
 Data type: `Optional[Integer]`
 
@@ -247,7 +270,7 @@ The timeout for this CA.
 
 Default value: ``undef``
 
-##### `agingtolerance`
+##### <a name="agingtolerance"></a>`agingtolerance`
 
 Data type: `Optional[Integer]`
 
@@ -255,7 +278,7 @@ The delay if failures before it is considered an error.
 
 Default value: ``undef``
 
-##### `crl_url`
+##### <a name="crl_url"></a>`crl_url`
 
 Data type: `Array[Stdlib::Httpurl]`
 
