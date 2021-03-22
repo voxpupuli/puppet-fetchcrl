@@ -60,4 +60,12 @@ class fetchcrl::config (
       ],
     }
   }
+
+  #Ubuntu 20.04 package has the timer add but cron jobs are still present.
+  # https://bugs.launchpad.net/ubuntu/+source/fetch-crl/+bug/1920742
+  if $fetchcrl::periodic_method == 'timer' and $facts['os']['family'] == 'Debian' {
+    file { '/etc/cron.d/fetch-crl':
+      ensure => absent,
+    }
+  }
 }
