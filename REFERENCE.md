@@ -14,7 +14,7 @@
 
 * `fetchcrl::config`: Configures fetch-crl
 * `fetchcrl::install`: Installs fetch-crl
-* `fetchcrl::service`: Controls fetch-crl cron and startup
+* `fetchcrl::service`: Controls fetch-crl cron or timer.
 
 ### Defined types
 
@@ -35,6 +35,7 @@ The following parameters are available in the `fetchcrl` class:
 * [`pkg_version`](#pkg_version)
 * [`agingtolerance`](#agingtolerance)
 * [`nosymlinks`](#nosymlinks)
+* [`inet6glue`](#inet6glue)
 * [`noerrors`](#noerrors)
 * [`nowarnings`](#nowarnings)
 * [`http_proxy`](#http_proxy)
@@ -86,15 +87,23 @@ Default value: `24`
 
 Data type: `Boolean`
 
-do not create serial number symlinks.
+Do not create serial number symlinks.
 
 Default value: ``true``
+
+##### <a name="inet6glue"></a>`inet6glue`
+
+Data type: `Boolean`
+
+use Net::INET6Glue
+
+Default value: ``false``
 
 ##### <a name="noerrors"></a>`noerrors`
 
 Data type: `Boolean`
 
-do not produce errors.
+Do not produce errors.
 
 Default value: ``false``
 
@@ -102,7 +111,7 @@ Default value: ``false``
 
 Data type: `Boolean`
 
-do not produce warnings.
+Do not produce warnings.
 
 Default value: ``true``
 
@@ -110,7 +119,7 @@ Default value: ``true``
 
 Data type: `Optional[Stdlib::Httpurl]`
 
-List of http proxy URLs.
+http proxy URLs. For example http://foobar.example.org:3218/
 
 Default value: ``undef``
 
@@ -150,7 +159,7 @@ Default value: `'fetch-crl'`
 
 Data type: `Boolean`
 
-Should fetch-crl be run as a cron job.
+Should fetch-crl be run periodically either as a cron job or timer as appropriate.
 
 Default value: ``true``
 
@@ -160,7 +169,7 @@ Data type: `Boolean`
 
 Should fetch-crl be run at boot time.
 This parameter is only significant for fetch-crl packages
-that do not use a cron based package and not a systemd timer.
+that use a cron based package and not a systemd timer.
 
 Default value: ``false``
 
@@ -178,7 +187,7 @@ Default value: ``true``
 
 Data type: `Optional[Integer]`
 
-sends a cache-control max-age hint in seconds towards the server in the HTTP request.
+Sends a cache-control max-age hint in seconds towards the server in the HTTP request.
 
 Default value: ``undef``
 
@@ -196,7 +205,7 @@ Data type: `Stdlib::Httpurl`
 
 
 
-Default value: `'http://repository.egi.eu/sw/production/cas/1/current/'`
+Default value: `'https://repository.egi.eu/sw/production/cas/1/current/'`
 
 ##### <a name="carepo_gpgkey"></a>`carepo_gpgkey`
 

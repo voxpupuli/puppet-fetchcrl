@@ -1,8 +1,10 @@
 # fetchcrl
 #
 # @summary
-#  Main class, installs fetch-crl and configured it.
-#  https://wiki.nikhef.nl/grid/FetchCRL3
+#  Main class, installs fetch-crl and configures it.
+#
+# @see https://wiki.nikhef.nl/grid/FetchCRL3 FetchCRL3
+#
 #
 # @example Simple Example
 #  class{'fetchcrl':
@@ -33,19 +35,19 @@
 #  Number of hours delay time before errors are generated in case downloads consistently fail.
 #
 # @param nosymlinks
-#  do not create serial number symlinks.
+#  Do not create serial number symlinks.
 #
 # @param inet6glue
 #  use Net::INET6Glue
 #
 # @param noerrors
-#  do not produce errors.
+#  Do not produce errors.
 #
 # @param nowarnings
-#  do not produce warnings.
+#  Do not produce warnings.
 #
 # @param http_proxy
-#  List of http proxy URLs.
+#  http proxy URLs. For example http://foobar.example.org:3218/
 #
 # @param httptimeout
 #  Time out for http.
@@ -60,12 +62,12 @@
 #  Name of fetch-crl package.
 #
 # @param runcron
-#  Should fetch-crl be run as a cron job.
+#  Should fetch-crl be run periodically either as a cron job or timer as appropriate.
 #
 # @param runboot
 #  Should fetch-crl be run at boot time.
 #  This parameter is only significant for fetch-crl packages
-#  that do not use a cron based package and not a systemd timer.
+#  that use a cron based package and not a systemd timer.
 #
 # @param randomcron
 #  Should the every 6 hour cron be configured with a random offset.
@@ -73,7 +75,7 @@
 #  The systemd timer for fetch-crl is already very random.
 #
 # @param cache_control_request
-#  sends a cache-control max-age hint in seconds towards the server in the HTTP request.
+#  Sends a cache-control max-age hint in seconds towards the server in the HTTP request.
 #
 class fetchcrl (
   Array[String[1]] $capkgs                 = ['ca-policy-egi-core'],
