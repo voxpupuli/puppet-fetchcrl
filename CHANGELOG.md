@@ -4,6 +4,26 @@ All notable changes to this project will be documented in this file.
 Each new release typically also includes the latest modulesync defaults.
 These should not affect the functionality of the module.
 
+## [v5.0.0](https://github.com/voxpupuli/puppet-fetchcrl/tree/v5.0.0) (2021-03-23)
+
+[Full Changelog](https://github.com/voxpupuli/puppet-fetchcrl/compare/v4.1.0...v5.0.0)
+
+**Breaking changes:**
+
+- Drop Puppet 5 and CentOS 6 Support [\#71](https://github.com/voxpupuli/puppet-fetchcrl/pull/71) ([traylenator](https://github.com/traylenator))
+
+**Implemented enhancements:**
+
+- Support Puppet 7 [\#75](https://github.com/voxpupuli/puppet-fetchcrl/pull/75) ([traylenator](https://github.com/traylenator))
+- Add Ubuntu 18.04, 20.04 and Debian 10 support [\#74](https://github.com/voxpupuli/puppet-fetchcrl/pull/74) ([traylenator](https://github.com/traylenator))
+- New carepo\_gpgkey parameter [\#73](https://github.com/voxpupuli/puppet-fetchcrl/pull/73) ([traylenator](https://github.com/traylenator))
+- Switch from http to https for yum repository [\#72](https://github.com/voxpupuli/puppet-fetchcrl/pull/72) ([traylenator](https://github.com/traylenator))
+- Add inet6glue flag configuration [\#70](https://github.com/voxpupuli/puppet-fetchcrl/pull/70) ([luisfdez](https://github.com/luisfdez))
+
+**Merged pull requests:**
+
+- Documentation Corrections [\#76](https://github.com/voxpupuli/puppet-fetchcrl/pull/76) ([traylenator](https://github.com/traylenator))
+
 ## [v4.1.0](https://github.com/voxpupuli/puppet-fetchcrl/tree/v4.1.0) (2020-09-14)
 
 [Full Changelog](https://github.com/voxpupuli/puppet-fetchcrl/compare/v4.0.0...v4.1.0)
