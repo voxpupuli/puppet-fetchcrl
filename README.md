@@ -39,6 +39,9 @@ Two custom facts are included.
 *trustedca*  returns an array of all the certificate authoriry subjects located
 at /etc/grid-security/*.pem
 
+## Refernce
+See [REFERENCE.md](https://github.com/voxpupuli/puppet-fetchcrl/blob/master/REFERENCE.md) for more details
+
 ## License
 
 Apache-2.0
