@@ -4,6 +4,8 @@ describe 'fetchcrl' do
   context 'with fetchcrl' do
     let(:pp) { 'class{"fetchcrl": }' }
 
+    prepare_host
+
     it 'configures and work with no errors' do
       apply_manifest(pp, catch_failures: true)
       apply_manifest(pp, catch_changes: true)
