@@ -47,6 +47,7 @@ The following parameters are available in the `fetchcrl` class:
 * [`runboot`](#runboot)
 * [`randomcron`](#randomcron)
 * [`cache_control_request`](#cache_control_request)
+* [`cas`](#cas)
 * [`capkgs`](#capkgs)
 * [`carepo`](#carepo)
 * [`carepo_gpgkey`](#carepo_gpgkey)
@@ -188,6 +189,14 @@ Default value: ``true``
 Data type: `Optional[Integer]`
 
 Sends a cache-control max-age hint in seconds towards the server in the HTTP request.
+
+Default value: ``undef``
+
+##### <a name="cas"></a>`cas`
+
+Data type: `Optional[Hash]`
+
+A hash of `fetchcrl::ca` defined types to load.
 
 Default value: ``undef``
 

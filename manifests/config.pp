@@ -15,6 +15,7 @@ class fetchcrl::config (
   $logmode               = $fetchcrl::logmode,
   $pkgname               = $fetchcrl::pkgname,
   $cache_control_request = $fetchcrl::cache_control_request,
+  $cas                   = $fetchcrl::cas,
 ) {
   assert_private()
 
@@ -60,6 +61,14 @@ class fetchcrl::config (
         "set minute ${_minute}",
         "set hour ${_hour}",
       ],
+    }
+  }
+
+  if $cas {
+    $cas.each |$_name, $_config| {
+      fetchcrl::ca { $_name:
+        * => $_config,
+      }
     }
   }
 

@@ -13,6 +13,19 @@
 #    cache_control_request => '3600',
 #  }
 #
+# @example A hash of particular CA configurations
+#  class{'fetchcrl':
+#    cas => {
+#      'EDG-Tutorial-CA' => {
+#        'agingtolerance' => 168,
+#       }
+#       'MD-Grid-CA-T'   => {
+#        'noerrors'       => true,
+#       }
+#      }
+#    }
+#  }
+#
 # @param capkgs
 #  CA policy packages to install.
 #
@@ -77,6 +90,9 @@
 # @param cache_control_request
 #  Sends a cache-control max-age hint in seconds towards the server in the HTTP request.
 #
+# @param cas
+#  A hash of `fetchcrl::ca` defined types to load.
+#
 class fetchcrl (
   Array[String[1]] $capkgs                 = ['ca-policy-egi-core'],
   Stdlib::Httpurl $carepo                  = 'https://repository.egi.eu/sw/production/cas/1/current/',
@@ -98,6 +114,7 @@ class fetchcrl (
   Boolean $runboot                         = false,
   Boolean $runcron                         = true,
   Optional[Integer] $cache_control_request = undef,
+  Optional[Hash] $cas                      = undef,
 ) {
   # Is the package cron or systemd.timer based?
   if ($facts['os']['name'] == 'Ubuntu' and versioncmp($facts['os']['release']['major'],'18.04') <= 0 ) or

@@ -15,6 +15,7 @@ describe 'fetchcrl', type: 'class' do
         it { is_expected.to contain_file('/etc/fetch-crl.conf').without_content(%r{cache_control_request}) }
         it { is_expected.to contain_file('/etc/fetch-crl.conf').without_content(%r{noerrors}) }
         it { is_expected.to contain_file('/etc/fetch-crl.conf').without_content(%r{inet6glue}) }
+        it { is_expected.to have_fetchcrl__ca_resource_count(0) }
         case facts[:os]['family']
         when 'Debian'
           it {
@@ -60,12 +61,22 @@ describe 'fetchcrl', type: 'class' do
             capkgs: %w[abc def],
             carepo: 'https://example.org/foo',
             carepo_gpgkey: 'https://example.org/foo.gpg',
+            cas: {
+              'EDG' => {
+                'agingtolerance' => 168,
+              },
+              'MD' => {
+                'noerrors' => true,
+              }
+            }
           }
         end
 
         it { is_expected.to contain_file('/etc/fetch-crl.conf').with_content(%r{^cache_control_request = 1234$}) }
         it { is_expected.to contain_package('abc').with_ensure('present') }
         it { is_expected.to contain_package('def').with_ensure('present') }
+        it { is_expected.to contain_fetchcrl__ca('EDG').with_agingtolerance(168) }
+        it { is_expected.to contain_fetchcrl__ca('MD').with_noerrors(true) }
         case facts[:os]['family']
         when 'Debian'
           it {
@@ -102,10 +113,10 @@ describe 'fetchcrl', type: 'class' do
         case facts[:os]['family']
         when 'Debian'
           it { is_expected.to contain_apt__source('carepo') }
-          it { is_expected.to contain_package('libnet-inet6glue-perl').with_ensure('present')}
+          it { is_expected.to contain_package('libnet-inet6glue-perl').with_ensure('present') }
         else
           it { is_expected.to contain_yumrepo('carepo') }
-          it { is_expected.to contain_package('perl-Net-INET6Glue').with_ensure('present')}
+          it { is_expected.to contain_package('perl-Net-INET6Glue').with_ensure('present') }
         end
         it { is_expected.to contain_file('/etc/fetch-crl.conf').with_content(%r{^noerrors$}) }
         it { is_expected.to contain_file('/etc/fetch-crl.conf').with_content(%r{^inet6glue$}) }
