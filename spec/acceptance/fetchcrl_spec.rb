@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'spec_helper_acceptance'
 
 describe 'fetchcrl' do
@@ -14,6 +16,7 @@ describe 'fetchcrl' do
       shell('fetch-crl', acceptable_exit_codes: [0, 1])
       shell('ls /etc/grid-security/certificates/*.r0', acceptable_exit_codes: 0)
     end
+
     describe file('/etc/cron.d/fetch-crl') do
       case [fact('os.name'), fact('os.release.major')]
       when %w[CentOS 7], ['Ubuntu', '18.04'], %w[Debian 10]
@@ -23,6 +26,7 @@ describe 'fetchcrl' do
       end
     end
   end
+
   context 'with fetchcrl and ipv6 and cas' do
     let(:pp) do
       '

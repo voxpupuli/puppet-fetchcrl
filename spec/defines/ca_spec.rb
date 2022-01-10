@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 describe 'fetchcrl::ca' do
@@ -21,6 +23,7 @@ describe 'fetchcrl::ca' do
       it { is_expected.to contain_file('/etc/foo.d/myinstance.conf').without_content(%r{^noerrors$}) }
       it { is_expected.to contain_file('/etc/foo.d/myinstance.conf').without_content(%r{^httptimeout$}) }
       it { is_expected.to contain_file('/etc/foo.d/myinstance.conf').without_content(%r{^crl_url$}) }
+
       context 'with all booleans false' do
         let(:params) do
           {
@@ -32,6 +35,7 @@ describe 'fetchcrl::ca' do
         it { is_expected.to contain_file('/etc/foo.d/myinstance.conf').without_content(%r{^nowarnings$}) }
         it { is_expected.to contain_file('/etc/foo.d/myinstance.conf').without_content(%r{^noerrors$}) }
       end
+
       context 'with all booleans true' do
         let(:params) do
           {
@@ -43,6 +47,7 @@ describe 'fetchcrl::ca' do
         it { is_expected.to contain_file('/etc/foo.d/myinstance.conf').with_content(%r{^nowarnings$}) }
         it { is_expected.to contain_file('/etc/foo.d/myinstance.conf').with_content(%r{^noerrors$}) }
       end
+
       context 'with all parameters set' do
         let(:params) do
           {

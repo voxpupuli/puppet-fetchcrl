@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Fact: certissuer
 # From fetchcrl module.
 # Fact supplies the issuer of grid grid certificate if it exists.
