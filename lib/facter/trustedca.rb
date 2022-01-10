@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Fact: trustedcas
 # From fetchcrl module.
 # Fact supplies the issuer of grid grid certificate if it exists.
@@ -9,7 +11,7 @@ Facter.add('trustedca') do
     Dir.glob('/etc/grid-security/certificates/*.pem').each do |pem|
       begin
         cert = OpenSSL::X509::Certificate.new(File.read(pem))
-      rescue
+      rescue StandardError
         next
       end
       subject = cert.subject.to_a

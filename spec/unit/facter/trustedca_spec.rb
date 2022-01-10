@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 describe 'trustedca' do
@@ -17,6 +19,7 @@ describe 'trustedca' do
       )
       allow(File).to receive(:read).with('/etc/grid-security/certificates/CERN-GridCA.pem').and_return(cern)
     end
+
     it { expect(Facter.fact(:trustedca).value).to eq ['CN=CERN Grid Certification Authority,DC=cern,DC=ch'] }
   end
 
@@ -30,6 +33,7 @@ describe 'trustedca' do
       )
       allow(File).to receive(:read).with('/etc/grid-security/certificates/ARC-TestCA-6a8cca22-key.pem').and_return(arc)
     end
+
     it { expect(Facter.fact(:trustedca).value).to eq [] }
   end
 
@@ -48,6 +52,7 @@ describe 'trustedca' do
       allow(File).to receive(:read).with('/etc/grid-security/certificates/ARC-TestCA-6a8cca22-key.pem').and_return(arc)
       allow(File).to receive(:read).with('/etc/grid-security/certificates/CERN-GridCA.pem').and_return(cern)
     end
+
     it { expect(Facter.fact(:trustedca).value).to eq ['CN=CERN Grid Certification Authority,DC=cern,DC=ch'] }
   end
 end
