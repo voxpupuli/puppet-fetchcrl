@@ -1,8 +1,10 @@
 # fetchcrl
 #
 # @summary
-#  Main class, installs fetch-crl and configured it.
-#  https://wiki.nikhef.nl/grid/FetchCRL3
+#  Main class, installs fetch-crl and configures it.
+#
+# @see https://wiki.nikhef.nl/grid/FetchCRL3 FetchCRL3
+#
 #
 # @example Simple Example
 #  class{'fetchcrl':
@@ -11,12 +13,28 @@
 #    cache_control_request => '3600',
 #  }
 #
+# @example A hash of particular CA configurations
+#  class{'fetchcrl':
+#    cas => {
+#      'EDG-Tutorial-CA' => {
+#        'agingtolerance' => 168,
+#       }
+#       'MD-Grid-CA-T'   => {
+#        'noerrors'       => true,
+#       }
+#      }
+#    }
+#  }
+#
 # @param capkgs
 #  CA policy packages to install.
 #
 # @param carepo
 #  Repository URL of CA packages.
 #
+# @param carepo_gpgkey
+#  Repository URL of GPG key for CA packages.
+
 # @param manage_carepo
 #  Should package repository be configured.
 #
@@ -30,16 +48,19 @@
 #  Number of hours delay time before errors are generated in case downloads consistently fail.
 #
 # @param nosymlinks
-#  do not create serial number symlinks.
+#  Do not create serial number symlinks.
+#
+# @param inet6glue
+#  use Net::INET6Glue
 #
 # @param noerrors
-#  do not produce errors.
+#  Do not produce errors.
 #
 # @param nowarnings
-#  do not produce warnings.
+#  Do not produce warnings.
 #
 # @param http_proxy
-#  List of http proxy URLs.
+#  http proxy URLs. For example http://foobar.example.org:3218/
 #
 # @param httptimeout
 #  Time out for http.
@@ -54,12 +75,12 @@
 #  Name of fetch-crl package.
 #
 # @param runcron
-#  Should fetch-crl be run as a cron job.
+#  Should fetch-crl be run periodically either as a cron job or timer as appropriate.
 #
 # @param runboot
 #  Should fetch-crl be run at boot time.
 #  This parameter is only significant for fetch-crl packages
-#  that do not use a cron based package and not a systemd timer.
+#  that use a cron based package and not a systemd timer.
 #
 # @param randomcron
 #  Should the every 6 hour cron be configured with a random offset.
@@ -67,16 +88,21 @@
 #  The systemd timer for fetch-crl is already very random.
 #
 # @param cache_control_request
-#  sends a cache-control max-age hint in seconds towards the server in the HTTP request.
+#  Sends a cache-control max-age hint in seconds towards the server in the HTTP request.
+#
+# @param cas
+#  A hash of `fetchcrl::ca` defined types to load.
 #
 class fetchcrl (
   Array[String[1]] $capkgs                 = ['ca-policy-egi-core'],
-  Stdlib::Httpurl $carepo                  = 'http://repository.egi.eu/sw/production/cas/1/current/',
+  Stdlib::Httpurl $carepo                  = 'https://repository.egi.eu/sw/production/cas/1/current/',
+  Stdlib::Httpurl $carepo_gpgkey           = 'https://dist.eugridpma.info/distribution/igtf/current/GPG-KEY-EUGridPMA-RPM-3',
   Boolean $manage_carepo                   = true,
   String $capkgs_version                   = 'present',
   String $pkg_version                      = 'present',
   Integer $agingtolerance                  = 24,
   Boolean $nosymlinks                      = true,
+  Boolean $inet6glue                       = false,
   Boolean $nowarnings                      = true,
   Boolean $noerrors                        = false,
   Boolean $randomcron                      = true,
@@ -88,13 +114,15 @@ class fetchcrl (
   Boolean $runboot                         = false,
   Boolean $runcron                         = true,
   Optional[Integer] $cache_control_request = undef,
+  Optional[Hash] $cas                      = undef,
 ) {
   # Is the package cron or systemd.timer based?
-  $periodic_method = $facts['os']['release']['major'] ? {
-    '6' => 'cron',
-    '7' => 'cron',
-    '8' => 'cron',
-    default => 'timer',
+  if ($facts['os']['name'] == 'Ubuntu' and versioncmp($facts['os']['release']['major'],'18.04') <= 0 ) or
+  ($facts['os']['name'] == 'Debian' and versioncmp($facts['os']['release']['major'],'10') <= 0 ) or
+  ($facts['os']['family'] == 'RedHat' and versioncmp($facts['os']['release']['major'],'7') <= 0 ) {
+    $periodic_method = 'cron'
+  } else {
+    $periodic_method = 'timer'
   }
 
   contain 'fetchcrl::install'

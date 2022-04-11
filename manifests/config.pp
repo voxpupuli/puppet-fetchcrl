@@ -1,10 +1,11 @@
-#  Configures fetch-crl
+# @summary  Configures fetch-crl
 #
 # @api private
 #
 class fetchcrl::config (
   $agingtolerance        = $fetchcrl::agingtolerance,
   $nosymlinks            = $fetchcrl::nosymlinks,
+  $inet6glue             = $fetchcrl::inet6glue,
   $nowarnings            = $fetchcrl::nowarnings,
   $noerrors              = $fetchcrl::noerrors,
   $http_proxy            = $fetchcrl::http_proxy,
@@ -14,6 +15,7 @@ class fetchcrl::config (
   $logmode               = $fetchcrl::logmode,
   $pkgname               = $fetchcrl::pkgname,
   $cache_control_request = $fetchcrl::cache_control_request,
+  $cas                   = $fetchcrl::cas,
 ) {
   assert_private()
 
@@ -22,6 +24,7 @@ class fetchcrl::config (
     content => epp('fetchcrl/fetch-crl.conf.epp',{
         'agingtolerance'        => $agingtolerance,
         'nosymlinks'            => $nosymlinks,
+        'inet6glue'             => $inet6glue,
         'nowarnings'            => $nowarnings,
         'noerrors'              => $noerrors,
         'http_proxy'            => $http_proxy,
@@ -58,6 +61,22 @@ class fetchcrl::config (
         "set minute ${_minute}",
         "set hour ${_hour}",
       ],
+    }
+  }
+
+  if $cas {
+    $cas.each |$_name, $_config| {
+      fetchcrl::ca { $_name:
+        * => $_config,
+      }
+    }
+  }
+
+  #Ubuntu 20.04 package has the timer add but cron jobs are still present.
+  # https://bugs.launchpad.net/ubuntu/+source/fetch-crl/+bug/1920742
+  if $fetchcrl::periodic_method == 'timer' and $facts['os']['family'] == 'Debian' {
+    file { '/etc/cron.d/fetch-crl':
+      ensure => absent,
     }
   }
 }
