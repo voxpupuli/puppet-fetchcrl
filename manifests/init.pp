@@ -93,6 +93,7 @@ class fetchcrl (
   $periodic_method = $facts['os']['release']['major'] ? {
     '6' => 'cron',
     '7' => 'cron',
+    '8' => 'cron',
     default => 'timer',
   }
 
