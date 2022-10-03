@@ -17,7 +17,7 @@ describe 'fetchcrl' do
       shell('ls /etc/grid-security/certificates/*.r0', acceptable_exit_codes: 0)
     end
 
-    describe file('/etc/cron.d/fetch-crl') do # rubocop:disable RSpec/EmptyExampleGroup Do not understand
+    describe file('/etc/cron.d/fetch-crl') do
       case [fact('os.name'), fact('os.release.major')]
       when %w[CentOS 7], ['Ubuntu', '18.04'], %w[Debian 10]
         its(:content) { is_expected.to match %r{^([0-9]|[1-5][0-9]) [0-5]-23/6 \* \* \*.*$} }
