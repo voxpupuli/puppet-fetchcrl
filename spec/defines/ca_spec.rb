@@ -52,6 +52,7 @@ describe 'fetchcrl::ca' do
         let(:params) do
           {
             nowarnings: true,
+            comment: 'My Comment',
             noerrors: true,
             httptimeout: 1234,
             agingtolerance: 9876,
@@ -60,6 +61,7 @@ describe 'fetchcrl::ca' do
         end
 
         it { is_expected.to contain_file('/etc/foo.d/myinstance.conf').with_content(%r{^nowarnings$}) }
+        it { is_expected.to contain_file('/etc/foo.d/myinstance.conf').with_content(%r{^# My Comment$}) }
         it { is_expected.to contain_file('/etc/foo.d/myinstance.conf').with_content(%r{^noerrors$}) }
         it { is_expected.to contain_file('/etc/foo.d/myinstance.conf').with_content(%r{^agingtolerance = 9876$}) }
         it { is_expected.to contain_file('/etc/foo.d/myinstance.conf').with_content(%r{^httptimeout = 1234$}) }

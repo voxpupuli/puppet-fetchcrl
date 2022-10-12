@@ -37,6 +37,7 @@ describe 'fetchcrl' do
                    "MD"  => {
                       "anchorname" => "MyMD",
                       "agingtolerance" => 125,
+                      "comment" => "My Comment",
                    },
                  }
                }

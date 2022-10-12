@@ -3,7 +3,8 @@
 #
 # @example Simple Example
 #  fetchcrl::ca{'EDG-Tutorial-CA':
-#    agingtolerance => 168
+#    agingtolerance => 168,
+#    comment        => 'Increased as unreliable',
 #  }
 #
 # @param name
@@ -24,6 +25,9 @@
 # @param agingtolerance
 #  The delay if failures before it is considered an error.
 #
+# @param comment
+#  Add a comment to the particular CA configuration
+#
 # @param crl_url
 #  A list of URLs to download CAs from
 #
@@ -33,6 +37,7 @@ define fetchcrl::ca (
   Boolean $noerrors                 = false,
   Optional[Integer] $httptimeout    = undef,
   Optional[Integer] $agingtolerance = undef,
+  Optional[String[1]] $comment      = undef,
   Array[Stdlib::Httpurl] $crl_url   = [],
 ) {
   include 'fetchcrl'
@@ -42,13 +47,14 @@ define fetchcrl::ca (
     mode    => '0644',
     owner   => root,
     group   => root,
-    content => epp('fetchcrl/fetch-crl-anchor.conf.epp',{
+    content => epp('fetchcrl/fetch-crl-anchor.conf.epp', {
         'anchorname'     => $anchorname,
         'agingtolerance' => $agingtolerance,
         'nowarnings'     => $nowarnings,
         'noerrors'       => $noerrors,
         'httptimeout'    => $httptimeout,
         'crl_url'        => $crl_url,
+        'comment'        => $comment,
     }),
   }
 }
