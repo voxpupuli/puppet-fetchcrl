@@ -96,7 +96,7 @@ Default value: `true`
 
 Data type: `Boolean`
 
-use Net::INET6Glue
+use Net::INET6Glue , parameter is ignored on RedHat 9 and newer.
 
 Default value: `false`
 

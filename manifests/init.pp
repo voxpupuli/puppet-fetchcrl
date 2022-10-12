@@ -51,7 +51,7 @@
 #  Do not create serial number symlinks.
 #
 # @param inet6glue
-#  use Net::INET6Glue
+#  use Net::INET6Glue , parameter is ignored on RedHat 9 and newer.
 #
 # @param noerrors
 #  Do not produce errors.

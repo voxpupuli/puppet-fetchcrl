@@ -15,8 +15,14 @@ class fetchcrl::install (
 ) {
   assert_private()
 
+  if $facts['os']['family'] == 'RedHat' and versioncmp($facts['os']['release']['major'],'9') >= 0 {
+    $_inet6glue = false
+  } else {
+    $_inet6glue = $inet6glue
+  }
+
   # The fetch-crl package.
-  if $inet6glue {
+  if $_inet6glue {
     $inet6glue_pkg = $facts['os']['family'] ? {
       'Debian' => 'libnet-inet6glue-perl',
       'RedHat' => 'perl-Net-INET6Glue',

@@ -124,10 +124,22 @@ describe 'fetchcrl', type: 'class' do
           it { is_expected.to contain_package('libnet-inet6glue-perl').with_ensure('present') }
         else
           it { is_expected.to contain_yumrepo('carepo') }
-          it { is_expected.to contain_package('perl-Net-INET6Glue').with_ensure('present') }
+
+          case facts[:os]['release']['major']
+          when '7', '8'
+            it { is_expected.to contain_package('perl-Net-INET6Glue').with_ensure('present') }
+          else
+            it { is_expected.not_to contain_package('perl-Net-INET6Glue') }
+          end
         end
         it { is_expected.to contain_file('/etc/fetch-crl.conf').with_content(%r{^noerrors$}) }
-        it { is_expected.to contain_file('/etc/fetch-crl.conf').with_content(%r{^inet6glue$}) }
+
+        case [facts[:os]['name'], facts[:os]['release']['major']]
+        when %w[RedHat 7], %w[CentOS 7], %w[RedHat 8], %w[CentOS 8], %w[Debian 10], %w[Debian 11], ['Ubuntu', '18.04'], ['Ubuntu', '20.04'], ['Ubuntu', '22.04']
+          it { is_expected.to contain_file('/etc/fetch-crl.conf').with_content(%r{^inet6glue$}) }
+        else
+          it { is_expected.not_to contain_file('/etc/fetch-crl.conf').with_content(%r{^inet6glue$}) }
+        end
 
         case [facts[:os]['name'], facts[:os]['release']['major']]
         when %w[RedHat 7], %w[CentOS 7], %w[Debian 10], ['Ubuntu', '18.04']
