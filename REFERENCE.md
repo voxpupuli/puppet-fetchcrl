@@ -236,7 +236,8 @@ Creates per CA configuration files.
 
 ```puppet
 fetchcrl::ca{'EDG-Tutorial-CA':
-  agingtolerance => 168
+  agingtolerance => 168,
+  comment        => 'Increased as unreliable',
 }
 ```
 
@@ -250,6 +251,7 @@ The following parameters are available in the `fetchcrl::ca` defined type:
 * [`noerrors`](#noerrors)
 * [`httptimeout`](#httptimeout)
 * [`agingtolerance`](#agingtolerance)
+* [`comment`](#comment)
 * [`crl_url`](#crl_url)
 
 ##### <a name="name"></a>`name`
@@ -293,6 +295,14 @@ Default value: ``undef``
 Data type: `Optional[Integer]`
 
 The delay if failures before it is considered an error.
+
+Default value: ``undef``
+
+##### <a name="comment"></a>`comment`
+
+Data type: `Optional[String[1]]`
+
+Add a comment to the particular CA configuration
 
 Default value: ``undef``
 
