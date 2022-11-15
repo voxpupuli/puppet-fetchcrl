@@ -26,7 +26,8 @@ class{'fetchcrl':
 }
 
 fetchcrl::ca{'EDG-Tutorial-CA':
- agingtolerance => 168
+ agingtolerance => 168,
+ comment        => 'Increased as unreliable',
 }
 ```
 

@@ -21,7 +21,7 @@ class fetchcrl::config (
 
   file { "/etc/${pkgname}.conf":
     ensure  => file,
-    content => epp('fetchcrl/fetch-crl.conf.epp',{
+    content => epp('fetchcrl/fetch-crl.conf.epp', {
         'agingtolerance'        => $agingtolerance,
         'nosymlinks'            => $nosymlinks,
         'inet6glue'             => $inet6glue,

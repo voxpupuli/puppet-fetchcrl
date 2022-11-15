@@ -5,9 +5,14 @@
   Boolean $noerrors,
   Optional[Integer] $httptimeout = undef,
   Array[Stdlib::Httpurl] $crl_url,
+  Optional[String] $comment = undef,
 | -%>
 # <%= $anchorname -%>.conf file installed with puppet.
 
+<% if $comment { -%>
+# <%= $comment %>
+
+<% } -%>
 [<%= $anchorname -%>]
 <% if $agingtolerance { -%>
 agingtolerance = <%= $agingtolerance %>
