@@ -19,12 +19,18 @@ class fetchcrl::config (
 ) {
   assert_private()
 
+  if $facts['os']['family'] == 'RedHat' and versioncmp($facts['os']['release']['major'],'9') >= 0 {
+    $_inet6glue = false
+  } else {
+    $_inet6glue = $inet6glue
+  }
+
   file { "/etc/${pkgname}.conf":
     ensure  => file,
     content => epp('fetchcrl/fetch-crl.conf.epp', {
         'agingtolerance'        => $agingtolerance,
         'nosymlinks'            => $nosymlinks,
-        'inet6glue'             => $inet6glue,
+        'inet6glue'             => $_inet6glue,
         'nowarnings'            => $nowarnings,
         'noerrors'              => $noerrors,
         'http_proxy'            => $http_proxy,
