@@ -4,7 +4,28 @@ All notable changes to this project will be documented in this file.
 Each new release typically also includes the latest modulesync defaults.
 These should not affect the functionality of the module.
 
-## [v5.1.0](https://github.com/voxpupuli/puppet-fetchcrl/tree/v5.1.0) (2021-09-23)
+## [v6.0.0](https://github.com/voxpupuli/puppet-fetchcrl/tree/v6.0.0) (2023-08-16)
+
+[Full Changelog](https://github.com/voxpupuli/puppet-fetchcrl/compare/v5.1.0...v6.0.0)
+
+**Breaking changes:**
+
+- Drop Puppet 6 support [\#91](https://github.com/voxpupuli/puppet-fetchcrl/pull/91) ([bastelfreak](https://github.com/bastelfreak))
+
+**Implemented enhancements:**
+
+- Add AlmaLinux/Rocky/OracleLinux support  [\#96](https://github.com/voxpupuli/puppet-fetchcrl/pull/96) ([traylenator](https://github.com/traylenator))
+- Add Puppet 8 support [\#94](https://github.com/voxpupuli/puppet-fetchcrl/pull/94) ([bastelfreak](https://github.com/bastelfreak))
+- puppetlabs/stdlib: Allow 9.x [\#93](https://github.com/voxpupuli/puppet-fetchcrl/pull/93) ([bastelfreak](https://github.com/bastelfreak))
+- Support RHEL9, Debian11 and Ubuntu 22.04 [\#87](https://github.com/voxpupuli/puppet-fetchcrl/pull/87) ([traylenator](https://github.com/traylenator))
+- New comment parameter to fetch-crl::ca type [\#86](https://github.com/voxpupuli/puppet-fetchcrl/pull/86) ([traylenator](https://github.com/traylenator))
+- rubocop corrections for rubocop 1.22.3 [\#83](https://github.com/voxpupuli/puppet-fetchcrl/pull/83) ([traylenator](https://github.com/traylenator))
+
+**Merged pull requests:**
+
+-  RSpec/EmptyExampleGroup is no longer failing [\#85](https://github.com/voxpupuli/puppet-fetchcrl/pull/85) ([traylenator](https://github.com/traylenator))
+
+## [v5.1.0](https://github.com/voxpupuli/puppet-fetchcrl/tree/v5.1.0) (2021-09-27)
 
 [Full Changelog](https://github.com/voxpupuli/puppet-fetchcrl/compare/v5.0.0...v5.1.0)
 
