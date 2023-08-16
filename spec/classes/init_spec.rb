@@ -135,7 +135,7 @@ describe 'fetchcrl', type: 'class' do
         it { is_expected.to contain_file('/etc/fetch-crl.conf').with_content(%r{^noerrors$}) }
 
         case [facts[:os]['name'], facts[:os]['release']['major']]
-        when %w[RedHat 7], %w[CentOS 7], %w[RedHat 8], %w[CentOS 8], %w[Debian 10], %w[Debian 11], ['Ubuntu', '18.04'], ['Ubuntu', '20.04'], ['Ubuntu', '22.04']
+        when %w[RedHat 7], %w[CentOS 7], %w[RedHat 8], %w[CentOS 8], %w[AlmaLinux 8], %w[OracleLinux 8], %w[Rocky 8], %w[Debian 10], %w[Debian 11], ['Ubuntu', '18.04'], ['Ubuntu', '20.04'], ['Ubuntu', '22.04']
           it { is_expected.to contain_file('/etc/fetch-crl.conf').with_content(%r{^inet6glue$}) }
         else
           it { is_expected.not_to contain_file('/etc/fetch-crl.conf').with_content(%r{^inet6glue$}) }
