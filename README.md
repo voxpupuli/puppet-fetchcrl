@@ -7,8 +7,7 @@
 [![Puppet Forge - endorsement](https://img.shields.io/puppetforge/e/puppet/fetchcrl.svg)](https://forge.puppetlabs.com/puppet/fetchcrl)
 [![Puppet Forge - scores](https://img.shields.io/puppetforge/f/puppet/fetchcrl.svg)](https://forge.puppetlabs.com/puppet/fetchcrl)
 
-This is the fetchcrl module it configures fetch-crl version 3 where
-ever it can.
+This is the fetchcrl module it configures fetch-crl version 3 wherever it can.
 
 [Fetchcrl](http://wiki.nikhef.nl/grid/FetchCRL3) utility will retrieve certificate
 revocation lists (CRLs) for a set of installed trust anchors, based on crl_url files
