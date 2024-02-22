@@ -3,19 +3,19 @@
 # @api private
 #
 class fetchcrl::config (
-  $agingtolerance        = $fetchcrl::agingtolerance,
-  $nosymlinks            = $fetchcrl::nosymlinks,
-  $inet6glue             = $fetchcrl::inet6glue,
-  $nowarnings            = $fetchcrl::nowarnings,
-  $noerrors              = $fetchcrl::noerrors,
-  $http_proxy            = $fetchcrl::http_proxy,
-  $httptimeout           = $fetchcrl::httptimeout,
-  $parallelism           = $fetchcrl::parallelism,
-  $randomcron            = $fetchcrl::randomcron,
-  $logmode               = $fetchcrl::logmode,
-  $pkgname               = $fetchcrl::pkgname,
-  $cache_control_request = $fetchcrl::cache_control_request,
-  $cas                   = $fetchcrl::cas,
+  Integer $agingtolerance                              = $fetchcrl::agingtolerance,
+  Boolean $nosymlinks                                  = $fetchcrl::nosymlinks,
+  Boolean $inet6glue                                   = $fetchcrl::inet6glue,
+  Boolean $nowarnings                                  = $fetchcrl::nowarnings,
+  Boolean $noerrors                                    = $fetchcrl::noerrors,
+  Optional[Stdlib::Httpurl] $http_proxy                = $fetchcrl::http_proxy,
+  Integer $httptimeout                                 = $fetchcrl::httptimeout,
+  Integer $parallelism                                 = $fetchcrl::parallelism,
+  Boolean $randomcron                                  = $fetchcrl::randomcron,
+  Enum['direct','qualified','cache','syslog'] $logmode = $fetchcrl::logmode,
+  String[1] $pkgname                                   = $fetchcrl::pkgname,
+  Optional[Integer] $cache_control_request             = $fetchcrl::cache_control_request,
+  Optional[Hash] $cas                                  = $fetchcrl::cas,
 ) {
   assert_private()
 

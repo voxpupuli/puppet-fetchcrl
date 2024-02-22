@@ -4,9 +4,9 @@
 # @api private
 #
 class fetchcrl::service (
-  $pkgname = $fetchcrl::pkgname,
-  $runboot = $fetchcrl::runboot,
-  $runcron = $fetchcrl::runcron,
+  String[1] $pkgname = $fetchcrl::pkgname,
+  Boolean $runboot   = $fetchcrl::runboot,
+  Boolean $runcron   = $fetchcrl::runcron,
 ) {
   assert_private()
 
