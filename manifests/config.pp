@@ -19,7 +19,8 @@ class fetchcrl::config (
 ) {
   assert_private()
 
-  if $facts['os']['family'] == 'RedHat' and versioncmp($facts['os']['release']['major'],'9') >= 0 {
+  if $facts['os']['family'] == 'RedHat' and versioncmp($facts['os']['release']['major'],'9') >= 0 or
+  $facts['os']['name'] == 'Debian' and versioncmp($facts['os']['release']['major'],'12') >= 0 {
     $_inet6glue = false
   } else {
     $_inet6glue = $inet6glue
