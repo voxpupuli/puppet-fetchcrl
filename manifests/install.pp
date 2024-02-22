@@ -4,14 +4,14 @@
 # @api private
 #
 class fetchcrl::install (
-  $pkgname        = $fetchcrl::pkgname,
-  $capkgs         = $fetchcrl::capkgs,
-  $carepo         = $fetchcrl::carepo,
-  $carepo_gpgkey  = $fetchcrl::carepo_gpgkey,
-  $manage_carepo  = $fetchcrl::manage_carepo,
-  $capkgs_version = $fetchcrl::capkgs_version,
-  $pkg_version    = $fetchcrl::pkg_version,
-  $inet6glue      = $fetchcrl::inet6glue
+  String[1] $pkgname             = $fetchcrl::pkgname,
+  Array[String[1]] $capkgs       = $fetchcrl::capkgs,
+  Stdlib::Httpurl $carepo        = $fetchcrl::carepo,
+  Stdlib::Httpurl $carepo_gpgkey = $fetchcrl::carepo_gpgkey,
+  Boolean $manage_carepo         = $fetchcrl::manage_carepo,
+  String $capkgs_version         = $fetchcrl::capkgs_version,
+  String $pkg_version            = $fetchcrl::pkg_version,
+  Boolean $inet6glue             = $fetchcrl::inet6glue
 ) {
   assert_private()
 
