@@ -34,7 +34,7 @@
 #
 # @param carepo_gpgkey
 #  Repository URL of GPG key for CA packages.
-
+#
 # @param manage_carepo
 #  Should package repository be configured.
 #
@@ -117,8 +117,7 @@ class fetchcrl (
   Optional[Hash] $cas                      = undef,
 ) {
   # Is the package cron or systemd.timer based?
-  if ($facts['os']['name'] == 'Ubuntu' and versioncmp($facts['os']['release']['major'],'18.04') <= 0 ) or
-  ($facts['os']['name'] == 'Debian' and versioncmp($facts['os']['release']['major'],'10') <= 0 ) or
+  if $facts['os']['family'] == 'Debian' or
   ($facts['os']['family'] == 'RedHat' and versioncmp($facts['os']['release']['major'],'7') <= 0 ) {
     $periodic_method = 'cron'
   } else {
