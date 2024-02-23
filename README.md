@@ -1,6 +1,6 @@
 # FetchCRL module for Puppet
 
-[![Build Status](https://travis-ci.org/voxpupuli/puppet-fetchcrl.png?branch=master)](https://travis-ci.org/voxpupuli/puppet-fetchcrl)
+[![CI](https://github.com/voxpupuli/puppet-fetchcrl/actions/workflows/ci.yml/badge.svg)](https://github.com/voxpupuli/puppet-fetchcrl/actions/workflows/ci.yml)
 [![Code Coverage](https://coveralls.io/repos/github/voxpupuli/puppet-fetchcrl/badge.svg?branch=master)](https://coveralls.io/github/voxpupuli/puppet-fetchcrl)
 [![Puppet Forge](https://img.shields.io/puppetforge/v/puppet/fetchcrl.svg)](https://forge.puppetlabs.com/puppet/fetchcrl)
 [![Puppet Forge - downloads](https://img.shields.io/puppetforge/dt/puppet/fetchcrl.svg)](https://forge.puppetlabs.com/puppet/fetchcrl)
@@ -19,13 +19,13 @@ This module obsoletes [CernOps-fetchcrl-1.1.0](https://forge.puppet.com/CERNOps/
 ## Examples
 
 ```puppet
-class{'fetchcrl':
+class { 'fetchcrl':
   http_proxy            => 'http:://squid.example.org:8000',
   carepo                => 'http://yum.example.org/yumrepo',
   cache_control_request => '3600',
 }
 
-fetchcrl::ca{'EDG-Tutorial-CA':
+fetchcrl::ca { 'EDG-Tutorial-CA':
  agingtolerance => 168,
  comment        => 'Increased as unreliable',
 }
@@ -35,12 +35,14 @@ fetchcrl::ca{'EDG-Tutorial-CA':
 
 Two custom facts are included.
 
-*certissuer* returns the issuer of a grid certificate located at
+- _**certissuer**_ returns the issuer of a grid certificate located at
 /etc/grid-security/hostcert.pem if it exists.
-*trustedca*  returns an array of all the certificate authoriry subjects located
+
+- _**trustedca**_  returns an array of all the certificate authoriry subjects located
 at /etc/grid-security/*.pem
 
 ## Refernce
+
 See [REFERENCE.md](https://github.com/voxpupuli/puppet-fetchcrl/blob/master/REFERENCE.md) for more details
 
 ## License
@@ -57,4 +59,4 @@ Steve Traylen <steve.traylen@cern.ch>
 
 ## Support
 
-Please log tickets and issues at `http://github.ch/voxpupuli/puppet-fetchcrl`
+Please log tickets and issues at `http://github.com/voxpupuli/puppet-fetchcrl`
