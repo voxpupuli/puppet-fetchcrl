@@ -117,8 +117,7 @@ class fetchcrl (
   Optional[Hash] $cas                      = undef,
 ) {
   # Is the package cron or systemd.timer based?
-  if $facts['os']['family'] == 'Debian' or
-  ($facts['os']['family'] == 'RedHat' and versioncmp($facts['os']['release']['major'],'7') <= 0 ) {
+  if $facts['os']['family'] == 'RedHat' and versioncmp($facts['os']['release']['major'],'7') <= 0 {
     $periodic_method = 'cron'
   } else {
     $periodic_method = 'timer'
