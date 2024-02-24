@@ -8,7 +8,7 @@
 
 #### Public Classes
 
-* [`fetchcrl`](#fetchcrl)
+* [`fetchcrl`](#fetchcrl): Main class, installs fetch-crl and configures it.
 
 #### Private Classes
 
@@ -24,12 +24,47 @@
 
 ### <a name="fetchcrl"></a>`fetchcrl`
 
-The fetchcrl class.
+fetchcrl
+
+* **See also**
+  * https://wiki.nikhef.nl/grid/FetchCRL3
+    * FetchCRL3
+
+#### Examples
+
+##### Simple Example
+
+```puppet
+class{'fetchcrl':
+  http_proxy            => 'http:://squid.example.org:8000',
+  carepo                => 'http://yum.example.org/yumrepo',
+  cache_control_request => '3600',
+}
+```
+
+##### A hash of particular CA configurations
+
+```puppet
+class{'fetchcrl':
+  cas => {
+    'EDG-Tutorial-CA' => {
+      'agingtolerance' => 168,
+     }
+     'MD-Grid-CA-T'   => {
+      'noerrors'       => true,
+     }
+    }
+  }
+}
+```
 
 #### Parameters
 
 The following parameters are available in the `fetchcrl` class:
 
+* [`capkgs`](#-fetchcrl--capkgs)
+* [`carepo`](#-fetchcrl--carepo)
+* [`carepo_gpgkey`](#-fetchcrl--carepo_gpgkey)
 * [`manage_carepo`](#-fetchcrl--manage_carepo)
 * [`capkgs_version`](#-fetchcrl--capkgs_version)
 * [`pkg_version`](#-fetchcrl--pkg_version)
@@ -48,9 +83,30 @@ The following parameters are available in the `fetchcrl` class:
 * [`randomcron`](#-fetchcrl--randomcron)
 * [`cache_control_request`](#-fetchcrl--cache_control_request)
 * [`cas`](#-fetchcrl--cas)
-* [`capkgs`](#-fetchcrl--capkgs)
-* [`carepo`](#-fetchcrl--carepo)
-* [`carepo_gpgkey`](#-fetchcrl--carepo_gpgkey)
+
+##### <a name="-fetchcrl--capkgs"></a>`capkgs`
+
+Data type: `Array[String[1]]`
+
+CA policy packages to install.
+
+Default value: `['ca-policy-egi-core']`
+
+##### <a name="-fetchcrl--carepo"></a>`carepo`
+
+Data type: `Stdlib::Httpurl`
+
+Repository URL of CA packages.
+
+Default value: `'https://repository.egi.eu/sw/production/cas/1/current/'`
+
+##### <a name="-fetchcrl--carepo_gpgkey"></a>`carepo_gpgkey`
+
+Data type: `Stdlib::Httpurl`
+
+Repository URL of GPG key for CA packages.
+
+Default value: `'https://dist.eugridpma.info/distribution/igtf/current/GPG-KEY-EUGridPMA-RPM-3'`
 
 ##### <a name="-fetchcrl--manage_carepo"></a>`manage_carepo`
 
@@ -199,30 +255,6 @@ Data type: `Optional[Hash]`
 A hash of `fetchcrl::ca` defined types to load.
 
 Default value: `undef`
-
-##### <a name="-fetchcrl--capkgs"></a>`capkgs`
-
-Data type: `Array[String[1]]`
-
-
-
-Default value: `['ca-policy-egi-core']`
-
-##### <a name="-fetchcrl--carepo"></a>`carepo`
-
-Data type: `Stdlib::Httpurl`
-
-
-
-Default value: `'https://repository.egi.eu/sw/production/cas/1/current/'`
-
-##### <a name="-fetchcrl--carepo_gpgkey"></a>`carepo_gpgkey`
-
-Data type: `Stdlib::Httpurl`
-
-
-
-Default value: `'https://dist.eugridpma.info/distribution/igtf/current/GPG-KEY-EUGridPMA-RPM-3'`
 
 ## Defined types
 
