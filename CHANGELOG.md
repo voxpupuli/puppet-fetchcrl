@@ -4,6 +4,27 @@ All notable changes to this project will be documented in this file.
 Each new release typically also includes the latest modulesync defaults.
 These should not affect the functionality of the module.
 
+## [v7.0.0](https://github.com/voxpupuli/puppet-fetchcrl/tree/v7.0.0) (2024-02-26)
+
+[Full Changelog](https://github.com/voxpupuli/puppet-fetchcrl/compare/v6.0.0...v7.0.0)
+
+**Breaking changes:**
+
+- Drop Ubuntu 18.04 support [\#104](https://github.com/voxpupuli/puppet-fetchcrl/pull/104) ([zilchms](https://github.com/zilchms))
+- Drop Debian 10 support [\#103](https://github.com/voxpupuli/puppet-fetchcrl/pull/103) ([zilchms](https://github.com/zilchms))
+
+**Implemented enhancements:**
+
+- Add support for Debian 12 [\#106](https://github.com/voxpupuli/puppet-fetchcrl/pull/106) ([traylenator](https://github.com/traylenator))
+- Parameter hardening for private classes [\#105](https://github.com/voxpupuli/puppet-fetchcrl/pull/105) ([zilchms](https://github.com/zilchms))
+- puppetlabs/apt: Allow 9.x [\#102](https://github.com/voxpupuli/puppet-fetchcrl/pull/102) ([zilchms](https://github.com/zilchms))
+
+**Merged pull requests:**
+
+- Fix missing docs and simplify period\_method check [\#109](https://github.com/voxpupuli/puppet-fetchcrl/pull/109) ([zilchms](https://github.com/zilchms))
+- Update Readme: fix broken links, improve formating [\#108](https://github.com/voxpupuli/puppet-fetchcrl/pull/108) ([rwaffen](https://github.com/rwaffen))
+- Improve English of README [\#99](https://github.com/voxpupuli/puppet-fetchcrl/pull/99) ([traylenator](https://github.com/traylenator))
+
 ## [v6.0.0](https://github.com/voxpupuli/puppet-fetchcrl/tree/v6.0.0) (2023-08-16)
 
 [Full Changelog](https://github.com/voxpupuli/puppet-fetchcrl/compare/v5.1.0...v6.0.0)
