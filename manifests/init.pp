@@ -96,7 +96,7 @@
 class fetchcrl (
   Array[String[1]] $capkgs                 = ['ca-policy-egi-core'],
   Stdlib::Httpurl $carepo                  = 'https://repository.egi.eu/sw/production/cas/1/current/',
-  Stdlib::Httpurl $carepo_gpgkey           = 'https://dist.eugridpma.info/distribution/igtf/current/GPG-KEY-EUGridPMA-RPM-3',
+  Stdlib::Httpurl $carepo_gpgkey           = 'https://repository.egi.eu/sw/production/cas/1/current/GPG-KEY-EUGridPMA-RPM-4R1',
   Boolean $manage_carepo                   = true,
   String $capkgs_version                   = 'present',
   String $pkg_version                      = 'present',

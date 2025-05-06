@@ -57,7 +57,7 @@ class fetchcrl::install (
           location      => $carepo,
           key           => {
             ensure => refreshed,
-            id     => 'D12E922822BE64D50146188BC32D99C83CDBBC71',
+            id     => '565F4528EAD3F53727B5A2E9B055005676341F1A',
             source => $carepo_gpgkey,
           },
           release       => 'egi-igtf',
