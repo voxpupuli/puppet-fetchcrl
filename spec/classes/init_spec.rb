@@ -25,7 +25,7 @@ describe 'fetchcrl', type: 'class' do
             expect(subject).to contain_apt__source('carepo').with(
               {
                 location: 'https://repository.egi.eu/sw/production/cas/1/current/',
-                key: { 'ensure' => 'refreshed', 'id' => 'D12E922822BE64D50146188BC32D99C83CDBBC71', 'source' => 'https://dist.eugridpma.info/distribution/igtf/current/GPG-KEY-EUGridPMA-RPM-3' },
+                key: { 'ensure' => 'refreshed', 'id' => '565F4528EAD3F53727B5A2E9B055005676341F1A', 'source' => 'https://repository.egi.eu/sw/production/cas/1/current/GPG-KEY-EUGridPMA-RPM-4R1' },
               }
             )
           }
@@ -36,7 +36,7 @@ describe 'fetchcrl', type: 'class' do
             expect(subject).to contain_yumrepo('carepo').with(
               {
                 baseurl: 'https://repository.egi.eu/sw/production/cas/1/current/',
-                gpgkey: 'https://dist.eugridpma.info/distribution/igtf/current/GPG-KEY-EUGridPMA-RPM-3',
+                gpgkey: 'https://repository.egi.eu/sw/production/cas/1/current/GPG-KEY-EUGridPMA-RPM-4R1',
               }
             )
           }
@@ -90,7 +90,7 @@ describe 'fetchcrl', type: 'class' do
             expect(subject).to contain_apt__source('carepo').with(
               {
                 location: 'https://example.org/foo',
-                key: { 'ensure' => 'refreshed', 'id' => 'D12E922822BE64D50146188BC32D99C83CDBBC71', 'source' => 'https://example.org/foo.gpg' },
+                key: { 'ensure' => 'refreshed', 'id' => '565F4528EAD3F53727B5A2E9B055005676341F1A', 'source' => 'https://example.org/foo.gpg' },
               }
             )
           }

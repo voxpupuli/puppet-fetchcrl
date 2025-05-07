@@ -106,7 +106,7 @@ Data type: `Stdlib::Httpurl`
 
 Repository URL of GPG key for CA packages.
 
-Default value: `'https://dist.eugridpma.info/distribution/igtf/current/GPG-KEY-EUGridPMA-RPM-3'`
+Default value: `'https://repository.egi.eu/sw/production/cas/1/current/GPG-KEY-EUGridPMA-RPM-4R1'`
 
 ##### <a name="-fetchcrl--manage_carepo"></a>`manage_carepo`
 
