@@ -79,7 +79,6 @@ The following parameters are available in the `fetchcrl` class:
 * [`logmode`](#-fetchcrl--logmode)
 * [`pkgname`](#-fetchcrl--pkgname)
 * [`runcron`](#-fetchcrl--runcron)
-* [`runboot`](#-fetchcrl--runboot)
 * [`randomcron`](#-fetchcrl--randomcron)
 * [`cache_control_request`](#-fetchcrl--cache_control_request)
 * [`cas`](#-fetchcrl--cas)
@@ -219,16 +218,6 @@ Data type: `Boolean`
 Should fetch-crl be run periodically either as a cron job or timer as appropriate.
 
 Default value: `true`
-
-##### <a name="-fetchcrl--runboot"></a>`runboot`
-
-Data type: `Boolean`
-
-Should fetch-crl be run at boot time.
-This parameter is only significant for fetch-crl packages
-that use a cron based package and not a systemd timer.
-
-Default value: `false`
 
 ##### <a name="-fetchcrl--randomcron"></a>`randomcron`
 

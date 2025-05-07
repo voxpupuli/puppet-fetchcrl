@@ -77,11 +77,6 @@
 # @param runcron
 #  Should fetch-crl be run periodically either as a cron job or timer as appropriate.
 #
-# @param runboot
-#  Should fetch-crl be run at boot time.
-#  This parameter is only significant for fetch-crl packages
-#  that use a cron based package and not a systemd timer.
-#
 # @param randomcron
 #  Should the every 6 hour cron be configured with a random offset.
 #  With osfamily RedHat 8 or newer the randomcron parameter is ignored.
@@ -111,18 +106,10 @@ class fetchcrl (
   Integer $parallelism                     = 4,
   Enum['direct','qualified', 'cache','syslog'] $logmode = 'syslog',
   String[1] $pkgname                       = 'fetch-crl',
-  Boolean $runboot                         = false,
   Boolean $runcron                         = true,
   Optional[Integer] $cache_control_request = undef,
   Optional[Hash] $cas                      = undef,
 ) {
-  # Is the package cron or systemd.timer based?
-  if $facts['os']['family'] == 'RedHat' and versioncmp($facts['os']['release']['major'],'7') <= 0 {
-    $periodic_method = 'cron'
-  } else {
-    $periodic_method = 'timer'
-  }
-
   contain 'fetchcrl::install'
   contain 'fetchcrl::config'
   contain 'fetchcrl::service'
