@@ -43,21 +43,12 @@ describe 'fetchcrl', type: 'class' do
 
           it { is_expected.not_to contain_apt__source('carepo') }
         end
-        case [facts[:os]['name'], facts[:os]['release']['major']]
-        when %w[RedHat 7], %w[CentOS 7], %w[Debian 10], ['Ubuntu', '18.04']
-          it { is_expected.to contain_augeas('randomise_cron').with_incl('/etc/cron.d/fetch-crl') }
-          it { is_expected.to contain_augeas('randomise_cron').with_changes([%r{set minute ([0-9]|[1-5][0-9])}, %r{set hour [0-5]-23/6}]) }
-          it { is_expected.to contain_service('fetch-crl-boot').with_ensure(false) }
-          it { is_expected.to contain_service('fetch-crl-boot').with_enable(false) }
-          it { is_expected.to contain_service('fetch-crl-cron').with_ensure(true) }
-          it { is_expected.to contain_service('fetch-crl-cron').with_enable(true) }
-        else
-          it { is_expected.not_to contain_augeas('randomise_cron') }
-          it { is_expected.not_to contain_service('fetch-crl-boot') }
-          it { is_expected.not_to contain_service('fetch-crl-cron') }
-          it { is_expected.to contain_service('fetch-crl.timer').with_ensure(true) }
-          it { is_expected.to contain_service('fetch-crl.timer').with_enable(true) }
-        end
+
+        it { is_expected.not_to contain_augeas('randomise_cron') }
+        it { is_expected.not_to contain_service('fetch-crl-boot') }
+        it { is_expected.not_to contain_service('fetch-crl-cron') }
+        it { is_expected.to contain_service('fetch-crl.timer').with_ensure(true) }
+        it { is_expected.to contain_service('fetch-crl.timer').with_enable(true) }
       end
 
       context 'with all parameters set' do
@@ -112,7 +103,6 @@ describe 'fetchcrl', type: 'class' do
             noerrors: true,
             randomcron: true,
             runcron: true,
-            runboot: true,
             manage_carepo: true,
             inet6glue: true,
           }
@@ -126,7 +116,7 @@ describe 'fetchcrl', type: 'class' do
           it { is_expected.to contain_yumrepo('carepo') }
 
           case facts[:os]['release']['major']
-          when '7', '8'
+          when '8'
             it { is_expected.to contain_package('perl-Net-INET6Glue').with_ensure('present') }
           else
             it { is_expected.not_to contain_package('perl-Net-INET6Glue') }
@@ -135,26 +125,15 @@ describe 'fetchcrl', type: 'class' do
         it { is_expected.to contain_file('/etc/fetch-crl.conf').with_content(%r{^noerrors$}) }
 
         case [facts[:os]['name'], facts[:os]['release']['major']]
-        when %w[RedHat 7], %w[CentOS 7], %w[RedHat 8], %w[CentOS 8], %w[AlmaLinux 8], %w[OracleLinux 8], %w[Rocky 8], %w[Debian 10], %w[Debian 11], ['Ubuntu', '18.04'], ['Ubuntu', '20.04'], ['Ubuntu', '22.04']
+        when %w[RedHat 8], %w[AlmaLinux 8], %w[OracleLinux 8], %w[Rocky 8], %w[Debian 11], ['Ubuntu', '22.04']
           it { is_expected.to contain_file('/etc/fetch-crl.conf').with_content(%r{^inet6glue$}) }
         else
           it { is_expected.not_to contain_file('/etc/fetch-crl.conf').with_content(%r{^inet6glue$}) }
         end
 
-        case [facts[:os]['name'], facts[:os]['release']['major']]
-        when %w[RedHat 7], %w[CentOS 7], %w[Debian 10], ['Ubuntu', '18.04']
-          it { is_expected.to contain_augeas('randomise_cron').with_incl('/etc/cron.d/fetch-crl') }
-          it { is_expected.to contain_augeas('randomise_cron').with_changes([%r{set minute ([0-9]|[1-5][0-9])}, %r{set hour [0-5]-23/6}]) }
-          it { is_expected.to contain_service('fetch-crl-boot').with_ensure(true) }
-          it { is_expected.to contain_service('fetch-crl-boot').with_enable(true) }
-          it { is_expected.to contain_service('fetch-crl-cron').with_ensure(true) }
-          it { is_expected.to contain_service('fetch-crl-cron').with_enable(true) }
-          it { is_expected.not_to contain_service('fetch-crl.timer') }
-        else
-          it { is_expected.not_to contain_augeas('randomise_cron') }
-          it { is_expected.to contain_service('fetch-crl.timer').with_ensure(true) }
-          it { is_expected.to contain_service('fetch-crl.timer').with_enable(true) }
-        end
+        it { is_expected.not_to contain_augeas('randomise_cron') }
+        it { is_expected.to contain_service('fetch-crl.timer').with_ensure(true) }
+        it { is_expected.to contain_service('fetch-crl.timer').with_enable(true) }
       end
 
       context 'with boolean params parameters set false' do
@@ -163,7 +142,6 @@ describe 'fetchcrl', type: 'class' do
             noerrors: false,
             randomcron: false,
             runcron: false,
-            runboot: false,
             manage_carepo: false,
           }
         end
@@ -173,13 +151,8 @@ describe 'fetchcrl', type: 'class' do
         it { is_expected.to contain_file('/etc/fetch-crl.conf').without_content(%r{^noerrors$}) }
         it { is_expected.not_to contain_augeas('randomise_cron') }
 
-        case [facts[:os]['name'], facts[:os]['release']['major']]
-        when %w[RedHat 7], %w[CentOS 7], %w[Debian 10], ['Ubuntu', '18.04']
-          it { is_expected.not_to contain_service('fetch-crl.timer') }
-        else
-          it { is_expected.to contain_service('fetch-crl.timer').with_ensure(false) }
-          it { is_expected.to contain_service('fetch-crl.timer').with_enable(false) }
-        end
+        it { is_expected.to contain_service('fetch-crl.timer').with_ensure(false) }
+        it { is_expected.to contain_service('fetch-crl.timer').with_enable(false) }
       end
     end
   end

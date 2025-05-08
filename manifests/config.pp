@@ -56,21 +56,6 @@ class fetchcrl::config (
     recurse => true,
   }
 
-  # Set 6 hour interval cron to have a random offset.
-  if $fetchcrl::periodic_method == 'cron' and $randomcron {
-    $_hour = "${fqdn_rand(6,'fetchcrl')}-23/6"
-    $_minute  = fqdn_rand(60,'fetchcrl')
-    augeas { 'randomise_cron':
-      incl    => '/etc/cron.d/fetch-crl',
-      lens    => 'Cron.lns',
-      context => '/files/etc/cron.d/fetch-crl/entry/time',
-      changes => [
-        "set minute ${_minute}",
-        "set hour ${_hour}",
-      ],
-    }
-  }
-
   if $cas {
     $cas.each |$_name, $_config| {
       fetchcrl::ca { $_name:
@@ -79,9 +64,9 @@ class fetchcrl::config (
     }
   }
 
-  #Ubuntu 20.04 package has the timer add but cron jobs are still present.
+  # Debian, Ubuntu package has the timer add but cron jobs are still present.
   # https://bugs.launchpad.net/ubuntu/+source/fetch-crl/+bug/1920742
-  if $fetchcrl::periodic_method == 'timer' and $facts['os']['family'] == 'Debian' {
+  if $facts['os']['family'] == 'Debian' {
     file { '/etc/cron.d/fetch-crl':
       ensure => absent,
     }
