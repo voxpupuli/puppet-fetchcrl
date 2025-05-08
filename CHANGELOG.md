@@ -4,6 +4,21 @@ All notable changes to this project will be documented in this file.
 Each new release typically also includes the latest modulesync defaults.
 These should not affect the functionality of the module.
 
+## [v8.0.0](https://github.com/voxpupuli/puppet-fetchcrl/tree/v8.0.0) (2025-05-08)
+
+[Full Changelog](https://github.com/voxpupuli/puppet-fetchcrl/compare/v7.0.0...v8.0.0)
+
+**Breaking changes:**
+
+- Drop EOL Ubuntu 20.04 CentOS 7, 8 and RHEL 7 [\#122](https://github.com/voxpupuli/puppet-fetchcrl/pull/122) ([traylenator](https://github.com/traylenator))
+
+**Implemented enhancements:**
+
+- Support CentOS 10 and Ubuntu 24.04 [\#123](https://github.com/voxpupuli/puppet-fetchcrl/pull/123) ([traylenator](https://github.com/traylenator))
+- Support puppetlabs-apt v10 [\#121](https://github.com/voxpupuli/puppet-fetchcrl/pull/121) ([traylenator](https://github.com/traylenator))
+- GPG key update EUGridPMA-RPM v3 to v4r1 [\#120](https://github.com/voxpupuli/puppet-fetchcrl/pull/120) ([traylenator](https://github.com/traylenator))
+- metadata.json: Add OpenVox [\#119](https://github.com/voxpupuli/puppet-fetchcrl/pull/119) ([jstraw](https://github.com/jstraw))
+
 ## [v7.0.0](https://github.com/voxpupuli/puppet-fetchcrl/tree/v7.0.0) (2024-02-26)
 
 [Full Changelog](https://github.com/voxpupuli/puppet-fetchcrl/compare/v6.0.0...v7.0.0)
