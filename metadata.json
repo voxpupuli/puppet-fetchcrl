@@ -15,7 +15,7 @@
   ],
   "dependencies": [
     {
-      "version_requirement": ">=7.0.0 < 11.0.0",
+      "version_requirement": ">= 7.0.0 < 11.0.0",
       "name": "puppetlabs/apt"
     },
     {
