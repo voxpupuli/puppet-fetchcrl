@@ -11,7 +11,7 @@ describe 'trustedca' do
 
   context 'with some traditional pem CAs installed' do
     before do
-      cern = File.read(fixtures('certs', 'CERN-GridCA.pem'))
+      cern = File.read(File.join('spec', 'fixtures', 'certs', 'CERN-GridCA.pem'))
       allow(Dir).to receive(:glob).and_call_original
       allow(File).to receive(:read).and_call_original
       allow(Dir).to receive(:glob).with('/etc/grid-security/certificates/*.pem').and_return(
@@ -25,7 +25,7 @@ describe 'trustedca' do
 
   context 'with some invalid pem files installed' do
     before do
-      arc = File.read(fixtures('certs', 'ARC-TestCA-6a8cca22-key.pem'))
+      arc = File.read(File.join('spec', 'fixtures', 'certs', 'ARC-TestCA-6a8cca22-key.pem'))
       allow(Dir).to receive(:glob).and_call_original
       allow(File).to receive(:read).and_call_original
       allow(Dir).to receive(:glob).with('/etc/grid-security/certificates/*.pem').and_return(
@@ -39,8 +39,8 @@ describe 'trustedca' do
 
   context 'with a valid and an invalid pem files installed' do
     before do
-      arc = File.read(fixtures('certs', 'ARC-TestCA-6a8cca22-key.pem'))
-      cern = File.read(fixtures('certs', 'CERN-GridCA.pem'))
+      arc = File.read(File.join('spec', 'fixtures', 'certs', 'ARC-TestCA-6a8cca22-key.pem'))
+      cern = File.read(File.join('spec', 'fixtures', 'certs', 'CERN-GridCA.pem'))
       allow(Dir).to receive(:glob).and_call_original
       allow(File).to receive(:read).and_call_original
       allow(Dir).to receive(:glob).with('/etc/grid-security/certificates/*.pem').and_return(
