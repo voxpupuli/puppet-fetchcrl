@@ -1,7 +1,7 @@
 ---
 fixtures:
   repositories:
-    stdlib: 'https://github.com/puppetlabs/puppetlabs-stdlib.git'
-    yumrepo_core: 'https://github.com/puppetlabs/puppetlabs-yumrepo_core.git'
-    augeas_core: 'https://github.com/puppetlabs/puppetlabs-augeas_core.git'
-    apt: 'https://github.com/puppetlabs/puppetlabs-apt.git'
+    apt: https://github.com/puppetlabs/puppetlabs-apt.git
+    augeas_core: https://github.com/puppetlabs/puppetlabs-augeas_core.git
+    stdlib: https://github.com/puppetlabs/puppetlabs-stdlib.git
+    yumrepo_core: https://github.com/puppetlabs/puppetlabs-yumrepo_core.git
