@@ -48,13 +48,13 @@ define fetchcrl::ca (
     owner   => root,
     group   => root,
     content => epp('fetchcrl/fetch-crl-anchor.conf.epp', {
-        'anchorname'     => $anchorname,
-        'agingtolerance' => $agingtolerance,
-        'nowarnings'     => $nowarnings,
-        'noerrors'       => $noerrors,
-        'httptimeout'    => $httptimeout,
-        'crl_url'        => $crl_url,
-        'comment'        => $comment,
+      'anchorname'     => $anchorname,
+      'agingtolerance' => $agingtolerance,
+      'nowarnings'     => $nowarnings,
+      'noerrors'       => $noerrors,
+      'httptimeout'    => $httptimeout,
+      'crl_url'        => $crl_url,
+      'comment'        => $comment,
     }),
   }
 }
