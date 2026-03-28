@@ -15,7 +15,7 @@ describe 'trustedca' do
       allow(Dir).to receive(:glob).and_call_original
       allow(File).to receive(:read).and_call_original
       allow(Dir).to receive(:glob).with('/etc/grid-security/certificates/*.pem').and_return(
-        ['/etc/grid-security/certificates/CERN-GridCA.pem']
+        ['/etc/grid-security/certificates/CERN-GridCA.pem'],
       )
       allow(File).to receive(:read).with('/etc/grid-security/certificates/CERN-GridCA.pem').and_return(cern)
     end
@@ -29,7 +29,7 @@ describe 'trustedca' do
       allow(Dir).to receive(:glob).and_call_original
       allow(File).to receive(:read).and_call_original
       allow(Dir).to receive(:glob).with('/etc/grid-security/certificates/*.pem').and_return(
-        ['/etc/grid-security/certificates/ARC-TestCA-6a8cca22-key.pem']
+        ['/etc/grid-security/certificates/ARC-TestCA-6a8cca22-key.pem'],
       )
       allow(File).to receive(:read).with('/etc/grid-security/certificates/ARC-TestCA-6a8cca22-key.pem').and_return(arc)
     end
@@ -46,8 +46,8 @@ describe 'trustedca' do
       allow(Dir).to receive(:glob).with('/etc/grid-security/certificates/*.pem').and_return(
         [
           '/etc/grid-security/certificates/ARC-TestCA-6a8cca22-key.pem',
-          '/etc/grid-security/certificates/CERN-GridCA.pem'
-        ]
+          '/etc/grid-security/certificates/CERN-GridCA.pem',
+        ],
       )
       allow(File).to receive(:read).with('/etc/grid-security/certificates/ARC-TestCA-6a8cca22-key.pem').and_return(arc)
       allow(File).to receive(:read).with('/etc/grid-security/certificates/CERN-GridCA.pem').and_return(cern)

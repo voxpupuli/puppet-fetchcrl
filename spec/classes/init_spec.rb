@@ -26,7 +26,7 @@ describe 'fetchcrl', type: 'class' do
               {
                 location: 'https://repository.egi.eu/sw/production/cas/1/current/',
                 key: { 'ensure' => 'refreshed', 'id' => '565F4528EAD3F53727B5A2E9B055005676341F1A', 'source' => 'https://repository.egi.eu/sw/production/cas/1/current/GPG-KEY-EUGridPMA-RPM-4R1' },
-              }
+              },
             )
           }
 
@@ -37,7 +37,7 @@ describe 'fetchcrl', type: 'class' do
               {
                 baseurl: 'https://repository.egi.eu/sw/production/cas/1/current/',
                 gpgkey: 'https://repository.egi.eu/sw/production/cas/1/current/GPG-KEY-EUGridPMA-RPM-4R1',
-              }
+              },
             )
           }
 
@@ -64,8 +64,8 @@ describe 'fetchcrl', type: 'class' do
               },
               'MD' => {
                 'noerrors' => true,
-              }
-            }
+              },
+            },
           }
         end
 
@@ -82,7 +82,7 @@ describe 'fetchcrl', type: 'class' do
               {
                 location: 'https://example.org/foo',
                 key: { 'ensure' => 'refreshed', 'id' => '565F4528EAD3F53727B5A2E9B055005676341F1A', 'source' => 'https://example.org/foo.gpg' },
-              }
+              },
             )
           }
         when 'RedHat'
@@ -91,7 +91,7 @@ describe 'fetchcrl', type: 'class' do
               {
                 baseurl: 'https://example.org/foo',
                 gpgkey: 'https://example.org/foo.gpg',
-              }
+              },
             )
           }
         end

@@ -28,7 +28,7 @@ describe 'fetchcrl::ca' do
         let(:params) do
           {
             nowarnings: false,
-            noerrors: false
+            noerrors: false,
           }
         end
 
@@ -40,7 +40,7 @@ describe 'fetchcrl::ca' do
         let(:params) do
           {
             nowarnings: true,
-            noerrors: true
+            noerrors: true,
           }
         end
 
@@ -56,7 +56,7 @@ describe 'fetchcrl::ca' do
             noerrors: true,
             httptimeout: 1234,
             agingtolerance: 9876,
-            crl_url: ['http://ca1.example.org/', 'http://ca2.example.org/']
+            crl_url: ['http://ca1.example.org/', 'http://ca2.example.org/'],
           }
         end
 
