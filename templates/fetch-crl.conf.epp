@@ -5,6 +5,7 @@
   Boolean $nowarnings,
   Boolean $noerrors,
   Optional[Stdlib::Httpurl] $http_proxy = undef,
+  Optional[Stdlib::Httpurl] $https_proxy = undef,
   Integer $httptimeout,
   Integer $parallelism,
   Enum['direct','qualified','cache','syslog'] $logmode,
@@ -30,6 +31,9 @@ noerrors
 <% } -%>
 <% if $http_proxy { -%>
 http_proxy = <%= $http_proxy %>
+<% } -%>
+<% if $https_proxy { -%>
+https_proxy = <%= $https_proxy %>
 <% } -%>
 httptimeout = <%= $httptimeout %>
 parallelism = <%= $parallelism %>

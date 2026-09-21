@@ -62,6 +62,10 @@
 # @param http_proxy
 #  http proxy URLs. For example http://foobar.example.org:3218/
 #
+# @param https_proxy
+#  http proxy URLs. For example http://foobar.example.org:3218/ to proxy https traffic
+#
+#
 # @param httptimeout
 #  Time out for http.
 #
@@ -106,6 +110,7 @@ class fetchcrl (
   Boolean $noerrors                        = false,
   Boolean $randomcron                      = true,
   Optional[Stdlib::Httpurl] $http_proxy    = undef,
+  Optional[Stdlib::Httpurl] $https_proxy   = undef,
   Integer $httptimeout                     = 30,
   Integer $parallelism                     = 4,
   Enum['direct','qualified', 'cache','syslog'] $logmode = 'syslog',

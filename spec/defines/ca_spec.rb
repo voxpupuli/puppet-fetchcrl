@@ -21,6 +21,8 @@ describe 'fetchcrl::ca' do
       it { is_expected.to contain_file('/etc/foo.d/myinstance.conf').without_content(%r{^agingtolerance$}) }
       it { is_expected.to contain_file('/etc/foo.d/myinstance.conf').without_content(%r{^nowarnings$}) }
       it { is_expected.to contain_file('/etc/foo.d/myinstance.conf').without_content(%r{^noerrors$}) }
+      it { is_expected.to contain_file('/etc/foo.d/myinstance.conf').without_content(%r{^nohttp_proxy$}) }
+      it { is_expected.to contain_file('/etc/foo.d/myinstance.conf').without_content(%r{^nohttps_proxy$}) }
       it { is_expected.to contain_file('/etc/foo.d/myinstance.conf').without_content(%r{^httptimeout$}) }
       it { is_expected.to contain_file('/etc/foo.d/myinstance.conf').without_content(%r{^crl_url$}) }
 
@@ -34,6 +36,8 @@ describe 'fetchcrl::ca' do
 
         it { is_expected.to contain_file('/etc/foo.d/myinstance.conf').without_content(%r{^nowarnings$}) }
         it { is_expected.to contain_file('/etc/foo.d/myinstance.conf').without_content(%r{^noerrors$}) }
+        it { is_expected.to contain_file('/etc/foo.d/myinstance.conf').without_content(%r{^nohttp_proxy$}) }
+        it { is_expected.to contain_file('/etc/foo.d/myinstance.conf').without_content(%r{^nohttps_proxy$}) }
       end
 
       context 'with all booleans true' do
@@ -41,11 +45,15 @@ describe 'fetchcrl::ca' do
           {
             nowarnings: true,
             noerrors: true,
+            nohttp_proxy: true,
+            nohttps_proxy: true,
           }
         end
 
         it { is_expected.to contain_file('/etc/foo.d/myinstance.conf').with_content(%r{^nowarnings$}) }
         it { is_expected.to contain_file('/etc/foo.d/myinstance.conf').with_content(%r{^noerrors$}) }
+        it { is_expected.to contain_file('/etc/foo.d/myinstance.conf').with_content(%r{^nohttp_proxy$}) }
+        it { is_expected.to contain_file('/etc/foo.d/myinstance.conf').with_content(%r{^nohttps_proxy$}) }
       end
 
       context 'with all parameters set' do
