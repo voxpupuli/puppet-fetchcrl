@@ -74,6 +74,7 @@ The following parameters are available in the `fetchcrl` class:
 * [`noerrors`](#-fetchcrl--noerrors)
 * [`nowarnings`](#-fetchcrl--nowarnings)
 * [`http_proxy`](#-fetchcrl--http_proxy)
+* [`https_proxy`](#-fetchcrl--https_proxy)
 * [`httptimeout`](#-fetchcrl--httptimeout)
 * [`parallelism`](#-fetchcrl--parallelism)
 * [`logmode`](#-fetchcrl--logmode)
@@ -180,6 +181,14 @@ http proxy URLs. For example http://foobar.example.org:3218/
 
 Default value: `undef`
 
+##### <a name="-fetchcrl--https_proxy"></a>`https_proxy`
+
+Data type: `Optional[Stdlib::Httpurl]`
+
+http proxy URLs. For example http://foobar.example.org:3218/ to proxy https traffic
+
+Default value: `undef`
+
 ##### <a name="-fetchcrl--httptimeout"></a>`httptimeout`
 
 Data type: `Integer`
@@ -280,6 +289,8 @@ The following parameters are available in the `fetchcrl::ca` defined type:
 * [`anchorname`](#-fetchcrl--ca--anchorname)
 * [`nowarnings`](#-fetchcrl--ca--nowarnings)
 * [`noerrors`](#-fetchcrl--ca--noerrors)
+* [`nohttp_proxy`](#-fetchcrl--ca--nohttp_proxy)
+* [`nohttps_proxy`](#-fetchcrl--ca--nohttps_proxy)
 * [`httptimeout`](#-fetchcrl--ca--httptimeout)
 * [`agingtolerance`](#-fetchcrl--ca--agingtolerance)
 * [`comment`](#-fetchcrl--ca--comment)
@@ -310,6 +321,22 @@ Default value: `false`
 Data type: `Boolean`
 
 Should errors be supressed for this CA.
+
+Default value: `false`
+
+##### <a name="-fetchcrl--ca--nohttp_proxy"></a>`nohttp_proxy`
+
+Data type: `Boolean`
+
+Disable the http_proxy for this CA
+
+Default value: `false`
+
+##### <a name="-fetchcrl--ca--nohttps_proxy"></a>`nohttps_proxy`
+
+Data type: `Boolean`
+
+Disable the https_proxy for this CA
 
 Default value: `false`
 

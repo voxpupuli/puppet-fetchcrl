@@ -18,6 +18,8 @@ describe 'fetchcrl', type: 'class' do
         it { is_expected.to contain_file('/etc/fetch-crl.conf').without_content(%r{noerrors}) }
         it { is_expected.to contain_file('/etc/fetch-crl.conf').without_content(%r{inet6glue}) }
         it { is_expected.to contain_file('/etc/fetch-crl.conf').without_content(%r{opensslmode}) }
+        it { is_expected.to contain_file('/etc/fetch-crl.conf').without_content(%r{http_proxy}) }
+        it { is_expected.to contain_file('/etc/fetch-crl.conf').without_content(%r{https_proxy}) }
         it { is_expected.to have_fetchcrl__ca_resource_count(0) }
 
         case facts[:os]['family']
@@ -78,6 +80,8 @@ describe 'fetchcrl', type: 'class' do
             capkgs: %w[abc def],
             carepo: 'https://example.org/foo',
             carepo_gpgkey: 'https://example.org/foo.gpg',
+            http_proxy: 'http://example.org:3128',
+            https_proxy: 'http://example.com:3128',
             cas: {
               'EDG' => {
                 'agingtolerance' => 168,
@@ -91,6 +95,8 @@ describe 'fetchcrl', type: 'class' do
 
         it { is_expected.to contain_file('/etc/fetch-crl.conf').with_content(%r{^cache_control_request = 1234$}) }
         it { is_expected.to contain_file('/etc/fetch-crl.conf').with_content(%r{^opensslmode = dual$}) }
+        it { is_expected.to contain_file('/etc/fetch-crl.conf').with_content(%r{^http_proxy = http://example.org:3128$}) }
+        it { is_expected.to contain_file('/etc/fetch-crl.conf').with_content(%r{^https_proxy = http://example.com:3128$}) }
         it { is_expected.to contain_package('abc').with_ensure('present') }
         it { is_expected.to contain_package('def').with_ensure('present') }
         it { is_expected.to contain_fetchcrl__ca('EDG').with_agingtolerance(168) }

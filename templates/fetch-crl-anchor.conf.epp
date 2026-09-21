@@ -3,6 +3,8 @@
   Optional[Integer] $agingtolerance = undef,
   Boolean $nowarnings,
   Boolean $noerrors,
+  Boolean $nohttp_proxy,
+  Boolean $nohttps_proxy,
   Optional[Integer] $httptimeout = undef,
   Array[Stdlib::Httpurl] $crl_url,
   Optional[String] $comment = undef,
@@ -22,6 +24,12 @@ nowarnings
 <% } -%>
 <% if $noerrors { -%>
 noerrors
+<% } -%>
+<% if $nohttp_proxy { -%>
+nohttp_proxy
+<% } -%>
+<% if $nohttps_proxy { -%>
+nohttps_proxy
 <% } -%>
 <% if $httptimeout { -%>
 httptimeout = <%= $httptimeout %>

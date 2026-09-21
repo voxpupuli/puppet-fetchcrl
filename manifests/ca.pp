@@ -19,6 +19,12 @@
 # @param noerrors
 #  Should errors be supressed for this CA.
 #
+# @param nohttp_proxy
+#  Disable the http_proxy for this CA
+#
+# @param nohttps_proxy
+#  Disable the https_proxy for this CA
+#
 # @param httptimeout
 #  The timeout for this CA.
 #
@@ -35,6 +41,8 @@ define fetchcrl::ca (
   String[1] $anchorname             = $title,
   Boolean $nowarnings               = false,
   Boolean $noerrors                 = false,
+  Boolean $nohttp_proxy             = false,
+  Boolean $nohttps_proxy            = false,
   Optional[Integer] $httptimeout    = undef,
   Optional[Integer] $agingtolerance = undef,
   Optional[String[1]] $comment      = undef,
@@ -52,6 +60,8 @@ define fetchcrl::ca (
       'agingtolerance' => $agingtolerance,
       'nowarnings'     => $nowarnings,
       'noerrors'       => $noerrors,
+      'nohttp_proxy'   => $nohttp_proxy,
+      'nohttps_proxy'  => $nohttps_proxy,
       'httptimeout'    => $httptimeout,
       'crl_url'        => $crl_url,
       'comment'        => $comment,
