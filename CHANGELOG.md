@@ -4,6 +4,15 @@ All notable changes to this project will be documented in this file.
 Each new release typically also includes the latest modulesync defaults.
 These should not affect the functionality of the module.
 
+## [v9.1.0](https://github.com/voxpupuli/puppet-fetchcrl/tree/v9.1.0) (2026-09-21)
+
+[Full Changelog](https://github.com/voxpupuli/puppet-fetchcrl/compare/v9.0.0...v9.1.0)
+
+**Implemented enhancements:**
+
+- Add https\_proxy and nohttp\(s\)\_proxy overrides [\#141](https://github.com/voxpupuli/puppet-fetchcrl/pull/141) ([traylenator](https://github.com/traylenator))
+- replace deprecated calls with Facter::Core::Execution [\#140](https://github.com/voxpupuli/puppet-fetchcrl/pull/140) ([corporate-gadfly](https://github.com/corporate-gadfly))
+
 ## [v9.0.0](https://github.com/voxpupuli/puppet-fetchcrl/tree/v9.0.0) (2026-09-06)
 
 [Full Changelog](https://github.com/voxpupuli/puppet-fetchcrl/compare/v8.0.0...v9.0.0)
