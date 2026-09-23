@@ -73,6 +73,9 @@ The following parameters are available in the `fetchcrl` class:
 * [`inet6glue`](#-fetchcrl--inet6glue)
 * [`noerrors`](#-fetchcrl--noerrors)
 * [`nowarnings`](#-fetchcrl--nowarnings)
+* [`selective_http_proxy`](#-fetchcrl--selective_http_proxy)
+* [`noverify_nextupdate`](#-fetchcrl--noverify_nextupdate)
+* [`noverify_lastupdate`](#-fetchcrl--noverify_lastupdate)
 * [`http_proxy`](#-fetchcrl--http_proxy)
 * [`https_proxy`](#-fetchcrl--https_proxy)
 * [`httptimeout`](#-fetchcrl--httptimeout)
@@ -172,6 +175,30 @@ Data type: `Boolean`
 Do not produce warnings.
 
 Default value: `true`
+
+##### <a name="-fetchcrl--selective_http_proxy"></a>`selective_http_proxy`
+
+Data type: `Boolean`
+
+Only use the http_proxy setting for plain http connections and not also on https connections
+
+Default value: `false`
+
+##### <a name="-fetchcrl--noverify_nextupdate"></a>`noverify_nextupdate`
+
+Data type: `Boolean`
+
+Set noverify_nextupdate globally
+
+Default value: `false`
+
+##### <a name="-fetchcrl--noverify_lastupdate"></a>`noverify_lastupdate`
+
+Data type: `Boolean`
+
+Set noverify_lastupdate globally
+
+Default value: `false`
 
 ##### <a name="-fetchcrl--http_proxy"></a>`http_proxy`
 
@@ -291,6 +318,8 @@ The following parameters are available in the `fetchcrl::ca` defined type:
 * [`noerrors`](#-fetchcrl--ca--noerrors)
 * [`nohttp_proxy`](#-fetchcrl--ca--nohttp_proxy)
 * [`nohttps_proxy`](#-fetchcrl--ca--nohttps_proxy)
+* [`noverify_nextupdate`](#-fetchcrl--ca--noverify_nextupdate)
+* [`noverify_lastupdate`](#-fetchcrl--ca--noverify_lastupdate)
 * [`httptimeout`](#-fetchcrl--ca--httptimeout)
 * [`agingtolerance`](#-fetchcrl--ca--agingtolerance)
 * [`comment`](#-fetchcrl--ca--comment)
@@ -337,6 +366,22 @@ Default value: `false`
 Data type: `Boolean`
 
 Disable the https_proxy for this CA
+
+Default value: `false`
+
+##### <a name="-fetchcrl--ca--noverify_nextupdate"></a>`noverify_nextupdate`
+
+Data type: `Boolean`
+
+Set noverify_nextupdate for this CA
+
+Default value: `false`
+
+##### <a name="-fetchcrl--ca--noverify_lastupdate"></a>`noverify_lastupdate`
+
+Data type: `Boolean`
+
+Set noverify_lastupdate for this CA
 
 Default value: `false`
 

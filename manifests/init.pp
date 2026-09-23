@@ -59,6 +59,15 @@
 # @param nowarnings
 #  Do not produce warnings.
 #
+# @param selective_http_proxy
+#  Only use the http_proxy setting for plain http connections and not also on https connections
+#
+# @param noverify_nextupdate
+#  Set noverify_nextupdate globally
+#
+# @param noverify_lastupdate
+#  Set noverify_lastupdate globally
+#
 # @param http_proxy
 #  http proxy URLs. For example http://foobar.example.org:3218/
 #
@@ -108,6 +117,9 @@ class fetchcrl (
   Boolean $inet6glue                       = false,
   Boolean $nowarnings                      = true,
   Boolean $noerrors                        = false,
+  Boolean $selective_http_proxy            = false,
+  Boolean $noverify_nextupdate             = false,
+  Boolean $noverify_lastupdate             = false,
   Boolean $randomcron                      = true,
   Optional[Stdlib::Httpurl] $http_proxy    = undef,
   Optional[Stdlib::Httpurl] $https_proxy   = undef,

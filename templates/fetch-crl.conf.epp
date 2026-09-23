@@ -4,6 +4,9 @@
   Boolean $inet6glue,
   Boolean $nowarnings,
   Boolean $noerrors,
+  Boolean $selective_http_proxy,
+  Boolean $noverify_nextupdate,
+  Boolean $noverify_lastupdate,
   Optional[Stdlib::Httpurl] $http_proxy = undef,
   Optional[Stdlib::Httpurl] $https_proxy = undef,
   Integer $httptimeout,
@@ -28,6 +31,15 @@ nowarnings
 <% } -%>
 <% if $noerrors { -%>
 noerrors
+<% } -%>
+<% if $selective_http_proxy { -%>
+selective_http_proxy
+<% } -%>
+<% if $noverify_nextupdate { -%>
+noverify_nextupdate
+<% } -%>
+<% if $noverify_lastupdate { -%>
+noverify_lastupdate
 <% } -%>
 <% if $http_proxy { -%>
 http_proxy = <%= $http_proxy %>
