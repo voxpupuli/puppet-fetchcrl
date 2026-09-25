@@ -15,12 +15,12 @@
   ],
   "dependencies": [
     {
-      "version_requirement": ">= 7.0.0 < 11.0.0",
+      "version_requirement": ">= 7.0.0 < 12.0.0",
       "name": "puppetlabs/apt"
     },
     {
       "name": "puppetlabs-stdlib",
-      "version_requirement": ">= 4.13.1 < 10.0.0"
+      "version_requirement": ">= 4.13.1 < 11.0.0"
     }
   ],
   "requirements": [
