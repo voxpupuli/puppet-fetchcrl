@@ -25,12 +25,16 @@ describe 'fetchcrl::ca' do
       it { is_expected.to contain_file('/etc/foo.d/myinstance.conf').without_content(%r{^nohttps_proxy$}) }
       it { is_expected.to contain_file('/etc/foo.d/myinstance.conf').without_content(%r{^httptimeout$}) }
       it { is_expected.to contain_file('/etc/foo.d/myinstance.conf').without_content(%r{^crl_url$}) }
+      it { is_expected.to contain_file('/etc/foo.d/myinstance.conf').without_content(%r{noverify_nextupdate}) }
+      it { is_expected.to contain_file('/etc/foo.d/myinstance.conf').without_content(%r{noverify_lastupdate}) }
 
       context 'with all booleans false' do
         let(:params) do
           {
             nowarnings: false,
             noerrors: false,
+            noverify_nextupdate: false,
+            noverify_lastupdate: false,
           }
         end
 
@@ -38,6 +42,8 @@ describe 'fetchcrl::ca' do
         it { is_expected.to contain_file('/etc/foo.d/myinstance.conf').without_content(%r{^noerrors$}) }
         it { is_expected.to contain_file('/etc/foo.d/myinstance.conf').without_content(%r{^nohttp_proxy$}) }
         it { is_expected.to contain_file('/etc/foo.d/myinstance.conf').without_content(%r{^nohttps_proxy$}) }
+        it { is_expected.to contain_file('/etc/foo.d/myinstance.conf').without_content(%r{noverify_nextupdate}) }
+        it { is_expected.to contain_file('/etc/foo.d/myinstance.conf').without_content(%r{noverify_lastupdate}) }
       end
 
       context 'with all booleans true' do
@@ -47,6 +53,8 @@ describe 'fetchcrl::ca' do
             noerrors: true,
             nohttp_proxy: true,
             nohttps_proxy: true,
+            noverify_nextupdate: true,
+            noverify_lastupdate: true,
           }
         end
 
@@ -54,6 +62,8 @@ describe 'fetchcrl::ca' do
         it { is_expected.to contain_file('/etc/foo.d/myinstance.conf').with_content(%r{^noerrors$}) }
         it { is_expected.to contain_file('/etc/foo.d/myinstance.conf').with_content(%r{^nohttp_proxy$}) }
         it { is_expected.to contain_file('/etc/foo.d/myinstance.conf').with_content(%r{^nohttps_proxy$}) }
+        it { is_expected.to contain_file('/etc/foo.d/myinstance.conf').with_content(%r{^noverify_nextupdate$}) }
+        it { is_expected.to contain_file('/etc/foo.d/myinstance.conf').with_content(%r{^noverify_lastupdate$}) }
       end
 
       context 'with all parameters set' do
@@ -74,6 +84,20 @@ describe 'fetchcrl::ca' do
         it { is_expected.to contain_file('/etc/foo.d/myinstance.conf').with_content(%r{^agingtolerance = 9876$}) }
         it { is_expected.to contain_file('/etc/foo.d/myinstance.conf').with_content(%r{^httptimeout = 1234$}) }
         it { is_expected.to contain_file('/etc/foo.d/myinstance.conf').with_content(%r{^crl_url.1 = http://ca1.example.org/;http://ca2.example.org/$}) }
+      end
+
+      context 'with noverify_nextupdate true' do
+        let(:params) { { noverify_nextupdate: true } }
+
+        it { is_expected.to contain_file('/etc/foo.d/myinstance.conf').with_content(%r{^noverify_nextupdate$}) }
+        it { is_expected.to contain_file('/etc/foo.d/myinstance.conf').without_content(%r{noverify_lastupdate}) }
+      end
+
+      context 'with noverify_lastupdate true' do
+        let(:params) { { noverify_lastupdate: true } }
+
+        it { is_expected.to contain_file('/etc/foo.d/myinstance.conf').with_content(%r{^noverify_lastupdate$}) }
+        it { is_expected.to contain_file('/etc/foo.d/myinstance.conf').without_content(%r{noverify_nextupdate}) }
       end
     end
   end

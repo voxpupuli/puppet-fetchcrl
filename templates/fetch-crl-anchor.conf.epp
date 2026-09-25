@@ -5,6 +5,8 @@
   Boolean $noerrors,
   Boolean $nohttp_proxy,
   Boolean $nohttps_proxy,
+  Boolean $noverify_nextupdate,
+  Boolean $noverify_lastupdate,
   Optional[Integer] $httptimeout = undef,
   Array[Stdlib::Httpurl] $crl_url,
   Optional[String] $comment = undef,
@@ -30,6 +32,12 @@ nohttp_proxy
 <% } -%>
 <% if $nohttps_proxy { -%>
 nohttps_proxy
+<% } -%>
+<% if $noverify_nextupdate { -%>
+noverify_nextupdate
+<% } -%>
+<% if $noverify_lastupdate { -%>
+noverify_lastupdate
 <% } -%>
 <% if $httptimeout { -%>
 httptimeout = <%= $httptimeout %>

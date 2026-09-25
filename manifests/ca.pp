@@ -25,6 +25,12 @@
 # @param nohttps_proxy
 #  Disable the https_proxy for this CA
 #
+# @param noverify_nextupdate
+#  Set noverify_nextupdate for this CA
+#
+# @param noverify_lastupdate
+#  Set noverify_lastupdate for this CA
+#
 # @param httptimeout
 #  The timeout for this CA.
 #
@@ -43,6 +49,8 @@ define fetchcrl::ca (
   Boolean $noerrors                 = false,
   Boolean $nohttp_proxy             = false,
   Boolean $nohttps_proxy            = false,
+  Boolean $noverify_nextupdate      = false,
+  Boolean $noverify_lastupdate      = false,
   Optional[Integer] $httptimeout    = undef,
   Optional[Integer] $agingtolerance = undef,
   Optional[String[1]] $comment      = undef,
@@ -56,15 +64,17 @@ define fetchcrl::ca (
     owner   => root,
     group   => root,
     content => epp('fetchcrl/fetch-crl-anchor.conf.epp', {
-      'anchorname'     => $anchorname,
-      'agingtolerance' => $agingtolerance,
-      'nowarnings'     => $nowarnings,
-      'noerrors'       => $noerrors,
-      'nohttp_proxy'   => $nohttp_proxy,
-      'nohttps_proxy'  => $nohttps_proxy,
-      'httptimeout'    => $httptimeout,
-      'crl_url'        => $crl_url,
-      'comment'        => $comment,
+      'anchorname'          => $anchorname,
+      'agingtolerance'      => $agingtolerance,
+      'nowarnings'          => $nowarnings,
+      'noerrors'            => $noerrors,
+      'noverify_nextupdate' => $noverify_nextupdate,
+      'noverify_lastupdate' => $noverify_lastupdate,
+      'nohttp_proxy'        => $nohttp_proxy,
+      'nohttps_proxy'       => $nohttps_proxy,
+      'httptimeout'         => $httptimeout,
+      'crl_url'             => $crl_url,
+      'comment'             => $comment,
     }),
   }
 }
