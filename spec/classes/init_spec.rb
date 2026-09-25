@@ -9,20 +9,27 @@ describe 'fetchcrl', type: 'class' do
       end
 
       context 'with defaults for all parameters' do
-        it { is_expected.to contain_class('fetchcrl') }
-        it { is_expected.to contain_class('fetchcrl::install') }
-        it { is_expected.to contain_class('fetchcrl::config') }
-        it { is_expected.to contain_class('fetchcrl::service') }
-        it { is_expected.to contain_package('fetch-crl') }
-        it { is_expected.to contain_file('/etc/fetch-crl.conf').without_content(%r{cache_control_request}) }
-        it { is_expected.to contain_file('/etc/fetch-crl.conf').without_content(%r{noerrors}) }
-        it { is_expected.to contain_file('/etc/fetch-crl.conf').without_content(%r{inet6glue}) }
-        it { is_expected.to contain_file('/etc/fetch-crl.conf').without_content(%r{opensslmode}) }
-        it { is_expected.to contain_file('/etc/fetch-crl.conf').without_content(%r{http_proxy}) }
-        it { is_expected.to contain_file('/etc/fetch-crl.conf').without_content(%r{https_proxy}) }
-        it { is_expected.to contain_file('/etc/fetch-crl.conf').without_content(%r{selective_http_proxy}) }
-        it { is_expected.to contain_file('/etc/fetch-crl.conf').without_content(%r{noverify_nextupdate}) }
-        it { is_expected.to contain_file('/etc/fetch-crl.conf').without_content(%r{noverify_lastupdate}) }
+        it {
+          is_expected.to contain_class('fetchcrl')
+          is_expected.to contain_class('fetchcrl::install')
+          is_expected.to contain_class('fetchcrl::config')
+          is_expected.to contain_class('fetchcrl::service')
+          is_expected.to contain_package('fetch-crl')
+        }
+
+        it {
+          is_expected.to contain_file('/etc/fetch-crl.conf')
+            .without_content(%r{cache_control_request})
+            .without_content(%r{noerrors})
+            .without_content(%r{inet6glue})
+            .without_content(%r{opensslmode})
+            .without_content(%r{http_proxy})
+            .without_content(%r{https_proxy})
+            .without_content(%r{selective_http_proxy})
+            .without_content(%r{noverify_nextupdate})
+            .without_content(%r{noverify_lastupdate})
+        }
+
         it { is_expected.to have_fetchcrl__ca_resource_count(0) }
 
         case facts[:os]['family']
@@ -68,11 +75,14 @@ describe 'fetchcrl', type: 'class' do
           it { is_expected.not_to contain_apt__source('carepo') }
         end
 
-        it { is_expected.not_to contain_augeas('randomise_cron') }
-        it { is_expected.not_to contain_service('fetch-crl-boot') }
-        it { is_expected.not_to contain_service('fetch-crl-cron') }
-        it { is_expected.to contain_service('fetch-crl.timer').with_ensure(true) }
-        it { is_expected.to contain_service('fetch-crl.timer').with_enable(true) }
+        it {
+          is_expected.not_to contain_augeas('randomise_cron')
+          is_expected.not_to contain_service('fetch-crl-boot')
+          is_expected.not_to contain_service('fetch-crl-cron')
+          is_expected.to contain_service('fetch-crl.timer')
+            .with_ensure(true)
+            .with_enable(true)
+        }
       end
 
       context 'with all parameters set' do
@@ -96,14 +106,23 @@ describe 'fetchcrl', type: 'class' do
           }
         end
 
-        it { is_expected.to contain_file('/etc/fetch-crl.conf').with_content(%r{^cache_control_request = 1234$}) }
-        it { is_expected.to contain_file('/etc/fetch-crl.conf').with_content(%r{^opensslmode = dual$}) }
-        it { is_expected.to contain_file('/etc/fetch-crl.conf').with_content(%r{^http_proxy = http://example.org:3128$}) }
-        it { is_expected.to contain_file('/etc/fetch-crl.conf').with_content(%r{^https_proxy = http://example.com:3128$}) }
-        it { is_expected.to contain_package('abc').with_ensure('present') }
-        it { is_expected.to contain_package('def').with_ensure('present') }
-        it { is_expected.to contain_fetchcrl__ca('EDG').with_agingtolerance(168) }
-        it { is_expected.to contain_fetchcrl__ca('MD').with_noerrors(true) }
+        it {
+          is_expected.to contain_file('/etc/fetch-crl.conf')
+            .with_content(%r{^cache_control_request = 1234$})
+            .with_content(%r{^opensslmode = dual$})
+            .with_content(%r{^http_proxy = http://example.org:3128$})
+            .with_content(%r{^https_proxy = http://example.com:3128$})
+        }
+
+        it {
+          is_expected.to contain_package('abc').with_ensure('present')
+          is_expected.to contain_package('def').with_ensure('present')
+        }
+
+        it {
+          is_expected.to contain_fetchcrl__ca('EDG').with_agingtolerance(168)
+          is_expected.to contain_fetchcrl__ca('MD').with_noerrors(true)
+        }
 
         case facts[:os]['family']
         when 'Debian'
@@ -173,10 +192,13 @@ describe 'fetchcrl', type: 'class' do
             it { is_expected.not_to contain_package('perl-Net-INET6Glue') }
           end
         end
-        it { is_expected.to contain_file('/etc/fetch-crl.conf').with_content(%r{^noerrors$}) }
-        it { is_expected.to contain_file('/etc/fetch-crl.conf').with_content(%r{^selective_http_proxy$}) }
-        it { is_expected.to contain_file('/etc/fetch-crl.conf').with_content(%r{^noverify_nextupdate$}) }
-        it { is_expected.to contain_file('/etc/fetch-crl.conf').with_content(%r{^noverify_lastupdate$}) }
+        it {
+          is_expected.to contain_file('/etc/fetch-crl.conf')
+            .with_content(%r{^noerrors$})
+            .with_content(%r{^selective_http_proxy$})
+            .with_content(%r{^noverify_nextupdate$})
+            .with_content(%r{^noverify_lastupdate$})
+        }
 
         case [facts[:os]['name'], facts[:os]['release']['major']]
         when %w[RedHat 8], %w[AlmaLinux 8], %w[OracleLinux 8], %w[Rocky 8], %w[Debian 11], ['Ubuntu', '22.04']
@@ -186,8 +208,12 @@ describe 'fetchcrl', type: 'class' do
         end
 
         it { is_expected.not_to contain_augeas('randomise_cron') }
-        it { is_expected.to contain_service('fetch-crl.timer').with_ensure(true) }
-        it { is_expected.to contain_service('fetch-crl.timer').with_enable(true) }
+
+        it {
+          is_expected.to contain_service('fetch-crl.timer')
+            .with_ensure(true)
+            .with_enable(true)
+        }
       end
 
       context 'with boolean params parameters set false' do
@@ -203,31 +229,46 @@ describe 'fetchcrl', type: 'class' do
           }
         end
 
-        it { is_expected.not_to contain_yumrepo('carepo') }
-        it { is_expected.not_to contain_apt__source('carepo') }
-        it { is_expected.to contain_file('/etc/fetch-crl.conf').without_content(%r{^noerrors$}) }
-        it { is_expected.to contain_file('/etc/fetch-crl.conf').without_content(%r{^selective_http_proxy$}) }
-        it { is_expected.to contain_file('/etc/fetch-crl.conf').without_content(%r{noverify_nextupdate}) }
-        it { is_expected.to contain_file('/etc/fetch-crl.conf').without_content(%r{noverify_lastupdate}) }
+        it {
+          is_expected.not_to contain_yumrepo('carepo')
+          is_expected.not_to contain_apt__source('carepo')
+        }
+
+        it {
+          is_expected.to contain_file('/etc/fetch-crl.conf')
+            .without_content(%r{^noerrors$})
+            .without_content(%r{^selective_http_proxy$})
+            .without_content(%r{noverify_nextupdate})
+            .without_content(%r{noverify_lastupdate})
+        }
 
         it { is_expected.not_to contain_augeas('randomise_cron') }
 
-        it { is_expected.to contain_service('fetch-crl.timer').with_ensure(false) }
-        it { is_expected.to contain_service('fetch-crl.timer').with_enable(false) }
+        it {
+          is_expected.to contain_service('fetch-crl.timer')
+            .with_ensure(false)
+            .with_enable(false)
+        }
       end
 
       context 'with noverify_nextupdate true' do
         let(:params) { { noverify_nextupdate: true } }
 
-        it { is_expected.to contain_file('/etc/fetch-crl.conf').with_content(%r{^noverify_nextupdate$}) }
-        it { is_expected.to contain_file('/etc/fetch-crl.conf').without_content(%r{noverify_lastupdate}) }
+        it {
+          is_expected.to contain_file('/etc/fetch-crl.conf')
+            .with_content(%r{^noverify_nextupdate$})
+            .without_content(%r{noverify_lastupdate})
+        }
       end
 
       context 'with noverify_lastupdate true' do
         let(:params) { { noverify_lastupdate: true } }
 
-        it { is_expected.to contain_file('/etc/fetch-crl.conf').with_content(%r{^noverify_lastupdate$}) }
-        it { is_expected.to contain_file('/etc/fetch-crl.conf').without_content(%r{noverify_nextupdate}) }
+        it {
+          is_expected.to contain_file('/etc/fetch-crl.conf')
+            .with_content(%r{^noverify_lastupdate$})
+            .without_content(%r{noverify_nextupdate})
+        }
       end
     end
   end
