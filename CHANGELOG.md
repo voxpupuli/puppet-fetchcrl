@@ -4,7 +4,20 @@ All notable changes to this project will be documented in this file.
 Each new release typically also includes the latest modulesync defaults.
 These should not affect the functionality of the module.
 
-## [v9.1.0](https://github.com/voxpupuli/puppet-fetchcrl/tree/v9.1.0) (2026-09-21)
+## [v9.2.0](https://github.com/voxpupuli/puppet-fetchcrl/tree/v9.2.0) (2026-09-28)
+
+[Full Changelog](https://github.com/voxpupuli/puppet-fetchcrl/compare/v9.1.0...v9.2.0)
+
+**Implemented enhancements:**
+
+- Support puppet-stdlib v10 and puppetlabs-apt v11 [\#144](https://github.com/voxpupuli/puppet-fetchcrl/pull/144) ([traylenator](https://github.com/traylenator))
+- Support `selective\_http\_proxy`, `noverify\_nextupdate`, `noverify\_last… [\#143](https://github.com/voxpupuli/puppet-fetchcrl/pull/143) ([traylenator](https://github.com/traylenator))
+
+**Merged pull requests:**
+
+- Refactor tests - Reduce puppet compiles [\#145](https://github.com/voxpupuli/puppet-fetchcrl/pull/145) ([traylenator](https://github.com/traylenator))
+
+## [v9.1.0](https://github.com/voxpupuli/puppet-fetchcrl/tree/v9.1.0) (2026-09-22)
 
 [Full Changelog](https://github.com/voxpupuli/puppet-fetchcrl/compare/v9.0.0...v9.1.0)
 
