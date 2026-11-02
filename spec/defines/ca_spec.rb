@@ -94,7 +94,7 @@ describe 'fetchcrl::ca' do
             .with_content(%r{^noerrors$})
             .with_content(%r{^agingtolerance = 9876$})
             .with_content(%r{^httptimeout = 1234$})
-            .with_content(%r{^crl_url.1 = http://ca1.example.org/;http://ca2.example.org/$})
+            .with_content(%r{^crl_url.0 = http://ca1.example.org/;http://ca2.example.org/$})
         }
       end
 

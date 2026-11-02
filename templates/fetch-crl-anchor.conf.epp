@@ -43,7 +43,7 @@ noverify_lastupdate
 httptimeout = <%= $httptimeout %>
 <% } -%>
 <% if $crl_url.length >= 1 { -%>
-crl_url.1 = <%= $crl_url.join(';') %>
+crl_url.0 = <%= $crl_url.join(';') %>
 <% } -%>
 
 # end of <%= $anchorname -%>.conf  managed by puppet.

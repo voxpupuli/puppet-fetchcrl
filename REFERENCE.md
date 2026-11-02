@@ -416,4 +416,3 @@ Data type: `Array[Stdlib::Httpurl]`
 A list of URLs to download CAs from
 
 Default value: `[]`
-
