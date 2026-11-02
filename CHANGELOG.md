@@ -4,6 +4,18 @@ All notable changes to this project will be documented in this file.
 Each new release typically also includes the latest modulesync defaults.
 These should not affect the functionality of the module.
 
+## [v9.3.0](https://github.com/voxpupuli/puppet-fetchcrl/tree/v9.3.0) (2026-11-02)
+
+[Full Changelog](https://github.com/voxpupuli/puppet-fetchcrl/compare/v9.2.0...v9.3.0)
+
+**Implemented enhancements:**
+
+- Update requirements to allow OpenVox 9 [\#148](https://github.com/voxpupuli/puppet-fetchcrl/pull/148) ([sebastianrakel](https://github.com/sebastianrakel))
+
+**Fixed bugs:**
+
+- Fix CRL URL override index [\#149](https://github.com/voxpupuli/puppet-fetchcrl/pull/149) ([djuarezg](https://github.com/djuarezg))
+
 ## [v9.2.0](https://github.com/voxpupuli/puppet-fetchcrl/tree/v9.2.0) (2026-09-28)
 
 [Full Changelog](https://github.com/voxpupuli/puppet-fetchcrl/compare/v9.1.0...v9.2.0)
